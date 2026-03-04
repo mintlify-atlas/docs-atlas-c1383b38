@@ -1,0 +1,108 @@
+{
+  "projectType": "general",
+  "projectName": "Open Robot Actuator Hardware",
+  "projectDescription": "Open-source hardware documentation for low-cost, torque-controlled actuator modules and robotic platforms including quadrupeds, bipeds, and manipulators.",
+  "theme": "aspen",
+  "primaryColor": "#2563eb",
+  "lightColor": "#3b82f6",
+  "darkColor": "#1e40af",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "overview"
+            ]
+          },
+          {
+            "group": "Actuator Modules",
+            "pages": [
+              "actuator-modules/core-v1",
+              "actuator-modules/core-v1-1",
+              "actuator-modules/specifications"
+            ]
+          },
+          {
+            "group": "Robot Platforms",
+            "pages": [
+              "robot-platforms/quadruped-solo8-v2",
+              "robot-platforms/quadruped-solo12",
+              "robot-platforms/biped-bolt",
+              "robot-platforms/trifinger-edu",
+              "robot-platforms/legs-and-testbeds"
+            ]
+          },
+          {
+            "group": "Electronics",
+            "pages": [
+              "electronics/overview",
+              "electronics/ti-evaluation-boards",
+              "electronics/micro-driver",
+              "electronics/master-board",
+              "electronics/wiring"
+            ]
+          },
+          {
+            "group": "Assembly Guides",
+            "pages": [
+              "assembly/motor-preparation",
+              "assembly/motor-shaft-preparation",
+              "assembly/encoder-preparation",
+              "assembly/pulley-preparation",
+              "assembly/actuator-assembly",
+              "assembly/testing"
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              "resources/tools-and-materials",
+              "resources/3d-printed-parts",
+              "resources/machined-parts",
+              "resources/bill-of-materials"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/calibration",
+              "reference/conventions",
+              "reference/known-issues",
+              "reference/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Low-cost torque-controlled actuator modules with 9:1 dual-stage transmission",
+    "Complete mechanical designs for quadruped, biped, and manipulation robots",
+    "Open-source electronics including motor drivers and master boards",
+    "Detailed step-by-step assembly instructions with images",
+    "3D printable and machined parts with technical drawings",
+    "High-resolution optical encoders with 20000 counts per revolution",
+    "Multiple robot platform variants (Solo8, Solo12, Bolt, TriFinger)",
+    "Brushless DC motor integration with timing belt transmission"
+  ],
+  "publicApiSurface": [
+    "Actuator Module Core v1 - 150g, 2.5Nm @ 12A, 160mm segment length",
+    "Actuator Module Core v1.1 - Updated version with encoder kit",
+    "Quadruped Robot 8DOF v2 (Solo8)",
+    "Quadruped Robot 12DOF v1 (Solo12)",
+    "Biped Robot 6DOF v1 (Bolt)",
+    "TriFingerEdu v1 - Educational manipulation platform",
+    "2DOF Leg v2",
+    "3DOF Leg v1",
+    "TI Evaluation Board Electronics",
+    "BLMC Micro Driver Electronics",
+    "Master Board",
+    "T-Motor Antigravity 4004 300kV brushless motor",
+    "Broadcom AEDT-9810-Z00 optical encoder",
+    "AT3 GEN III timing belt transmission system"
+  ]
+}
