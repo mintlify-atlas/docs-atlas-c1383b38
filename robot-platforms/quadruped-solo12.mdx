@@ -209,11 +209,11 @@ Key wiring considerations:
 
 The robot coordinate system origin is located at the center of the body structure. The IMU coordinate system has the same orientation as the robot coordinate system, with the offset documented above.
 
-For complete coordinate system conventions, see [Conventions](/mechanics/conventions).
+For complete coordinate system conventions, see [Conventions](/reference/conventions).
 
 ## Robot Calibration
 
-A dedicated calibration tool is available for the Solo12. See the [Quadruped 12dof Calibration Tool](/mechanics/robot-calibration#quadruped-12dof) documentation.
+A dedicated calibration tool is available for the Solo12. See the [Quadruped 12dof Calibration Tool](/reference/calibration#quadruped-12dof) documentation.
 
 ## Vicon Object for Motion Capture
 
@@ -223,6 +223,62 @@ A dedicated calibration tool is available for the Solo12. See the [Quadruped 12d
 - Can replace standard center plate
 - Used for base state estimation
 
+## Solo12 v1.1 - Autonomy Upgrade
+
+<Warning>
+The v1.1 autonomy upgrade adds approximately 300g to the robot weight, bringing total weight to 2.8kg.
+</Warning>
+
+The Solo12 v1.1 upgrade enables autonomous operation without tether:
+
+**Upgraded Components:**
+- **Power System**: 2x SLS X-Cube 850mAh LiPo batteries (11.1V, 3S1P)
+  - One battery in front, one in back
+  - 68g each, 136g total
+  - XT30 connectors
+  - 30C continuous / 60C burst discharge
+
+- **Power Management Board**: Custom board for safe operation
+  - Battery voltage and current monitoring
+  - On/off switch and e-stop handling
+  - Emergency power cutoff
+  - Inrush current limitation
+  - SPI communication with Master Board
+  - 8x XT30 output connectors
+  - Dimensions: 65mm x 35mm
+  - Weight: 16g
+
+- **Wireless Communication**: WiFi module
+  - Replaces wired Ethernet
+  - Enables untethered operation
+  - Compatible with existing software stack
+
+- **LED Status Ring**: 12 RGB LEDs
+  - Mounted on top of robot
+  - Real-time status indication
+  - Visible from all angles
+
+- **Payload Interfaces**: Mounting points for accessories
+  - Top and bottom attachment points
+  - Standard hole patterns
+  - Additional sensors or cameras
+
+**Benefits:**
+- Untethered operation for outdoor experiments
+- Onboard IMU-based state estimation
+- Operation outside motion capture area
+- Longer experiment duration with dual batteries
+- Real-time battery monitoring and safety
+
+**Weight Breakdown (v1.1):**
+- Solo12 v1 base: 2.5kg
+- Batteries: 136g
+- Power board: 16g
+- Additional structure: ~148g
+- **Total**: ~2.8kg
+
+See [Power Board Documentation](https://github.com/open-dynamic-robot-initiative/power-board) for details.
+
 ## Applications
 
 The Solo12 is designed for:
@@ -230,15 +286,15 @@ The Solo12 is designed for:
 - Dynamic maneuvers and acrobatic behaviors
 - Machine learning and reinforcement learning
 - Whole-body control development
-- Outdoor terrain navigation (with autonomy upgrade)
+- Outdoor terrain navigation (with v1.1 autonomy upgrade)
 
 ## Related Resources
 
 <CardGroup cols={2}>
-  <Card title="3DOF Leg Assembly" icon="gear" href="/mechanics/leg-3dof-v1">
+  <Card title="3DOF Leg Assembly" icon="gear" href="/robot-platforms/legs-and-testbeds#3dof-leg-v1">
     Complete leg module build instructions
   </Card>
-  <Card title="Electronics Wiring" icon="plug" href="/electronics/wiring-details">
+  <Card title="Electronics Wiring" icon="plug" href="/electronics/wiring">
     Detailed wiring guide and schematics
   </Card>
   <Card title="Commercial Option" icon="shopping-cart" href="https://solo.pal-robotics.com/solo">

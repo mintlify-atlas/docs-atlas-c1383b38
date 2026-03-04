@@ -243,13 +243,13 @@ The leg modules share core components across platforms:
 ## Assembly Resources
 
 <CardGroup cols={2}>
-  <Card title="2DOF Leg Assembly" icon="gear" href="/mechanics/leg-2dof-v2">
+  <Card title="2DOF Leg Assembly" icon="gear" href="/robot-platforms/legs-and-testbeds#2dof-leg-v2">
     Complete build guide for 2DOF leg
   </Card>
   <Card title="3DOF Leg Assembly" icon="cog" href="/mechanics/leg-3dof-v1">
     Complete build guide for 3DOF leg
   </Card>
-  <Card title="Test Stand Setup" icon="flask" href="/mechanics/leg-test-stand-v2">
+  <Card title="Test Stand Setup" icon="flask" href="/robot-platforms/legs-and-testbeds#leg-test-stand-v2">
     Leg test stand v2 assembly guide
   </Card>
   <Card title="Actuator Modules" icon="circle-dot" href="/mechanics/actuator-module">
@@ -275,6 +275,65 @@ Two lower leg versions are available for both 2DOF and 3DOF legs:
 
 See the [Lower Leg Documentation](/mechanics/lower-legs) for detailed information.
 
+### NYU Finger v1
+
+<Card title="NYU Finger v1" icon="hand-pointer">
+  Three-degree-of-freedom robotic finger using 3DOF leg components
+  
+  **Applications:**
+  - Dexterous manipulation research
+  - Writing and drawing tasks
+  - Precision positioning experiments
+  
+  **Configuration:**
+  - Uses same actuator modules as 3DOF leg
+  - 3 DOF configuration
+  - External power and Ethernet communication
+  - Pen holder attachment available
+</Card>
+
+**Electronics:**
+- Master Board with adapter plate: 19g
+- 2x Micro Driver Boards: 13g each
+- Total electronics weight: 45g
+
+**Key Features:**
+- Modular design sharing components with 3DOF leg
+- Interchangeable finger adapter and pen holder
+- Compact footprint for tabletop experiments
+- Compatible with existing control software
+
+### Dual Motor Testbed v1
+
+<Card title="Dual Motor Testbed v1" icon="vial">
+  Simplest mechanical setup for learning brushless motor torque control
+  
+  **Purpose:**
+  - Introduction to field-oriented control (FOC)
+  - Motor characterization and testing
+  - Control algorithm development
+  - Educational platform
+  
+  **Components:**
+  - 2x T-Motor Antigravity 4004 motors
+  - 2x Broadcom AEDT-9810 encoders
+  - Custom motor shaft (stainless steel)
+  - 3D printed mounting structure
+</Card>
+
+**Advantages:**
+- No complex mechanical transmission
+- Direct motor shaft encoder mounting
+- Table-clampable design
+- Works with TI evaluation boards or Micro Driver
+- Torque control at all speeds including stall
+
+**Use Cases:**
+- Getting started with motor control
+- Testing motor driver electronics
+- Control algorithm validation
+- Educational demonstrations
+
 ## Bill of Materials - Test Stand v2
 
 | Component | Quantity | Notes |
@@ -297,13 +356,13 @@ See the [Lower Leg Documentation](/mechanics/lower-legs) for detailed informatio
 ## Related Resources
 
 <CardGroup cols={2}>
-  <Card title="Actuator Module Core" icon="circle-dot" href="/mechanics/actuator-module-v1">
+  <Card title="Actuator Module Core" icon="circle-dot" href="/actuator-modules/core-v1">
     Core components used in all legs
   </Card>
-  <Card title="Electronics Wiring" icon="plug" href="/electronics/wiring-details">
+  <Card title="Electronics Wiring" icon="plug" href="/electronics/wiring">
     Wiring guides and schematics
   </Card>
-  <Card title="3D Printing Guide" icon="print" href="/mechanics/3d-printing">
+  <Card title="3D Printing Guide" icon="print" href="/resources/3d-printed-parts">
     Settings and materials for parts
   </Card>
   <Card title="Test Stand CAD" icon="cube" href="https://open-dynamic-robot-initiative.github.io/cad_files/leg_test_stand_v2">
