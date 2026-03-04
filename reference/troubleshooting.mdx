@@ -1,0 +1,295 @@
+---
+title: Troubleshooting Guide
+description: Common problems and solutions for robot actuator systems
+---
+
+## Overview
+
+This guide helps you diagnose and resolve common issues with the Open Robot Actuator Hardware. Issues are organized by category for quick reference.
+
+<Warning>
+Always power down the system before performing any mechanical adjustments or repairs.
+</Warning>
+
+---
+
+## Calibration Issues
+
+<AccordionGroup>
+  <Accordion title="Robot joints don't move to zero position after calibration">
+    **Possible Causes:**
+    - Calibration tool not fully seated during offset measurement
+    - Encoder index position not detected correctly
+    - Incorrect offset values saved
+    - Actuator module replaced without recalibration
+
+    **Solutions:**
+    1. Verify calibration tools are properly installed with no gaps
+    2. Ensure pins are correctly inserted into screw heads
+    3. Re-run the calibration procedure
+    4. Check that offset values are saved correctly in configuration
+    5. If actuator was replaced, measure and save new offsets
+
+    **Prevention:**
+    - Use velcro straps to keep calibration tools firmly in place
+    - Always recalibrate after replacing or modifying actuator modules
+  </Accordion>
+
+  <Accordion title="Encoder index position not found during startup">
+    **Possible Causes:**
+    - Encoder wiring issues
+    - Encoder index signal not connected
+    - Motor driver configuration incorrect
+    - Encoder damaged
+
+    **Solutions:**
+    1. Check encoder wiring according to [wiring conventions](/reference/conventions#wiring-conventions)
+    2. Verify encoder index signal is connected
+    3. Test encoder signals with oscilloscope if available
+    4. Check motor driver configuration settings
+    5. Replace encoder if damaged
+
+    **Prevention:**
+    - Follow wiring conventions strictly during assembly
+    - Secure all connectors properly
+  </Accordion>
+
+  <Accordion title="Calibration tool doesn't fit properly">
+    **Possible Causes:**
+    - 3D printed part warping
+    - Incorrect pin diameter or length
+    - Pins not fully seated
+    - Wrong calibration tool version
+
+    **Solutions:**
+    1. Check you're using the correct tool for your robot (8dof, 12dof, or 6dof)
+    2. Verify pin diameters: 2mm and 2.5mm
+    3. Re-drill holes if needed (1.9mm for 2mm pins, 2.4mm for 2.5mm pins)
+    4. Ensure pins protrude correct distance (4mm or 5mm depending on version)
+    5. Reprint tool if warped
+
+    **Prevention:**
+    - Print with "sparse double dense" setting as specified
+    - Store printed tools flat to prevent warping
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Mechanical Issues
+
+<AccordionGroup>
+  <Accordion title="Actuator module output shaft binding or stiff">
+    **Possible Causes:**
+    - Over-tightened fasteners
+    - Misaligned mechanical interface
+    - Debris in output interface
+    - Bearing damage
+
+    **Solutions:**
+    1. Loosen fasteners slightly and check for binding
+    2. Verify output interface alignment
+    3. Clean output interface surfaces
+    4. Check bearings for damage
+    5. Reassemble with correct torque specifications
+
+    **Prevention:**
+    - Follow torque specifications for all fasteners
+    - Keep work area clean during assembly
+  </Accordion>
+
+  <Accordion title="3D printed parts don't fit together">
+    **Possible Causes:**
+    - Incorrect printing orientation
+    - Printer calibration issues
+    - Wrong STL file version
+    - Post-processing needed
+
+    **Solutions:**
+    1. Verify printing direction: positive z-axis of STL files
+    2. Check printer calibration (bed leveling, extrusion multiplier)
+    3. Download latest STL files from repository
+    4. Clean up edges and holes with appropriate tools
+    5. Reprint if necessary
+
+    **Prevention:**
+    - Always print in recommended orientation
+    - Calibrate printer regularly
+  </Accordion>
+
+  <Accordion title="Robot leg segments not aligned correctly">
+    **Possible Causes:**
+    - Mechanical interface not properly seated
+    - Fasteners not tightened evenly
+    - Damaged interface surfaces
+    - Wrong segment version
+
+    **Solutions:**
+    1. Disassemble and check all interface surfaces
+    2. Ensure mechanical interfaces match (all actuators use same interface)
+    3. Tighten fasteners in star pattern
+    4. Check for damage on mating surfaces
+    5. Verify using correct segment length (16cm for quadrupeds)
+
+    **Prevention:**
+    - Handle parts carefully to avoid damage
+    - Follow assembly sequence in build guides
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Electrical Issues
+
+<AccordionGroup>
+  <Accordion title="Motor doesn't respond to commands">
+    **Possible Causes:**
+    - Wiring connection issues
+    - Motor driver not powered
+    - Incorrect motor driver configuration
+    - Communication failure
+    - Motor phase wires disconnected
+
+    **Solutions:**
+    1. Check all power connections
+    2. Verify motor phase wires are connected
+    3. Check encoder wiring
+    4. Verify motor driver configuration
+    5. Test communication between controller and driver
+    6. Check for error messages in software
+
+    **Prevention:**
+    - Use strain relief on all cables
+    - Follow wiring conventions documentation
+  </Accordion>
+
+  <Accordion title="Encoder readings inconsistent or noisy">
+    **Possible Causes:**
+    - Poor wire connections
+    - Electromagnetic interference
+    - Incorrect wiring
+    - Damaged encoder
+    - Ground loop issues
+
+    **Solutions:**
+    1. Check encoder wiring according to conventions
+    2. Ensure proper grounding
+    3. Use shielded cables if available
+    4. Keep encoder wires away from motor power wires
+    5. Check for loose connections
+    6. Replace encoder if damaged
+
+    **Prevention:**
+    - Route encoder cables away from power cables
+    - Use proper connectors and crimping
+  </Accordion>
+
+  <Accordion title="Power supply shuts down during operation">
+    **Possible Causes:**
+    - Overcurrent condition
+    - Insufficient power supply rating
+    - Short circuit
+    - Too many actuators on single supply
+
+    **Solutions:**
+    1. Check power supply current rating vs. total load
+    2. Look for short circuits in wiring
+    3. Reduce number of simultaneous actuator movements
+    4. Use higher capacity power supply
+    5. Add additional power supplies for more actuators
+
+    **Prevention:**
+    - Calculate total power requirements before selection
+    - Add 20-30% margin to power supply capacity
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Operational Issues
+
+<AccordionGroup>
+  <Accordion title="Robot doesn't maintain neutral standing height">
+    **Possible Causes:**
+    - Incorrect calibration
+    - Joint angle offsets wrong
+    - Control software issues
+    - Mechanical slippage
+
+    **Solutions:**
+    1. Verify calibration is correct
+    2. Check neutral standing height: Hip FE at 45°, Knee at 90°
+    3. Measure actual standing height (should be 24cm for quadrupeds)
+    4. Re-run calibration procedure
+    5. Check for mechanical slippage in joints
+
+    **Prevention:**
+    - Recalibrate after any mechanical changes
+    - Verify calibration regularly
+  </Accordion>
+
+  <Accordion title="Joint angles don't match commanded values">
+    **Possible Causes:**
+    - Direction of rotation convention incorrect
+    - Encoder direction reversed
+    - Calibration offset errors
+    - Software coordinate system mismatch
+
+    **Solutions:**
+    1. Verify motor rotation direction: counterclockwise from top
+    2. Verify leg rotation direction: clockwise from side
+    3. Check coordinate system: X=Forward, Y=Left, Z=Up
+    4. Recalibrate joint offsets
+    5. Check software configuration matches hardware
+
+    **Prevention:**
+    - Follow conventions documentation strictly
+    - Document any configuration changes
+  </Accordion>
+
+  <Accordion title="Robot motion is jerky or unstable">
+    **Possible Causes:**
+    - Control gains not tuned
+    - Communication latency
+    - Mechanical binding
+    - Insufficient power supply
+    - Encoder noise
+
+    **Solutions:**
+    1. Check for mechanical binding in all joints
+    2. Verify stable power supply
+    3. Check encoder signal quality
+    4. Tune control gains in software
+    5. Reduce communication latency
+    6. Check for loose connections
+
+    **Prevention:**
+    - Perform regular mechanical maintenance
+    - Use quality power supplies
+    - Follow proper cable management
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Getting Help
+
+If you can't resolve your issue using this guide:
+
+1. **Search the Forum**: [ODRI Discourse Group](https://odri.discourse.group/categories) - Many issues have been discussed
+2. **Check the Paper**: [ODRI Paper](https://arxiv.org/pdf/1910.00093.pdf) - Technical details and theory
+3. **Watch Videos**: [ODRI YouTube Channel](https://www.youtube.com/channel/UCx32JW2oIrax47Gjq8zNI-w) - Assembly and operation demonstrations
+4. **Post Your Issue**: Include:
+   - Detailed description of the problem
+   - Robot configuration (8dof, 12dof, etc.)
+   - Photos or videos if applicable
+   - What you've already tried
+   - Error messages or logs
+
+## Contributing Solutions
+
+Help improve this guide by sharing your troubleshooting experiences:
+- Post successful solutions on the forum
+- Document unusual issues with photos
+- Share diagnostic techniques
+- Suggest additional troubleshooting topics

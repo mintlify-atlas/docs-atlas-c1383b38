@@ -1,0 +1,134 @@
+---
+title: Electronics Overview
+description: Overview of the Open Robot Actuator electronics options including TI evaluation boards, micro driver, and master board
+---
+
+# Electronics Overview
+
+The Open Robot Actuator Hardware project offers three main electronics options for motor control, each designed for different use cases and requirements.
+
+## Electronics Options
+
+<CardGroup cols={3}>
+  <Card title="TI Evaluation Boards" icon="microchip" href="/electronics/ti-evaluation-boards">
+    Ready-to-use evaluation boards with integrated USB programming
+  </Card>
+  <Card title="Micro Driver" icon="memory" href="/electronics/micro-driver">
+    Miniaturized motor driver for compact robot designs
+  </Card>
+  <Card title="Master Board" icon="server" href="/electronics/master-board">
+    Central communication hub for coordinating multiple motor drivers
+  </Card>
+</CardGroup>
+
+## Comparison
+
+| Feature | TI Evaluation Boards | Micro Driver | Master Board |
+|---------|---------------------|--------------|---------------|
+| **Size** | Large (85g) | Compact (13g) | Medium |
+| **Channels** | 2 motors | 2 motors | Coordinates up to 6 boards |
+| **Programming** | Onboard USB | External JTAG | N/A |
+| **Communication** | CAN/USB | SPI | SPI + Ethernet |
+| **Use Case** | Testing & prototyping | Compact robots | Multi-motor systems |
+| **Current** | Up to 15A continuous (20A peak) | Similar to TI boards | N/A |
+| **Voltage** | 5V - 45V (typically 24V) | 5V - 32V (typically 24V) | N/A |
+
+## Key Features
+
+### Brushless Motor Control
+- Field Oriented Control (FOC) at 10kHz per motor
+- Real-time torque control
+- Encoder feedback integration
+- Phase current measurement
+
+### Communication Options
+- **CAN**: For standalone operation with PC control
+- **SPI**: For Master Board coordination
+- **USB**: For programming and debugging (TI boards only)
+- **Ethernet**: For high-level control via Master Board
+
+### Voltage and Current
+- Operating voltage: 24V nominal (5V-45V range)
+- Continuous current: Up to 15A per channel
+- Peak current: 20A per channel
+
+## System Architecture
+
+<img src="/images/electronics/bl_system_overview.jpg" alt="Brushless motor control system overview" />
+
+The electronics system consists of:
+
+1. **Power Supply**: 24V DC power input
+2. **Motor Drivers**: TI boards or Micro Drivers for motor control
+3. **Master Board** (optional): Central coordinator for multi-motor systems
+4. **Communication**: CAN, SPI, or Ethernet connection to control PC
+5. **Encoders**: High-resolution position feedback from actuator modules
+
+## Choosing the Right Option
+
+### Use TI Evaluation Boards when:
+- Getting started with the project
+- Testing and prototyping new designs
+- Easy programming access is needed
+- Size and weight are not critical
+
+### Use Micro Driver when:
+- Building compact, lightweight robots
+- Integrated into robot structure
+- Using Master Board for coordination
+- Production-ready designs
+
+### Use Master Board when:
+- Controlling multiple motors (6+ motors)
+- Ethernet communication is required
+- Centralized control architecture is preferred
+- Building complex multi-DOF robots
+
+## Compatible Robots
+
+### TI Evaluation Boards
+- TriFingerEDU v1
+- Quadruped Robot 8dof v1
+- Leg Test Stand v1
+
+### Micro Driver + Master Board
+- TriFinger v2 and v3
+- Quadruped Robot 12dof
+- Solo v2 and v3
+- NYU Finger
+
+## Wiring and Connections
+
+All electronics options use standardized connectors:
+
+- **Encoder wires**: 5-pole Hirose DF13 connectors
+- **Motor phases**: 2mm Reely gold connectors
+- **Power**: XT30 connectors
+- **SPI**: 5-pole Hirose DF13 connectors
+
+Detailed wiring information is available in the [Wiring](/electronics/wiring) section.
+
+## Getting Started
+
+1. Choose your electronics option based on your requirements
+2. Review the specific documentation for your chosen option
+3. Prepare the necessary connectors and wiring
+4. Follow the setup and programming instructions
+5. Integrate with your actuator modules
+
+## Resources
+
+- [Open Dynamic Robot Initiative Website](https://open-dynamic-robot-initiative.github.io)
+- [YouTube Channel](https://www.youtube.com/channel/UCx32JW2oIrax47Gjq8zNI-w)
+- [Community Forum](https://odri.discourse.group/categories)
+- [Research Paper](https://arxiv.org/pdf/1910.00093.pdf)
+
+## Authors
+
+Jonathan Fiene, Thomas Flayols, Felix Grimminger
+
+## License
+
+BSD 3-Clause License
+
+Copyright (c) 2019-2021, Max Planck Gesellschaft and New York University

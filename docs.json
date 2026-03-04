@@ -1,122 +1,95 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Open Robot Actuator Hardware",
+  "theme": "aspen",
+  "mode": "custom",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
-  },
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "primary": "#2563eb",
+    "light": "#3b82f6",
+    "dark": "#1e40af"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
     "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "type": "github",
+      "href": "https://github.com/open-dynamic-robot-initiative/open_robot_actuator_hardware"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/open-dynamic-robot-initiative/open_robot_actuator_hardware"
     }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "overview"
+            ]
+          },
+          {
+            "group": "Actuator Modules",
+            "pages": [
+              "actuator-modules/core-v1",
+              "actuator-modules/core-v1-1",
+              "actuator-modules/specifications"
+            ]
+          },
+          {
+            "group": "Robot Platforms",
+            "pages": [
+              "robot-platforms/quadruped-solo8-v2",
+              "robot-platforms/quadruped-solo12",
+              "robot-platforms/biped-bolt",
+              "robot-platforms/trifinger-edu",
+              "robot-platforms/legs-and-testbeds"
+            ]
+          },
+          {
+            "group": "Electronics",
+            "pages": [
+              "electronics/overview",
+              "electronics/ti-evaluation-boards",
+              "electronics/micro-driver",
+              "electronics/master-board",
+              "electronics/wiring"
+            ]
+          },
+          {
+            "group": "Assembly Guides",
+            "pages": [
+              "assembly/motor-preparation",
+              "assembly/motor-shaft-preparation",
+              "assembly/encoder-preparation",
+              "assembly/pulley-preparation",
+              "assembly/actuator-assembly",
+              "assembly/testing"
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              "resources/tools-and-materials",
+              "resources/3d-printed-parts",
+              "resources/machined-parts",
+              "resources/bill-of-materials"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/calibration",
+              "reference/conventions",
+              "reference/known-issues",
+              "reference/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

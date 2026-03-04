@@ -1,0 +1,217 @@
+---
+title: Overview
+description: Introduction to the Open Robot Actuator Hardware project - low-cost, torque-controlled actuator modules for advanced robotics research
+---
+
+The Open Robot Actuator Hardware project provides open-source designs for building lightweight, low-cost, torque-controlled robotic systems. Developed by the Open Dynamic Robot Initiative (a collaboration between Max Planck Gesellschaft and New York University), this project makes advanced robotic hardware accessible to research labs and hobbyists worldwide.
+
+## Core concept
+
+At the heart of this project is a modular actuator design that combines precision torque control with affordability. Each actuator module weighs only **150g** yet delivers **2.5Nm of torque at 12A**, with a compact **160mm segment length**. This power-to-weight ratio enables dynamic movements like jumping, running, and precise manipulation tasks.
+
+<Info>
+All hardware designs, CAD files, and electronics schematics are released under the BSD 3-Clause License, allowing you to build, modify, and share your own robots.
+</Info>
+
+## Key features
+
+### Dual-stage timing belt transmission
+
+The actuator modules use a **9:1 dual-stage timing belt transmission** (3:1 reduction per stage) with:
+- Conti Synchroflex AT3 GEN III timing belts (3mm tooth pitch)
+- First stage: 150mm belt, 50 teeth, 4mm width
+- Second stage: 201mm belt, 67 teeth, 6mm width
+- Heavy-duty polyurethane construction with steel cord reinforcements
+
+This transmission design provides smooth, backdrivable motion essential for torque control while remaining lightweight and cost-effective.
+
+### High-resolution sensing
+
+Each actuator includes a Broadcom AEDT-9810-Z00 optical encoder providing:
+- **5000 pulses per revolution per channel**
+- **20,000 counts per revolution** at the microcontroller
+- 5V two-channel quadrature output with index pulse
+- 26mm codewheel diameter
+- Only 5g weight
+
+### 3D printed components
+
+Most structural components are 3D printed using SLA, Polyjet, or Multijet printers for:
+- Rapid prototyping and customization
+- Precise tooth profiles for timing belt pulleys
+- Lightweight construction (core 3D printed parts: 11.3g)
+- Easy replication without expensive tooling
+
+<Note>
+The tooth profile of pulleys must be precise and concentric. Stereolithography or multi-jet printers are strongly recommended over FDM printing for optimal performance.
+</Note>
+
+### Brushless motor design
+
+The T-Motor Antigravity 4004 300kV motor provides:
+- 24 magnets / 12 pole pairs / 18 slots
+- 3-phase WYE configuration
+- 45mm rotor diameter
+- 53g weight
+- Designed for RC aircraft, adapted for robotic applications
+
+### Open-source electronics
+
+Custom electronics enable precise torque control:
+
+**Micro Driver Board v2**
+- Dual brushless motor driver
+- Performs torque control at **10kHz per motor**
+- Miniaturized design: 51mm x 50mm, 13g
+- 6-layer FR4 PCB
+- Input voltage: 5V-32V (robots operate at 24V)
+- SPI communication at 1kHz
+
+**Master Board v2**
+- Central controller for multi-actuator systems
+- Coordinates up to 12 motors
+- Ethernet communication with host computer
+- Onboard IMU interface
+- 19g weight
+
+## Robot platforms
+
+The project documentation includes complete designs for multiple robot platforms:
+
+<CardGroup cols={2}>
+<Card title="Solo12 - Quadruped 12DOF" icon="dog">
+12 degrees of freedom, 2.5kg total weight, 45cm x 30cm x 6cm dimensions. Features 4 identical 3DOF legs with Hip AA, Hip FE, and Knee joints. Capable of dynamic locomotion including trotting, jumping, and recovering from falls.
+</Card>
+
+<Card title="Solo8 v2 - Quadruped 8DOF" icon="paw">
+8 degrees of freedom, 1.9kg total weight including battery placeholders. Lightweight body structure with 4 identical 2DOF legs. Designed for research in simplified quadrupedal locomotion.
+</Card>
+
+<Card title="Bolt - Biped 6DOF" icon="person-walking">
+6 active degrees of freedom, 1.34kg total weight. Each leg has 3 active DOF plus passive ankle joint. Extended leg segments (200mm vs 160mm) for human-scale experiments. Line-contact feet for yaw stability.
+</Card>
+
+<Card title="TriFingerEdu" icon="hand">
+9 torque-controlled degrees of freedom for manipulation research. Three identical finger modules mounted on an aluminum frame structure. Each finger weighs 930g assembled. Includes optional camera system and barrier for contained manipulation tasks.
+</Card>
+</CardGroup>
+
+### Additional platforms
+
+The project also provides designs for:
+- **3DOF legs** - modular leg assembly used in Solo12 (485g each)
+- **2DOF legs v2** - simplified leg design for Solo8
+- **Biped legs** - extended length legs for the Bolt platform
+- **NYU Finger** - single-finger manipulation platform
+- **Leg test stands** - for individual actuator and leg testing
+- **Dual motor testbed** - for characterizing actuator performance
+
+## Technical specifications
+
+### Actuator module core v1
+
+| Specification | Value |
+|---------------|-------|
+| Weight | 150g |
+| Segment length | 160mm |
+| Output torque | 2.5Nm at 12A |
+| Gear ratio | 9:1 (dual stage) |
+| Encoder resolution | 20,000 counts/rev at MCU |
+| Core component weight | 95g |
+| Off-the-shelf components | Motor (53g), encoder (5g), bearings (16g), timing belts (4.5g) |
+
+### Bill of materials approach
+
+The project emphasizes:
+- **Commercially available components** - motors, encoders, bearings, and fasteners from established suppliers
+- **Minimal machined parts** - only 3 small aluminum and steel parts require machining (motor shaft, motor pulley, center pulley)
+- **Standard tooling** - assembly requires only basic tools plus Helicoil installation equipment
+- **Global sourcing** - documentation includes multiple suppliers for each component with worldwide shipping
+
+<Warning>
+Some components (like high-resolution encoders and precision bearings) require careful sourcing. The documentation provides detailed part numbers and verified suppliers for each region.
+</Warning>
+
+## Assembly approach
+
+The project provides comprehensive step-by-step instructions:
+
+1. **Motor preparation** - modifying motor housing and installing components
+2. **Motor shaft preparation** - machining and codewheel installation
+3. **Encoder preparation** - assembly and alignment procedures
+4. **Pulley preparation** - center and output pulley assembly
+5. **Shell preparation** - 3D printed housing preparation with Helicoil inserts
+6. **Actuator assembly** - complete module integration
+7. **Testing procedures** - verification and calibration methods
+
+Each step includes detailed photos, measurements, and troubleshooting guidance.
+
+## Electronics architecture
+
+The electronics follow a distributed control architecture:
+
+- **Master Board** - communicates with host PC via Ethernet, coordinates multiple Micro Driver boards via SPI
+- **Micro Driver Boards** - perform real-time torque control (10kHz), communicate encoder values and motor status
+- **IMU** - Lord Microstrain 3DM-CX5-25 provides base state estimation (±900°/sec gyro, ±20G accelerometer)
+- **Power distribution** - 24V supply distributed through the robot structure
+- **Wiring harness** - custom lengths for each platform with detailed routing documentation
+
+## Design philosophy
+
+The Open Robot Actuator Hardware project prioritizes:
+
+**Accessibility** - Complete documentation with ordering information, assembly instructions, and troubleshooting guides. Multiple supplier options for global access.
+
+**Modularity** - Core actuator modules remain identical across platforms. Only shell structures change for different applications.
+
+**Transparency** - All design files available: Solidworks CAD, Eagle electronics, STL files for 3D printing, and technical drawings for machined parts.
+
+**Practicality** - Designs tested through extensive research use. Known issues documented with solutions. Calibration tools and test fixtures included.
+
+**Performance** - Torque-controlled actuators enable advanced control strategies: impedance control, force control, and dynamic movements impossible with position-controlled systems.
+
+## Getting started
+
+To build a robot using this hardware:
+
+1. **Choose a platform** - Select the robot design that fits your research needs
+2. **Source components** - Use the detailed bills of materials with supplier information
+3. **Fabricate custom parts** - 3D print structural components and machine the three required metal parts
+4. **Order electronics** - Contact PCB manufacturers (BetaLayout or MacroFab) to replicate the custom boards
+5. **Follow assembly guides** - Use step-by-step instructions for each actuator module and platform
+6. **Install software** - Access the companion software repository for control interfaces
+7. **Calibrate and test** - Use provided calibration tools and procedures
+
+<Info>
+The Solo12 platform is now commercially available from PAL Robotics as both a complete robot and a component kit, offering a turnkey option for labs without fabrication capabilities.
+</Info>
+
+## Community and support
+
+The Open Dynamic Robot Initiative provides:
+
+- **Webpage** - [open-dynamic-robot-initiative.github.io](https://open-dynamic-robot-initiative.github.io)
+- **Forum** - Active community discussion at [odri.discourse.group](https://odri.discourse.group/categories)
+- **YouTube Channel** - Video demonstrations and tutorials
+- **Academic paper** - [arxiv.org/pdf/1910.00093.pdf](https://arxiv.org/pdf/1910.00093.pdf)
+- **Software wiki** - Comprehensive control software documentation
+
+## Next steps
+
+<CardGroup cols={2}>
+<Card title="Build your first actuator" icon="screwdriver-wrench" href="/build-actuator">
+Follow detailed instructions to assemble a complete actuator module
+</Card>
+
+<Card title="Choose a platform" icon="robot" href="/platforms">
+Explore the available robot platforms and select one for your application
+</Card>
+
+<Card title="Electronics overview" icon="microchip" href="/electronics">
+Learn about the custom motor driver and master board electronics
+</Card>
+
+<Card title="Order components" icon="cart-shopping" href="/bill-of-materials">
+Access complete bills of materials with supplier information
+</Card>
+</CardGroup>

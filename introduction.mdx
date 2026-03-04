@@ -1,0 +1,229 @@
+---
+title: Open Robot Actuator Hardware
+description: Build low-cost, high-performance torque-controlled robots with open-source hardware designs
+---
+
+<div className="relative overflow-hidden bg-gradient-to-br from-[#1e40af] via-[#2563eb] to-[#3b82f6] dark:from-[#1e3a8a] dark:via-[#1e40af] dark:to-[#2563eb]">
+  <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div className="lg:col-span-7">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+          Open Robot Actuator Hardware
+        </h1>
+        <p className="text-lg sm:text-xl text-white/90 max-w-2xl mb-8">
+          Complete open-source hardware designs for building low-cost, torque-controlled actuator modules and robotic platforms. Build quadrupeds, bipeds, and manipulators for research and education.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
+          <a
+            href="/overview"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-white text-[#2563eb] font-semibold hover:bg-gray-100 transition-colors"
+          >
+            Get Started
+          </a>
+          <a
+            href="/actuator-modules/core-v1"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-white/30 bg-white/10 text-white font-semibold hover:bg-white/20 transition-colors"
+          >
+            Explore Actuator Modules
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+    Quick start
+  </h2>
+  <p className="text-base text-gray-600 dark:text-gray-400 mb-8">
+    Get started building your first actuator module in four steps
+  </p>
+
+  <Steps>
+    <Step title="Review the actuator module specifications">
+      Start by understanding the core actuator module design. The module weighs 150g, outputs 2.5Nm at 12A, and uses a 9:1 dual-stage timing belt transmission.
+      
+      Learn more in the [Actuator Module Core v1](/actuator-modules/core-v1) documentation.
+    </Step>
+
+    <Step title="Gather required components">
+      You'll need:
+      - T-Motor Antigravity 4004 300kV brushless motor
+      - Broadcom AEDT-9810-Z00 optical encoder (20000 counts/rev)
+      - AT3 GEN III timing belts (50 and 67 teeth)
+      - Miniature stainless steel bearings
+      - 3D printed parts and machined components
+      
+      See the complete [Bill of Materials](/resources/bill-of-materials) for ordering information.
+    </Step>
+
+    <Step title="Prepare components and assemble">
+      Follow the step-by-step assembly guides:
+      1. [Motor preparation](/assembly/motor-preparation) - Modify the motor for encoder mounting
+      2. [Encoder preparation](/assembly/encoder-preparation) - Prepare the optical encoder
+      3. [Pulley preparation](/assembly/pulley-preparation) - Prepare transmission components
+      4. [Actuator assembly](/assembly/actuator-assembly) - Complete module assembly
+    </Step>
+
+    <Step title="Test and calibrate">
+      Once assembled, test your actuator module and calibrate the encoder zero position. Connect to the electronics (TI evaluation board or micro driver) and verify motor control.
+      
+      See [Testing procedures](/assembly/testing) and [Calibration guide](/reference/calibration).
+    </Step>
+  </Steps>
+</div>
+
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+    Robot platforms
+  </h2>
+  <p className="text-base text-gray-600 dark:text-gray-400 mb-8">
+    Build complete robotic systems using the actuator modules
+  </p>
+
+  <CardGroup cols={2}>
+    <Card
+      title="Quadruped Solo8 v2"
+      icon="paw"
+      href="/robot-platforms/quadruped-solo8-v2"
+    >
+      8-DOF quadruped robot platform with two actuators per leg for dynamic locomotion research
+    </Card>
+    <Card
+      title="Quadruped Solo12"
+      icon="robot"
+      href="/robot-platforms/quadruped-solo12"
+    >
+      12-DOF quadruped with three actuators per leg for advanced mobility and manipulation
+    </Card>
+    <Card
+      title="Biped Bolt"
+      icon="person-walking"
+      href="/robot-platforms/biped-bolt"
+    >
+      6-DOF bipedal platform for walking and balancing research
+    </Card>
+    <Card
+      title="TriFinger Edu"
+      icon="hand"
+      href="/robot-platforms/trifinger-edu"
+    >
+      Educational manipulation platform with three 3-DOF fingers for dexterous manipulation
+    </Card>
+  </CardGroup>
+</div>
+
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+    Documentation sections
+  </h2>
+  <p className="text-base text-gray-600 dark:text-gray-400 mb-8">
+    Explore comprehensive guides for every aspect of the hardware
+  </p>
+
+  <CardGroup cols={3}>
+    <Card
+      title="Actuator modules"
+      icon="gear"
+      href="/actuator-modules/core-v1"
+    >
+      Core actuator designs, specifications, and component details
+    </Card>
+    <Card
+      title="Electronics"
+      icon="microchip"
+      href="/electronics/overview"
+    >
+      Motor drivers, master boards, and wiring configurations
+    </Card>
+    <Card
+      title="Assembly guides"
+      icon="wrench"
+      href="/assembly/motor-preparation"
+    >
+      Step-by-step instructions for building actuator modules
+    </Card>
+    <Card
+      title="Resources"
+      icon="toolbox"
+      href="/resources/tools-and-materials"
+    >
+      Tools, materials, 3D files, and technical drawings
+    </Card>
+    <Card
+      title="Reference"
+      icon="book"
+      href="/reference/calibration"
+    >
+      Calibration, conventions, and troubleshooting information
+    </Card>
+    <Card
+      title="Robot platforms"
+      icon="sitemap"
+      href="/robot-platforms/quadruped-solo8-v2"
+    >
+      Complete robot designs and integration guides
+    </Card>
+  </CardGroup>
+</div>
+
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <div className="bg-gray-50 dark:bg-[#1a1d27] border border-gray-200 dark:border-[#27272a] rounded-2xl p-8">
+    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+      Join the community
+    </h2>
+    <p className="text-base text-gray-600 dark:text-gray-400 mb-6">
+      Connect with researchers and developers building with the Open Dynamic Robot Initiative
+    </p>
+    
+    <CardGroup cols={2}>
+      <Card
+        title="Forum"
+        icon="comments"
+        href="https://odri.discourse.group/categories"
+      >
+        Ask questions and share your projects on the ODRI forum
+      </Card>
+      <Card
+        title="GitHub"
+        icon="github"
+        href="https://github.com/open-dynamic-robot-initiative"
+      >
+        Contribute to the hardware designs and software stack
+      </Card>
+      <Card
+        title="YouTube"
+        icon="youtube"
+        href="https://www.youtube.com/channel/UCx32JW2oIrax47Gjq8zNI-w"
+      >
+        Watch robot demonstrations and assembly tutorials
+      </Card>
+      <Card
+        title="Research paper"
+        icon="file-lines"
+        href="https://arxiv.org/pdf/1910.00093.pdf"
+      >
+        Read the academic publication describing the hardware design
+      </Card>
+    </CardGroup>
+  </div>
+</div>
+
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <div className="bg-gradient-to-br from-[#2563eb] to-[#3b82f6] dark:from-[#1e40af] dark:to-[#2563eb] rounded-2xl p-8 sm:p-12 text-center">
+    <h2 className="text-3xl font-bold text-white mb-4">
+      Ready to build your robot?
+    </h2>
+    <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
+      Start with the overview to understand the hardware architecture, then dive into the actuator module documentation
+    </p>
+    <a
+      href="/overview"
+      className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-white text-[#2563eb] font-semibold hover:bg-gray-100 transition-colors"
+    >
+      Get Started Now
+    </a>
+  </div>
+</div>

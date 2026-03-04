@@ -1,0 +1,218 @@
+---
+title: 'TriFinger Edu'
+description: '9-DOF manipulation platform with three identical finger modules for dexterous object manipulation'
+---
+
+# TriFinger Edu v1
+
+The TriFinger Edu is a 9-degree-of-freedom manipulation platform consisting of three identical finger modules mounted on an aluminum frame structure. The platform is designed for dexterous manipulation research and learning.
+
+## Overview
+
+<CardGroup cols={2}>
+  <Card title="Degrees of Freedom" icon="arrows-rotate">
+    9 DOF - 3 actuated joints per finger
+  </Card>
+  <Card title="Finger Modules" icon="hand">
+    3 identical torque-controlled fingers
+  </Card>
+  <Card title="Weight" icon="weight-scale">
+    930g per finger module
+  </Card>
+  <Card title="Total Platform" icon="box">
+    8kg complete platform weight
+  </Card>
+</CardGroup>
+
+## Key Specifications
+
+| Specification | Value |
+|--------------|-------|
+| Degrees of Freedom | 9 DOF (3 per finger) |
+| Finger Module Weight | 930g each |
+| Number of Fingers | 3 |
+| Total Platform Weight | 8kg (with frame and cameras) |
+| Frame Material | T-slotted aluminum profiles (Item Size 8) |
+| Workspace | Defined by barrier: 3mm polycarbonate sheets |
+
+## Mechanical Design
+
+### Finger Modules
+
+Each finger module consists of three torque-controlled actuator joints:
+
+1. **Base Joint**: Controls finger rotation around vertical axis
+2. **Proximal Joint**: Controls middle segment angle
+3. **Distal Joint**: Controls fingertip segment angle
+
+**Weight**: 930g per assembled finger module
+
+All three finger modules are identical and use the same components. For complete finger module details, see the [Finger Edu Documentation](/mechanics/finger-edu-v1).
+
+### Frame Structure
+
+The frame uses Item aluminum profiles (Size 8, 40mm x 40mm):
+
+**Aluminum Profile Segments:**
+- Vertical supports: 3 profiles
+- Horizontal base: 3 profiles
+- Custom cut lengths per assembly drawing
+
+**Frame Components:**
+- 3x 90-degree large angle brackets (Item 0.0.411.32)
+- 9x end caps (Item 0.0.026.01)
+- M5 T-slot nuts (Item 0.0.480.54)
+- 3D printed center connector
+
+### Workspace Barrier
+
+**Polycarbonate Barrier:**
+- Material: 3mm polycarbonate sheets
+- Configuration: 3 sheets forming triangular workspace
+- Purpose: Contains objects within manipulation area
+- Custom cut to size per assembly drawing
+
+## Camera System
+
+The platform includes integrated vision:
+
+**Basler Cameras** (3 cameras):
+- Model: acA720-520uc
+- Lens: Basler C125-0418-5M
+- Mount: Custom 3D printed camera arms
+
+The cameras provide visual feedback for manipulation tasks and object tracking.
+
+## 3D Printed Components
+
+All parts should be printed in the positive Z direction of the STL files.
+
+<CardGroup cols={2}>
+  <Card title="Frame Center Connector">
+    Joins the three vertical aluminum profiles at the center
+  </Card>
+  <Card title="Camera Mounts">
+    3 camera mounts for Basler cameras
+  </Card>
+</CardGroup>
+
+## Assembly
+
+### Frame Assembly
+
+**Tools Required:**
+- 6mm hex driver
+- 6mm allen key
+
+**Assembly Steps:**
+1. Cut aluminum profiles to specified lengths
+2. Install center connector on vertical profiles
+3. Attach angle brackets to horizontal base profiles
+4. Mount finger modules to frame
+5. Install barrier sheets
+6. Mount cameras on arms
+
+### Finger Module Attachment
+
+The three finger modules are mounted at 120-degree intervals around the central workspace, creating a symmetric manipulation platform.
+
+## Applications
+
+<AccordionGroup>
+  <Accordion title="Dexterous Manipulation">
+    The TriFinger platform excels at in-hand manipulation tasks, including object reorientation, precise placement, and dynamic manipulation behaviors.
+  </Accordion>
+  
+  <Accordion title="Object Learning">
+    With integrated cameras, the platform is ideal for learning-based manipulation research, including visual servoing and object recognition.
+  </Accordion>
+  
+  <Accordion title="Multi-Finger Coordination">
+    The three-finger configuration enables research into coordinated multi-appendage control and contact-rich manipulation.
+  </Accordion>
+  
+  <Accordion title="Real Robot Challenge">
+    The TriFinger platform was used in the Real Robot Challenge, a global competition for robotic manipulation using real hardware and simulation.
+  </Accordion>
+</AccordionGroup>
+
+## Transport and Storage
+
+**Compact Storage:**
+- Finger modules can be stacked for transport
+- Complete platform fits in 1650 Pelican case
+- Total transport weight: 21kg (with case)
+
+**Portability:**
+- Modular design allows easy disassembly
+- Aluminum frame can be reconfigured
+- Suitable for lab-to-lab transport
+
+## Alternative Configurations
+
+### Upside Down Operation
+
+The manipulation platform can be mounted upside down:
+- Inverts workspace orientation
+- Changes gravity interaction with objects
+- Enables different manipulation strategies
+- Same mounting interface
+
+## Bill of Materials
+
+| Component | Quantity | Notes |
+|-----------|----------|-------|
+| Finger Edu Modules | 3 | Custom assembly |
+| Aluminum Profiles (40x40mm) | Various | Item Size 8, custom lengths |
+| 90° Angle Brackets | 3 | Item 0.0.411.32 |
+| End Caps Size 8 | 9 | Item 0.0.026.01 |
+| T-Slot Nuts M5 | Multiple | Item 0.0.480.54 |
+| Frame Center Connector | 1 | 3D printed |
+| Camera Mounts | 3 | 3D printed |
+| Basler Cameras (acA720-520uc) | 3 | With C125-0418-5M lenses |
+| Polycarbonate Sheets (3mm) | 3 | Custom cut to size |
+| Fasteners | Various | Per assembly requirements |
+
+## Electronics Integration
+
+Each finger module includes:
+- Brushless motor drivers
+- Encoder interfaces
+- Power distribution
+
+The platform requires:
+- 24V power supply
+- Ethernet communication to control PC
+- Camera interfaces (USB or Ethernet)
+
+For complete electronics details, see the [Finger Edu Documentation](/mechanics/finger-edu-v1) and [Electronics Wiring Guide](/electronics/wiring-details).
+
+## Workspace Dimensions
+
+The triangular workspace is defined by:
+- Center-to-finger distance (radius)
+- Barrier height
+- Finger reach and range of motion
+
+See the visualization model for complete workspace dimensions.
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Finger Edu Module" icon="hand" href="/mechanics/finger-edu-v1">
+    Complete finger module build instructions
+  </Card>
+  <Card title="Actuator Modules" icon="cog" href="/mechanics/actuator-module">
+    Core actuator module documentation
+  </Card>
+  <Card title="Electronics" icon="microchip" href="/electronics/overview">
+    Electronics and motor driver details
+  </Card>
+  <Card title="CAD Model" icon="cube" href="https://open-dynamic-robot-initiative.github.io/cad_files/trifinger_edu_v1">
+    Interactive 3D CAD viewer
+  </Card>
+</CardGroup>
+
+<Note>
+  The TriFinger Edu platform shares core components with the quadruped and biped robots, including the same actuator modules and electronics. This modular design approach reduces costs and simplifies maintenance.
+</Note>

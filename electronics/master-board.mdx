@@ -1,0 +1,363 @@
+---
+title: Master Board
+description: Central communication hub for coordinating multiple Micro Driver boards
+---
+
+# Master Board
+
+<img src="/images/electronics/master_board_1.jpg" alt="Master Board" width="600" />
+
+## Overview
+
+The Master Board is a central communication hub that coordinates multiple Micro Driver boards in complex robotic systems. It provides high-level control via Ethernet while managing real-time SPI communication with up to 6 Micro Driver boards (12 motors total).
+
+### Key Features
+
+- **Ethernet communication** with control PC
+- **SPI communication** with Micro Driver boards at 1kHz
+- **IMU interface** for inertial measurement unit
+- **Power distribution** to Micro Driver boards
+- **Real-time coordination** of multiple motors
+- **Supports up to 6 Micro Driver boards** (12 motors)
+
+## System Architecture
+
+The Master Board acts as the central coordinator in a distributed motor control system:
+
+```
+┌─────────────┐
+│  Control PC │
+└──────┬──────┘
+       │ Ethernet
+       │
+┌──────▼──────┐      Power Supply (24V)
+│ Master Board│◄──────────────────────┐
+└──┬──┬──┬──┬─┘                       │
+   │  │  │  │ SPI                     │
+   │  │  │  └──────────┐              │
+   │  │  └──────────┐  │              │
+   │  └──────────┐  │  │              │
+   │             │  │  │              │
+┌──▼───┐ ┌──▼───┐ ┌▼──▼┐ ┌────▼─────┐│
+│Micro │ │Micro │ │Micro│ │  Micro   ││
+│Driver│ │Driver│ │...  │ │  Driver  ││
+└──┬───┘ └──┬───┘ └┬───┘ └────┬─────┘│
+   │        │      │          │       │
+   │        │      │          │       │
+ ┌─▼─┐    ┌─▼─┐  ┌▼─┐      ┌─▼─┐     │
+ │M1 │    │M2 │  │..│      │M12│     │
+ └───┘    └───┘  └──┘      └───┘     │
+                                      │
+ └─────────────────────────────────────┘
+```
+
+## Specifications
+
+| Feature | Specification |
+|---------|---------------|
+| **Communication** | Ethernet (to PC), SPI (to Micro Drivers) |
+| **SPI Frequency** | 1kHz control loop |
+| **Max Micro Drivers** | 6 boards (12 motors) |
+| **IMU Interface** | I2C connection for inertial measurement |
+| **Power Input** | 24V nominal (5V-32V range) |
+| **Power Output** | Distributed to Micro Drivers |
+
+## External Documentation
+
+The Master Board is maintained as a separate repository with comprehensive documentation:
+
+<Card title="Master Board Repository" icon="github" href="https://github.com/open-dynamic-robot-initiative/master-board">
+  Complete documentation, schematics, firmware, and software interfaces
+</Card>
+
+### Key Documentation Sections
+
+- **Hardware Design**: Schematics, PCB layout, and BOM
+- **Firmware**: Real-time control firmware for STM32
+- **Software Interface**: Python SDK and C++ API
+- **Wiring Documentation**: Connection details for Micro Drivers and IMU
+- **Setup Instructions**: Configuration and initialization
+
+## Communication Interfaces
+
+### Ethernet Connection
+
+<img src="/images/electronics/ethernet_connector.png" alt="Ethernet connector" width="500" />
+
+The Master Board uses an RJ45 Ethernet jack for communication with the control PC:
+
+- **Protocol**: UDP for low-latency communication
+- **Control Loop**: 1kHz real-time control
+- **Commands**: Motor torques, position/velocity setpoints
+- **Feedback**: Encoder positions, velocities, motor currents
+
+#### Ethernet Cable Options
+
+<Tabs>
+  <Tab title="Standard Cable">
+    Use a standard Ethernet cable (Cat5e or better) for most applications.
+  </Tab>
+  
+  <Tab title="Custom Cable">
+    For integrated robot designs, create a custom 4-wire Ethernet cable:
+    
+    <img src="/images/electronics/ethernet_connector.png" alt="Custom ethernet cable" width="500" />
+    
+    - Uses 4 of 8 wires (reduced stiffness)
+    - Requires crimping tool for RJ45 connectors
+    - Better for cable management in compact robots
+  </Tab>
+</Tabs>
+
+### SPI Bus
+
+<img src="/images/electronics/spi_wiring_1.png" alt="SPI wiring between Master Board and Micro Drivers" width="600" />
+
+The SPI bus connects the Master Board to all Micro Driver boards:
+
+- **Topology**: Daisy-chain configuration
+- **Frequency**: 1kHz control loop
+- **Connectors**: 5-pole Hirose DF13
+- **Wire**: 0.14 mm² Kabeltronik wires
+
+<Warning>
+**Important:** The SPI bus operates at high frequencies. Keep wires short to maintain signal integrity.
+</Warning>
+
+#### SPI Pin Assignment
+
+| Pin | Signal | Description |
+|-----|--------|-------------|
+| 1 | GND | Ground |
+| 2 | CLK | Clock |
+| 3 | MOSI | Master Out, Slave In |
+| 4 | MISO | Master In, Slave Out |
+| 5 | CS | Chip Select |
+
+See [Wiring](/electronics/wiring#spi-wires) for detailed SPI wiring instructions.
+
+### IMU Interface
+
+<img src="/images/electronics/imu_wire_1.jpg" alt="IMU wire" width="500" />
+
+The Master Board supports connection to an Inertial Measurement Unit (IMU) for measuring robot orientation and acceleration.
+
+#### IMU Connection
+
+- **Connector**: 10-pin rectangular connector (ribbon cable)
+- **Extension**: 4-pin Hirose DF13 connector
+- **Protocol**: I2C communication
+- **Power**: 3.3V or 5V (depending on IMU)
+
+#### Supported IMUs
+
+- Invensense MPU-6050
+- Invensense MPU-9250
+- Bosch BMI088
+- Other I2C-compatible IMUs
+
+<Note>
+Refer to the [Master Board Wiring Documentation](https://github.com/open-dynamic-robot-initiative/master-board/blob/master/documentation/masterboard_wiring.md#imu) for detailed IMU pin assignment.
+</Note>
+
+## Power Distribution
+
+The Master Board manages power distribution to all connected Micro Driver boards.
+
+### Power Input
+
+- **Connector**: XT30 power connector
+- **Voltage**: 24V nominal (5V-32V range)
+- **Wire gauge**: 1 mm² Kabeltronik wires
+
+### Power Output
+
+- **Distribution**: Power supplied to all Micro Drivers
+- **Connection**: Via 2-pin Hirose connector on one Micro Driver
+- **Daisy-chain**: Power distributed between Micro Driver boards
+
+<img src="/images/electronics/power_connectors.png" alt="Power connector convention" width="500" />
+
+### Power Connector Convention
+
+- **Red wire**: Positive (+24V)
+- **Black wire**: Ground (GND)
+
+## Robot Interface Wire
+
+<img src="/images/electronics/connection_wire_3.jpg" alt="Robot interface wire - supply side" width="500" />
+
+The robot interface wire provides a single connection point for powering the entire robot system.
+
+### Supply Side (Power Source)
+
+- **Wire**: 1 mm² Kabeltronik wires
+- **Connector**: 4mm power connectors
+- **Colors**: Red (+24V), Black (GND)
+
+<img src="/images/electronics/connection_wire_2.jpg" alt="Robot interface wire - robot side" width="500" />
+
+### Robot Side
+
+- **Wire**: 1 mm² Kabeltronik or custom 4-wire Ethernet cable
+- **Connector**: XT30 power connector
+- **Additional wires**: Optional Ethernet data lines in same cable
+
+## Software Interface
+
+The Master Board is controlled through software libraries available in the Master Board repository:
+
+### Python SDK
+
+```python
+from master_board_sdk import MasterBoard
+
+# Initialize Master Board
+board = MasterBoard()
+board.Init()
+
+# Enable motors
+for i in range(12):
+    board.SetMotorEnabled(i, True)
+
+# Control loop
+while True:
+    # Read encoder positions
+    positions = board.GetPositions()
+    
+    # Calculate control commands
+    torques = controller.compute(positions)
+    
+    # Send torque commands
+    board.SetTorques(torques)
+    
+    # Send command packet
+    board.SendCommand()
+```
+
+### C++ API
+
+C++ interface available for real-time control applications with minimal latency.
+
+### ROS Integration
+
+ROS (Robot Operating System) packages available for integration with existing robotics software.
+
+## Advantages
+
+1. **Centralized Control**: Single point of communication for complex robots
+2. **Ethernet Interface**: Standard networking hardware and protocols
+3. **Synchronized Control**: 1kHz real-time control of all motors
+4. **IMU Integration**: Built-in support for orientation sensing
+5. **Scalable**: Supports 2-12 motors with identical interface
+6. **Modular**: Easy to add or remove Micro Driver boards
+
+## Use Cases
+
+### Multi-DOF Robots
+
+- **Quadruped robots**: 8-12 degrees of freedom
+- **Humanoid robots**: 12+ degrees of freedom
+- **Manipulation systems**: Multiple robot arms
+
+### Applications Requiring
+
+- Ethernet-based control
+- Centralized coordination
+- IMU feedback
+- Synchronized multi-motor control
+- Professional software interface
+
+## Compatible Robots
+
+The Master Board is used in:
+
+- **TriFinger v2 and v3**: 9 motors (3 Micro Drivers)
+- **Quadruped 12dof**: 12 motors (6 Micro Drivers)
+- **Solo v2 and v3**: 12 motors (6 Micro Drivers)
+- **Bolt**: 12 motors (6 Micro Drivers)
+- **Custom multi-motor systems**
+
+## Getting Started
+
+<Steps>
+  <Step title="Hardware Setup">
+    1. Connect Master Board to power supply (24V)
+    2. Wire SPI bus to Micro Driver boards
+    3. Connect IMU (if used)
+    4. Connect Ethernet cable to control PC
+  </Step>
+  
+  <Step title="Software Installation">
+    Clone and install the Master Board SDK:
+    ```bash
+    git clone https://github.com/open-dynamic-robot-initiative/master-board.git
+    cd master-board
+    pip install .
+    ```
+  </Step>
+  
+  <Step title="Configuration">
+    Configure network settings and motor parameters according to your robot design.
+  </Step>
+  
+  <Step title="Testing">
+    Run example scripts to verify communication and motor response.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+### No Ethernet Communication
+
+1. Check network cable connection
+2. Verify IP address configuration
+3. Check firewall settings on control PC
+4. Test with example scripts
+
+### SPI Communication Errors
+
+1. Verify SPI wire connections
+2. Check wire length (keep short)
+3. Ensure proper power to all boards
+4. Check for loose connectors
+
+### Motor Not Responding
+
+1. Verify Micro Driver power
+2. Check SPI connection to that specific driver
+3. Ensure motor is enabled in software
+4. Check LED status on Micro Driver
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Master Board Repository" icon="github" href="https://github.com/open-dynamic-robot-initiative/master-board">
+    Complete hardware and software documentation
+  </Card>
+  
+  <Card title="Wiring Documentation" icon="plug" href="https://github.com/open-dynamic-robot-initiative/master-board/blob/master/documentation/masterboard_wiring.md">
+    Detailed wiring diagrams and pin assignments
+  </Card>
+  
+  <Card title="Software SDK" icon="code" href="https://github.com/open-dynamic-robot-initiative/master-board/tree/master/sdk">
+    Python and C++ libraries for control
+  </Card>
+  
+  <Card title="Forum" icon="comments" href="https://odri.discourse.group/categories">
+    Community support and discussions
+  </Card>
+</CardGroup>
+
+## Resources
+
+- [Open Dynamic Robot Initiative Website](https://open-dynamic-robot-initiative.github.io)
+- [YouTube Channel](https://www.youtube.com/channel/UCx32JW2oIrax47Gjq8zNI-w)
+- [Community Forum](https://odri.discourse.group/categories)
+- [Research Paper](https://arxiv.org/pdf/1910.00093.pdf)
+
+## License
+
+BSD 3-Clause License
+
+Copyright (c) 2019-2021, Max Planck Gesellschaft and New York University

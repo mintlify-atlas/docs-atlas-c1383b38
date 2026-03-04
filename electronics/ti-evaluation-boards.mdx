@@ -1,0 +1,396 @@
+---
+title: TI Evaluation Boards
+description: Texas Instruments evaluation board electronics for brushless motor control
+---
+
+# Texas Instruments Evaluation Board Electronics
+
+<img src="/images/electronics/ti_eval_board_1.jpg" alt="TI Launchpad with DRV8305 Booster Packs" width="500" />
+
+*Launchpad F28069M with two DRV8305 Booster Packs - weight: 85g*
+
+## Description
+
+The TI evaluation boards provide a ready-to-use solution for dual brushless motor control, combining the Launchpad F28069M microcontroller with DRV8305 Booster Pack motor drivers.
+
+### Key Specifications
+
+- **Microcontroller**: TI Launchpad F28069M
+- **Motor drivers**: 2x DRV8305 Booster Packs
+- **Channels**: 2 independent brushless motors
+- **Continuous current**: 15A per channel
+- **Peak current**: 20A per channel
+- **Supply voltage**: 5V - 45V (typically 24V)
+- **Control frequency**: 10kHz Field Oriented Control (FOC) per channel
+- **Main loop**: 1kHz control loop with realtime PC
+- **Communication**: CAN or USB
+- **Weight**: 85g
+
+## Components
+
+| Component | Details | Ordering Information |
+|-----------|---------|---------------------|
+| TI Launchpad F28069M | [Product Page](http://www.ti.com/tool/LAUNCHXL-F28069M) | Mouser 595-LAUNCHXL-F28069M<br/>DigiKey 296-38832-ND |
+| TI Booster Pack DRV8305EVM | [Product Page](http://www.ti.com/tool/BOOSTXL-DRV8305EVM) | Mouser 595-STXL-DRV8305EVM<br/>DigiKey 296-43181-ND |
+
+### Documentation
+
+- [Launchpad F28069M Overview](https://www.ti.com/lit/ug/sprui11b/sprui11b.pdf)
+- [BOOSTXL-DRV8305EVM User's Guide](https://www.ti.com/lit/ug/slvuai8a/slvuai8a.pdf)
+
+## Brushless Motor Control System
+
+<img src="/images/electronics/bl_system_overview.jpg" alt="Brushless motor control system overview" width="600" />
+
+The system consists of:
+1. Power supply (24V)
+2. TI Launchpad with motor driver boards
+3. Brushless motors with encoders
+4. Communication interface (CAN or USB)
+
+## Field Oriented Control (FOC)
+
+<img src="/images/electronics/foc.jpg" alt="Field Oriented Control diagram" width="600" />
+
+The TI boards implement Field Oriented Control for efficient, high-performance motor control. FOC provides:
+
+- Precise torque control
+- Smooth operation at all speeds
+- High efficiency
+- Reduced acoustic noise
+
+Learn more: [Teaching Old Motors New Tricks - TI Seminar](https://www.youtube.com/watch?v=VI7pdKrchM0)
+
+## Launchpad Pin Assignment
+
+<img src="/images/electronics/launchpad_pins_1.png" alt="Launchpad pin assignment" width="600" />
+
+### GPIO Pins
+- Status LEDs connected to digital GPIO pins
+- GPIO 26 to ground disables motor drivers
+
+### Analog Inputs
+The Launchpad has 16 analog input channels:
+
+**Per Booster Pack (7 channels each):**
+- 3 phase voltages
+- 3 phase currents
+- 1 supply voltage
+
+**Available channels:** ADCIN A6 and ADCIN B6
+
+<Warning>
+**Caution:** Do not connect 5V sources to analog input channels. Maximum voltage is 3.3V.
+</Warning>
+
+## Booster Pack Positions
+
+<img src="/images/electronics/launchpad_pins_2.png" alt="Booster pack positions" width="600" />
+
+The two booster packs are installed on the bottom side of the Launchpad, providing dual motor control.
+
+## Board Preparation
+
+### Setting the Jumpers
+
+<Steps>
+  <Step title="Initial State">
+    <img src="/images/electronics/ti_board_preparation_1.jpg" alt="Initial jumper configuration" width="500" />
+    
+    TI Launchpad with jumper settings as delivered.
+  </Step>
+  
+  <Step title="Remove Jumpers">
+    <img src="/images/electronics/ti_board_preparation_2.jpg" alt="Remove jumpers" width="500" />
+    
+    Remove the jumpers JP1, JP2, JP4, and JP5.
+    
+    <Warning>
+    **Critical:** Ensure JP1 and JP2 are removed when connecting the Launchpad to USB and external power supply. This insulates your computer from external power supplied through the booster packs.
+    </Warning>
+  </Step>
+  
+  <Step title="Install JP6">
+    <img src="/images/electronics/ti_board_preparation_3.jpg" alt="Install JP6" width="500" />
+    
+    Install jumper JP6. Verify that JP7 and JP3 are also connected.
+  </Step>
+</Steps>
+
+### Encoder Connector Installation
+
+<Steps>
+  <Step title="Prepare Components">
+    <img src="/images/electronics/launchpad_preparation_1.jpg" alt="Prepare encoder wires" width="400" />
+    
+    Gather encoder wires (0.14 mm² Kabeltronik) and 5-pole Hirose DF13 connectors.
+  </Step>
+  
+  <Step title="Solder Connector">
+    <img src="/images/electronics/launchpad_preparation_2.jpg" alt="Solder wires to connector" width="400" />
+    
+    Solder wires to the Hirose connector following the pin assignment.
+    
+    <img src="/images/electronics/pin_assignment_connector.png" alt="Pin assignment" width="400" />
+  </Step>
+  
+  <Step title="Apply Heat Shrink">
+    <img src="/images/electronics/launchpad_preparation_3.jpg" alt="Heat shrink on wires" width="400" />
+    
+    Apply thin heat shrink to red and yellow wires.
+    
+    <img src="/images/electronics/launchpad_preparation_4.jpg" alt="Larger heat shrink" width="400" />
+    
+    Apply larger heat shrink around all wires.
+  </Step>
+  
+  <Step title="Prepare Second Cable">
+    <img src="/images/electronics/launchpad_preparation_5.jpg" alt="Second cable" width="400" />
+    
+    Repeat for the second encoder cable.
+  </Step>
+  
+  <Step title="Locate Encoder Pins">
+    <img src="/images/electronics/launchpad_preparation_6.jpg" alt="Encoder pins" width="400" />
+    
+    Find the encoder pins on the Launchpad. The two ports are labeled QEP_A and QEP_B.
+  </Step>
+  
+  <Step title="Bend Pins">
+    <img src="/images/electronics/launchpad_preparation_7.jpg" alt="Bend pins" width="400" />
+    
+    Use flat pliers to bend the pins down by 90 degrees.
+  </Step>
+  
+  <Step title="Solder and Finish">
+    <img src="/images/electronics/launchpad_preparation_8.jpg" alt="Solder encoder wires" width="400" />
+    
+    Solder the encoder wires and apply heat shrink.
+    
+    <img src="/images/electronics/pin_assignment_launchpad.png" alt="Launchpad pin assignment" width="400" />
+    
+    <img src="/images/electronics/launchpad_preparation_9.jpg" alt="Completed Launchpad" width="500" />
+    
+    The Launchpad is now prepared.
+  </Step>
+</Steps>
+
+## Booster Pack Preparation
+
+### Modifying Screw Terminals
+
+<Note>
+This modification is optional but recommended for cleaner wire routing. Both booster packs must be connected to the power supply.
+</Note>
+
+<Steps>
+  <Step title="Initial State">
+    <img src="/images/electronics/booster_preparation_3.jpg" alt="Screw terminals" width="400" />
+    
+    Booster pack screw terminals to be modified.
+  </Step>
+  
+  <Step title="Loosen Screws">
+    <img src="/images/electronics/booster_preparation_4.jpg" alt="Loosen screws" width="400" />
+    
+    Loosen screws on the screw terminal as much as possible.
+  </Step>
+  
+  <Step title="Bend Metal Clips">
+    <img src="/images/electronics/booster_preparation_5.jpg" alt="Bend clips" width="400" />
+    
+    Use a small screwdriver to bend the metal clips outwards.
+    
+    <img src="/images/electronics/booster_preparation_6.jpg" alt="All clips bent" width="400" />
+    
+    Repeat for all 5 metal clips.
+  </Step>
+  
+  <Step title="Remove Screws">
+    <img src="/images/electronics/booster_preparation_7.jpg" alt="Remove screws" width="400" />
+    
+    Push on the screws from the bottom and remove them. Keep screws for reinstallation.
+    
+    <img src="/images/electronics/booster_preparation_8.jpg" alt="Remove metal clips" width="400" />
+    
+    Remove the metal clips.
+  </Step>
+  
+  <Step title="Modify Covers">
+    <img src="/images/electronics/booster_preparation_9.jpg" alt="Mark holes" width="400" />
+    
+    Mark hole locations on the two-pin power terminal with a pen.
+    
+    <img src="/images/electronics/booster_preparation_10.jpg" alt="Remove covers" width="400" />
+    
+    Push plastic covers inwards to remove them.
+    
+    <img src="/images/electronics/booster_preparation_11.jpg" alt="Removed covers" width="400" />
+    
+    <img src="/images/electronics/booster_preparation_12.jpg" alt="Drill holes" width="400" />
+    
+    Drill the plastic cover at marked locations. Start with 2mm, then 2.5mm, then 3mm drill bit.
+  </Step>
+  
+  <Step title="Reinstall Covers">
+    <img src="/images/electronics/booster_preparation_13.jpg" alt="Reinstall covers" width="400" />
+    
+    Reinstall plastic covers. The 2-pin power terminal cover installs normally. Rotate the 3-pin cover 180 degrees.
+    
+    <img src="/images/electronics/booster_preparation_14.jpg" alt="Bottom booster pack" width="500" />
+    
+    On the bottom booster pack, only modify the 3-pin phase terminal. Leave the 2-pin power terminal unchanged.
+  </Step>
+</Steps>
+
+### Power Supply Wire Preparation
+
+<Steps>
+  <Step title="Strip Insulation">
+    <img src="/images/electronics/booster_preparation_15.jpg" alt="Cut insulation" width="400" />
+    
+    Use 1mm² wire. Carefully cut into the insulation with a cutter and rotate.
+    
+    <img src="/images/electronics/booster_preparation_16.jpg" alt="Cut with offset" width="400" />
+    
+    Cut the insulation again with a 5mm offset.
+  </Step>
+  
+  <Step title="Remove Insulation">
+    <img src="/images/electronics/booster_preparation_17.jpg" alt="Remove insulation" width="400" />
+    
+    Carefully cut and remove the separated insulation.
+  </Step>
+  
+  <Step title="Twist and Solder">
+    <img src="/images/electronics/booster_preparation_18.jpg" alt="Twist and solder" width="400" />
+    
+    Twist the wire and apply solder.
+    
+    <img src="/images/electronics/booster_preparation_19.jpg" alt="Ground wire" width="400" />
+    
+    Repeat for the power supply ground wire.
+  </Step>
+  
+  <Step title="Shorten and Connect">
+    <img src="/images/electronics/booster_preparation_20.jpg" alt="Shorten wires" width="400" />
+    
+    Shorten wires to about 7cm, remove 5mm insulation, and apply solder.
+    
+    <img src="/images/electronics/booster_preparation_21.jpg" alt="Determine wire length" width="400" />
+    
+    Place booster packs on Launchpad to determine wire length.
+    
+    <img src="/images/electronics/booster_preparation_22.jpg" alt="Install connectors" width="500" />
+    
+    Install 4mm connectors for power supply.
+  </Step>
+</Steps>
+
+### Motor Phase Wire Preparation
+
+<Steps>
+  <Step title="Prepare Wires">
+    <img src="/images/electronics/booster_preparation_23.jpg" alt="Motor phase wires" width="400" />
+    
+    Prepare six motor phase wires using 0.5mm² wire and 2mm connectors.
+  </Step>
+  
+  <Step title="Solder and Label">
+    <img src="/images/electronics/booster_preparation_24.jpg" alt="Solder and label" width="400" />
+    
+    Solder connectors, apply heat shrink, and label motor phases.
+  </Step>
+  
+  <Step title="Install Wires">
+    <img src="/images/electronics/booster_preparation_25.jpg" alt="Install wires" width="500" />
+    
+    Install power wire and motor phase wires on booster packs.
+  </Step>
+</Steps>
+
+### Final Assembly
+
+<img src="/images/electronics/booster_preparation_26.jpg" alt="Install booster packs" width="400" />
+
+Install the two booster packs on the bottom of the Launchpad. Ensure pin headers are aligned correctly.
+
+<img src="/images/electronics/booster_preparation_27.jpg" alt="Completed assembly" width="600" />
+
+The TI dual motor driver electronics are now ready for use with actuator modules.
+
+## DIP Switch Configuration
+
+<img src="/images/electronics/dip_switch.png" alt="DIP switch settings" width="600" />
+
+### Switch Settings
+
+<Tabs>
+  <Tab title="Run from Flash">
+    **Setting:** ON - ON - OFF
+    
+    Use this setting for normal operation when motor control code is programmed into flash memory.
+  </Tab>
+  
+  <Tab title="Programming Mode">
+    **Setting:** ON - ON - ON
+    
+    Use this setting when programming the board via USB.
+  </Tab>
+</Tabs>
+
+## CAN Communication
+
+<img src="/images/electronics/can_card.jpg" alt="Dual channel CAN card" width="400" />
+
+<img src="/images/electronics/can_connector.jpg" alt="CAN connector" width="400" />
+
+### Setup
+
+1. Install a dual channel CAN card in your computer (e.g., PEAK PCI Express)
+2. Connect using a 9-pin D-sub connector
+3. Flash the Launchpad via USB with DIP switch: ON - ON - ON
+4. Set DIP switches to ON - ON - OFF (run from flash)
+5. Control motors via CAN at 1kHz
+
+See [Wiring](/electronics/wiring) for detailed CAN connector wiring information.
+
+## Compatible Robots
+
+The TI Evaluation Boards are used for:
+- TriFingerEDU v1
+- Quadruped Robot 8dof v1
+- Leg Test Stand v1
+
+## Comparison with Micro Driver
+
+<img src="/images/electronics/launchpad_comparison_2.jpg" alt="Size comparison" width="500" />
+
+The Micro Driver Electronics provides the same capabilities as the TI boards with these differences:
+
+| Feature | TI Boards | Micro Driver |
+|---------|-----------|-------------|
+| **Size** | Large | 10x smaller |
+| **Weight** | 85g | 13g (6x lighter) |
+| **Programming** | Onboard USB | External JTAG |
+| **Communication** | CAN/USB | SPI (Master Board) |
+| **Cost** | Lower (evaluation pricing) | Higher (production) |
+
+See [Micro Driver](/electronics/micro-driver) for more information.
+
+## Resources
+
+- [Open Dynamic Robot Initiative Website](https://open-dynamic-robot-initiative.github.io)
+- [YouTube Channel](https://www.youtube.com/channel/UCx32JW2oIrax47Gjq8zNI-w)
+- [Community Forum](https://odri.discourse.group/categories)
+- [Research Paper](https://arxiv.org/pdf/1910.00093.pdf)
+
+## Authors
+
+Felix Grimminger
+
+## License
+
+BSD 3-Clause License
+
+Copyright (c) 2019-2021, Max Planck Gesellschaft and New York University

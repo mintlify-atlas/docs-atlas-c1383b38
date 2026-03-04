@@ -1,0 +1,201 @@
+---
+title: Bill of Materials
+description: Complete bill of materials for the Brushless Actuator Module Core v1 with part numbers, quantities, and suppliers
+---
+
+This page contains the complete bill of materials (BOM) for building the Brushless Actuator Module Core v1. The module weighs 150g and outputs 2.5Nm at 12A.
+
+## Core Component Overview
+
+<img src="../images/actuator_module_core_component_overview_1.jpg" width="500" />
+*Core components - total weight: 95g*
+
+## Off-the-Shelf Components
+
+### Brushless DC Motor
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| T-Motor Antigravity 4004 300kV | 1 | [T-Motor Store](http://store-en.tmotor.com/goods.php?id=438) / [Globeflight #1974](https://www.globe-flight.de/T-Motor-GF-Antigravity-Set-4004-300KV-2-pcs) | 2 motors per set, 24 magnets / 12 pole pairs / 18 slots, Weight: 53g |
+
+### Encoder and Codewheel
+
+#### Option A: Encoder + Separate Codewheel (Recommended)
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| Encoder Broadcom AEDT-9810-Z00 | 1 | [Mouser #630-AEDT9810Z00](https://www.mouser.com/ProductDetail/Broadcom-Avago/AEDT-9810-Z00) / [DigiKey #516-3256-ND](https://www.digikey.com/products/en?keywords=516-3256-ND) | Encoder without codewheel, 5000 pulses per revolution per channel, Weight: 5g |
+| Codewheel for AEDT-9810-Z00 | 1 | [PWB Encoders #104768](https://www.pwb-encoders.com/en/encoder-wheels) | Email info@pwb-encoders.com for quote, Order: 104768 / 625cpr 3K / ID 7mm / OD 25.56mm, PWB ships worldwide |
+| Encoder Codewheel PWB Mount | 1 | [STL file](stl_files/encoder_codewheel_pwb_mount.STL) | 3D printed - use SLA/Polyjet/Multijet, Weight: 0.3g |
+
+#### Option B: Encoder Kit
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| Broadcom Encoder Kit AEDM-5810-Z12 | 1 | [Mouser #630-AEDM5810Z12](https://www.mouser.de/ProductDetail/Broadcom-Avago/AEDM-5810Z12) / [DigiKey #516-3253-ND](https://www.digikey.com/product-detail/en/broadcom-limited/AEDM-5810-Z12/516-3253-ND/5357134) | Kit with encoder and codewheel, Requires disassembly |
+| Codewheel Mount Encoder Kit | 1 | [STL file](stl_files/encoder_codewheel_kit_mount.STL) | 3D printed - use SLA/Polyjet/Multijet, Weight: 0.3g |
+
+#### Option C: ODRI Encoder Kit
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| ODRI Encoder Kit | 1 | See [Actuator Module Core v1.1](actuator_module_v1.1.md) | Includes encoder, codewheel, and all machined parts |
+
+### Timing Belts
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| Conti Synchroflex AT3 GEN III (4mm x 150mm, 50 teeth) | 1 | [Reiff #60047626](https://www.reiff-tpshop.de/shop/de/antriebstechnik/synchroflex-zahnriemen-gen-iii-at3/gen-iii-at3-laenge-150-bis-1011-mm.html) / [Beltingonline](https://www.beltingonline.com/at3-gen-iii-synchroflex-timing-belts-4593) | First stage timing belt, Weight: 1.5g, 4mm width not listed on Reiff website - email e-services@reiff-gruppe.de for quote |
+| Conti Synchroflex AT3 GEN III (6mm x 201mm, 67 teeth) | 1 | [Reiff #60005258](https://www.reiff-tpshop.de/shop/de/antriebstechnik/synchroflex-zahnriemen-gen-iii-at3/gen-iii-at3-laenge-150-bis-1011-mm.html) / [Beltingonline](https://www.beltingonline.com/at3-gen-iii-synchroflex-timing-belts-4593) | Second stage timing belt, Weight: 3.0g, Email e-services@reiff-gruppe.de for quote |
+
+### Bearings
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| EZO Bearing 61705 2RS VA (32mm x 25mm x 4mm) | 2 | [Emiliana Cuscinetti](https://www.emilianacuscinetti.com/en/miniature-bearings/) / [EZO USA](https://catalog.ezo-usa.com/category/metric-series-bearings) / [SBN #C02748](https://www.sbn.de/en/) / [Online Bearing Store](https://www.onlinebearingstore.com/6705-2rs-6705-zz-ball-bearings.html) | Output shaft bearing, Stainless steel (VA), Weight: 6.9g each, SBN ships worldwide |
+| EZO Bearing MR84 VA (8mm x 4mm x 2mm) | 3 | [Emiliana Cuscinetti](https://www.emilianacuscinetti.com/en/miniature-bearings/) / [EZO USA](https://catalog.ezo-usa.com/category/metric-series-bearings) / [SBN #N09724](https://www.sbn.de/en/) / [Online Bearing Store](https://www.onlinebearingstore.com/mr84-miniature-ball-bearing-4x8x2-open.html) | Motor shaft and center shaft, Stainless steel (VA), Weight: 0.4g each, SBN ships worldwide |
+
+#### Timing Belt Tensioner Option A (Default)
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| EZO Bearing 683 2Z VA (7mm x 3mm x 3mm) | 2 | [Emiliana Cuscinetti](https://www.emilianacuscinetti.com/en/miniature-bearings/) / [EZO USA](https://catalog.ezo-usa.com/category/metric-series-bearings) / [SBN #N05560](https://www.sbn.de/en/) / [Online Bearing Store](https://www.onlinebearingstore.com/683-zz-miniature-ball-bearing-id-3-x-od-7x-w-3mm-shielded.html) | Belt tensioner bearing, Stainless steel (VA), Weight: 0.4g each, SBN ships worldwide |
+| Timing Belt Tensioner Roller 10mm | 2 | [STL file](stl_files/transmission_belt_tensioner_roller_10.0mm.STL) | 3D printed - use SLA/Polyjet/Multijet, Weight: 0.2g each |
+
+#### Timing Belt Tensioner Option B
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| SKF Bearing 623-2Z (10mm x 3mm x 4mm) | 2 | [RS Germany #285-0807](https://de.rs-online.com/web/p/kugellager/2850807/) / [Quality Bearings Online](https://www.qualitybearingsonline.com/623-2z-skf-miniature-deep-groove-3x10x4mm/) | Alternative to 7mm bearing + roller, Chrome steel |
+
+## 3D Printed Parts
+
+<Note>
+  All 3D printed pulleys and precision parts should be printed using SLA, Polyjet, or Multijet printers for optimal tooth profile accuracy.
+</Note>
+
+| Description | Quantity | File | Comments |
+|-------------|:--------:|------|----------|
+| Transmission Pulley AT3 T30 Center | 1 | [STL file](stl_files/transmission_pulley_at3_t30_center.STL) | SLA/Polyjet/Multijet, Weight: 4.2g |
+| Transmission Pulley AT3 T30 Output | 1 | [STL file](stl_files/transmission_pulley_at3_t30_output.STL) | SLA/Polyjet/Multijet, Weight: 6.7g |
+
+## Machined Parts
+
+| Description | Quantity | Drawing | Comments |
+|-------------|:--------:|---------|----------|
+| Motor Shaft | 1 | [PDF drawing](drawings/motor_shaft.PDF) | Stainless steel 1.4301 h9 4mm, Weight: 3.2g |
+| Motor Pulley AT3 T10 | 1 | [PDF drawing](drawings/motor_pulley_at3_t10.PDF) | 7075 Aluminum, Weight: 0.6g, Requires custom form cutter |
+| Center Pulley AT3 T10 | 1 | [PDF drawing](drawings/center_pulley_at3_t10.PDF) | 7075 Aluminum, Weight: 2.1g, Requires custom form cutter |
+
+**Total Weight - Machined Parts:** 5.9g
+
+<Warning>
+  Do NOT use standard AT3 timing belt pulley tools. The tooth profile has been modified to reduce backlash. See [Machined Parts](/resources/machined-parts) for detailed manufacturing instructions.
+</Warning>
+
+## Fasteners
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| M3 x 5 Flat Head Screw | 4 | [Online Schrauben](https://online-schrauben.de/shop/Schrauben/Innensechskantschrauben/ISO-10642-DIN-7991-Senkschrauben-mit-Innensechskant-aehnl.-DIN-7991/Edelstahl-Rostfrei-A2/M-3-Gewinde-M-metrisches-Gewinde) | Motor mounting, Stainless steel, Ships within Europe |
+| M3 x 10 Flat Head Screw | 2 | [Online Schrauben](https://online-schrauben.de/shop/Schrauben/Innensechskantschrauben/ISO-10642-DIN-7991-Senkschrauben-mit-Innensechskant-aehnl.-DIN-7991/Edelstahl-Rostfrei-A2/M-3-Gewinde-M-metrisches-Gewinde) | Belt tensioner mounting, Stainless steel, Ships within Europe |
+| M3 x 16 Phillips Flat Head Screw | 2 | [Conrad #839967](https://www.conrad.com/p/toolcraft-839967-countersunk-screws-m3-16-mm-phillips-din-965-plastic-polyamide-10-pcs-839967) | Encoder mounting, Polyamide plastic, 10 pieces per set |
+| M2.5 Washer | 2 | [Online Schrauben](https://online-schrauben.de/shop/Scheiben-Federringe/ISO-7092-Unterlegscheiben-fuer-Zylinderkopfschrauben-aehnl.-DIN-433/Edelstahl-Rostfrei-A2-200-HV) | Belt tensioner (Option A), Stainless steel |
+| M3 Washer | 2 | [Online Schrauben](https://online-schrauben.de/shop/Scheiben-Federringe/ISO-7092-Unterlegscheiben-fuer-Zylinderkopfschrauben-aehnl.-DIN-433/Edelstahl-Rostfrei-A2-200-HV) / [McMaster #90965A130](https://www.mcmaster.com/90965A130/) | Belt tensioner (Option B), Stainless steel |
+
+## Helical Inserts
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| Helicoil M3 x 6 (2xD) | 2 | [RS #470-834](https://uk.rs-online.com/web/p/thread-repair-inserts/0470834/) / [Hoffmann #082814 M3](https://www.hoffmann-group.com/GB/en/houk/Power-tools-and-workshop-supplies/Soldering-tools-cleaning-devices-thread-repair/Thread-insert-set%2C-10-or-20-pieces-2×D/p/082814-M3) / [McMaster #91732A773](https://www.mcmaster.com/91732A773/) | Output shaft, Böllhoff 41890030006, Requires M3 Helicoil tools |
+
+## Wires and Connectors
+
+### Motor Phase Connections
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| 2mm Gold Connectors (Reely RE-1373188) | 3 | [Conrad #1373188](https://www.conrad.com/p/reely-1373188-battery-plug-2-mm-gold-plated-2-pair-1373188) / [HobbyKing](https://hobbyking.com/en_us/2mm-gold-connectors-10-pairs-20pc.html) | Motor phase connectors, Conrad: 2 pairs/set, HobbyKing: 10 pairs/set |
+| LiY 0.50 mm² Wire - Black | 3 | [Kabeltronik #1601050](https://www.kabeltronik.de/en/electronics-industry/hook-up-wires-stranded/art/hook-up-wire-stranded-extremely-flexible-lify-3/31) / [Conrad #609337](https://www.conrad.com/p/conrad-components-609337-strand-liy-1-x-050-mm-black-25-m-609337) / [McMaster #8054T14](https://www.mcmaster.com/8054t14-8054T184/) | Motor phase wires, 100m spool, Kabeltronik most flexible |
+
+### Encoder Connections
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|:--------:|---------------------|----------|
+| Hirose DF13 Socket 5 Pin | 1 | [RS #143-015](https://americas.rsdelivers.com/product/hirose/df13-5s-125c/hirose-df13-male-connector-housing-125mm-pitch-5/0143015) / [DigiKey #H2182-ND](https://www.digikey.com/products/en?keywords=H2182-ND) | Encoder connector housing, 1.25mm pitch |
+| Hirose DF13 Crimp Terminals | 5 | [RS #503-8325](https://americas.rsdelivers.com/product/hirose/df13-2630scf/hirose-df13-female-crimp-terminal-contact-26awg/5038325) / [DigiKey #H9992CT-ND](https://www.digikey.com/products/en?keywords=H9992CT-ND) | 26 AWG terminals, Requires crimp tool |
+| LifY 0.14 mm² Wire | 5 | [Kabeltronik #1601014](https://www.kabeltronik.de/en/kabeltronik/search/art/hook-up-wire-stranded-extremely-flexible-lify-1/) | Encoder wires, 100m spool, Colors: red, yellow, black, white, green |
+
+### Required Tools for Wiring
+
+| Description | Ordering Information | Comments |
+|-------------|---------------------|----------|
+| Hirose DF13 Crimp Tool | [RS #503-8331](https://americas.rsdelivers.com/product/hirose/df13-tb2630hc/hirose-plier-crimping-tool-for-df13-crimp/5038331) | Required for DF13 terminals |
+
+## Encoder Wiring Convention
+
+<img src="../images/encoder_wiring_micro_driver.png" width="600" />
+*Standard wiring convention for encoder connections*
+
+| Pin | Function | Wire Color (Kabeltronik) |
+|-----|----------|-------------------------|
+| 1 | VCC (+5V) | Red |
+| 2 | Channel A | Yellow |
+| 3 | Channel B | White |
+| 4 | Index | Green |
+| 5 | GND | Black |
+
+## Weight Summary
+
+| Component Category | Weight |
+|-------------------|--------|
+| Motor (T-Motor 4004) | 53g |
+| Encoder | 5g |
+| Timing Belts | 4.5g |
+| Bearings (total) | 16g |
+| Machined Parts | 5.9g |
+| 3D Printed Parts | 11.3g |
+| Fasteners | 2.9g |
+| **Core Components Total** | **95g** |
+| **Complete Module (with shell)** | **150g** |
+
+## Transmission Specifications
+
+- **First Stage Reduction:** 3:1 (30 teeth / 10 teeth)
+- **Second Stage Reduction:** 3:1 (30 teeth / 10 teeth)
+- **Total Gear Reduction:** 9:1
+- **Output Torque:** 2.5 Nm @ 12A
+
+## Supplier Contact Summary
+
+### Europe
+
+- **Reiff (Timing Belts):** e-services@reiff-gruppe.de
+- **Online Schrauben (Fasteners):** Ships within Europe
+- **Conrad (Electronics/Tools):** [conrad.com](https://www.conrad.com)
+- **Hoffmann (Tools/Fasteners):** [hoffmann-group.com](https://www.hoffmann-group.com)
+- **Hahn+Kolb (Tools):** [hahn-kolb.de](https://www.hahn-kolb.de)
+- **PWB Encoders (Codewheels):** info@pwb-encoders.com (ships worldwide)
+- **SBN (Bearings):** info@sbn.de (ships worldwide)
+
+### USA
+
+- **DigiKey (Electronics):** [digikey.com](https://www.digikey.com)
+- **Mouser (Electronics):** [mouser.com](https://www.mouser.com)
+- **McMaster-Carr (Hardware):** [mcmaster.com](https://www.mcmaster.com)
+- **EZO USA (Bearings):** [ezo-usa.com](https://catalog.ezo-usa.com)
+
+### Italy
+
+- **Emiliana Cuscinetti (Bearings):** [emilianacuscinetti.com](https://www.emilianacuscinetti.com)
+- **Doppiaemme (Bearings):** [doppiaemme.it](https://www.doppiaemme.it)
+
+### International
+
+- **T-Motor (Motors):** [store-en.tmotor.com](http://store-en.tmotor.com)
+- **Beltingonline (Timing Belts):** [beltingonline.com](https://www.beltingonline.com)
+- **Online Bearing Store:** [onlinebearingstore.com](https://www.onlinebearingstore.com)
+
+<Tip>
+  For the most cost-effective purchasing, coordinate orders to minimize shipping costs. Many suppliers offer quantity discounts for building multiple actuator modules.
+</Tip>

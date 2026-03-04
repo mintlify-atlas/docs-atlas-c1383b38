@@ -1,0 +1,229 @@
+---
+title: Motor Preparation
+description: Step-by-step guide for preparing the brushless motor for actuator assembly
+---
+
+This guide describes how to prepare the outrunner motor for the brushless actuator modules. The motor must be disassembled, modified, and have its wiring prepared before installation.
+
+## Overview
+
+The motor preparation process involves:
+- Separating the stator and rotor
+- Removing and modifying the motor shaft
+- Increasing the rotor bore diameter
+- Preparing motor phase wires and connectors
+
+## Required Tools and Materials
+
+### Tools
+- 1.5mm hex driver (Wiha PicoFinish)
+- 2mm hex driver
+- Small pliers for retaining ring removal
+- Hammer and 3mm pin driver
+- Reamers: 3.98mm, 3.99mm, 4.00mm diameter
+- Tool holder for reamers
+- Temperature controlled soldering iron (300-400°C)
+- Heat gun
+- Wire strippers
+- Digital calipers
+
+### Materials
+- T-Motor Antigravity 4004 300kV brushless motor
+- LiY wire 0.5mm² cross section (for extension wires)
+- 2mm gold connectors from REELY (male)
+- Heat shrink tubing (various sizes)
+- Solder
+- Machine oil (for reaming)
+- 3D printed motor shaft extraction tool
+
+<Warning>
+**Safety First**
+- Wear work gloves when handling metal parts
+- Use nitril gloves when soldering to protect skin
+- Set soldering iron to appropriate temperature (400°C for insulation removal, 300°C for soldering)
+- Work in well-ventilated area when soldering
+- Keep rotor away from metal particles - they will stick to the magnets
+</Warning>
+
+## Separating Rotor and Stator
+
+<Steps>
+
+<Step title="Remove the retaining ring">
+Using small pliers, remove the retaining ring from the bottom of the motor shaft. The retaining ring holds the motor shaft in place but is no longer needed after modification, so don't worry about damaging it.
+</Step>
+
+<Step title="Separate rotor from stator">
+Gently pull the rotor away from the stator to overcome the magnetic forces. Keep the brass washer that sits between them.
+
+<Warning>
+**Keep the rotor clean**: Store the rotor on a clean surface. Metal particles will stick to the magnets and can cause problems during assembly and operation.
+</Warning>
+</Step>
+
+</Steps>
+
+## Rotor Preparation
+
+### Removing the Motor Shaft
+
+<Steps>
+
+<Step title="Remove the set screws">
+Using a 1.5mm hex driver, remove the two M3 set screws from the rotor. Keep these screws for reassembly.
+</Step>
+
+<Step title="Prepare extraction tools">
+Gather the following items:
+- Hammer
+- Pin driver (3mm)
+- 3D printed motor shaft extraction tool
+</Step>
+
+<Step title="Extract the motor shaft">
+Place the rotor on the 3D printed motor shaft extraction tool. Using the hammer and pin driver, carefully drive out the motor shaft.
+</Step>
+
+</Steps>
+
+### Increasing the Rotor Bore Diameter
+
+The rotor bore must be enlarged to fit the custom motor shaft (4mm diameter).
+
+<Steps>
+
+<Step title="Prepare reamers">
+You'll need reamers in three sizes: 3.98mm, 3.99mm, and 4.00mm. Mount the smallest reamer (3.98mm) in the tool holder.
+</Step>
+
+<Step title="Begin reaming">
+Apply a small amount of machine oil to the reamer. Carefully insert it into the rotor bore and turn it several times manually. Work slowly to avoid removing too much material.
+</Step>
+
+<Step title="Test fit the custom motor shaft">
+Apply a bit of oil to the custom motor shaft. Try to insert the shaft into the reamed bore.
+
+<Tip>
+The shaft should install and remove with moderate force. If it's too tight, repeat reaming with the same size. If still too tight after several passes, move to the next larger reamer size.
+</Tip>
+</Step>
+
+<Step title="Achieve proper fit">
+Continue reaming and testing until the motor shaft can be installed and removed with moderate force.
+
+<Warning>
+**Critical**: Do not over-ream the bore. If the fit is too loose, the rotor will wobble when spinning, causing vibration and potential encoder errors.
+</Warning>
+</Step>
+
+<Step title="Install set screws">
+Using a 1.5mm hex driver, install the two M3 set screws halfway into the rotor. The rotor is now ready for final assembly.
+</Step>
+
+</Steps>
+
+## Stator Preparation
+
+### Removing the Motor Phase Insulation
+
+<Steps>
+
+<Step title="Remove base heat shrink">
+Carefully cut and remove the large heat shrink tubing at the base of the stator where the phase wires exit.
+</Step>
+
+<Step title="Prepare to remove phase wire insulation">
+Cut off a piece of the phase wire heat shrink at an angle to create a starting point.
+</Step>
+
+<Step title="Pull insulation off">
+Hold the phase wire with pliers and grab the heat shrink with your fingers. Slowly pull on the wire while holding the heat shrink - the wire will cut through the insulation. Continue until the insulation is removed about halfway down.
+</Step>
+
+<Step title="Remove remaining insulation">
+You should now be able to carefully pull off the remaining heat shrink from the phase wires.
+</Step>
+
+</Steps>
+
+### Preparing the Motor Phase Wires
+
+<Steps>
+
+<Step title="Shorten wires (if needed)">
+<Tip>
+**Note**: For Hip AA actuator modules, do NOT shorten the motor phase wires. For Hip FE and Upper Leg modules, shorten the wires to approximately 3cm measured from the base of the stator. This keeps the solder connections inside the shell structure.
+</Tip>
+</Step>
+
+<Step title="Remove wire insulation">
+Set your soldering iron to approximately 400°C. Apply solder to the tip and heat the ends of the phase wires. Wait until the orange insulation disappears and approximately 5mm of silver wire is exposed.
+</Step>
+
+<Step title="Apply heat shrink">
+Prepare thin heat shrink tubing for each phase wire. Slide the tubing onto the wires and apply using a heat gun.
+</Step>
+
+</Steps>
+
+### Soldering the Extension Wires
+
+<Steps>
+
+<Step title="Adjust soldering temperature">
+Reduce the soldering iron temperature to approximately 300°C.
+</Step>
+
+<Step title="Prepare extension wires">
+Cut LiY wire (0.5mm² cross section) a couple of centimeters longer than needed. Strip the ends and apply solder.
+
+<Tip>
+If you're unsure about the correct wire length, you can stop after this step. Complete all other preparation steps and fully assemble the actuator module. You can then determine the correct wire length and solder the connectors later.
+</Tip>
+</Step>
+
+<Step title="Solder extension wires">
+Solder the extension wires to the motor phase wires.
+</Step>
+
+<Step title="Insulate connections">
+Prepare short pieces of heat shrink tubing for insulating the solder joints. Try to keep the heat shrink as short as possible. Apply using a heat gun.
+</Step>
+
+</Steps>
+
+### Soldering the Motor Phase Connectors
+
+<Steps>
+
+<Step title="Cut wires to length">
+If you know the required wire length, cut the extension wires accordingly. Remove approximately 5mm of insulation from the ends, twist the strands, and apply solder.
+</Step>
+
+<Step title="Prepare connectors">
+Get the 2mm male gold connectors from REELY.
+</Step>
+
+<Step title="Solder connectors">
+Solder the connectors onto the phase wire ends.
+</Step>
+
+<Step title="Apply heat shrink">
+Prepare heat shrink tubing for the connectors. To make alignment easier, install the mating female connectors temporarily. Align the heat shrink and apply using a heat gun.
+</Step>
+
+</Steps>
+
+## Completion
+
+The motor stator and rotor are now fully prepared for actuator assembly. The next step is to prepare the motor shaft assembly with pulley and codewheel.
+
+<Tip>
+**Final weight**: A fully assembled actuator module with 30cm wires weighs approximately 160g.
+</Tip>
+
+## Related Guides
+
+- [Motor Shaft Preparation](/assembly/motor-shaft-preparation)
+- [Encoder Preparation](/assembly/encoder-preparation)
+- [Actuator Assembly](/assembly/actuator-assembly)

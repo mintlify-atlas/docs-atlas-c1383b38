@@ -1,0 +1,196 @@
+---
+title: 'Quadruped Solo8 v2'
+description: '8-DOF quadruped robot with torque-controlled actuators - lightweight design at 1.9kg'
+---
+
+# Quadruped Robot Solo8 v2
+
+The Solo8 v2 is a lightweight 8-degree-of-freedom quadruped robot with torque-controlled actuators, featuring a weight-reduced body structure and updated electronics.
+
+## Overview
+
+<CardGroup cols={2}>
+  <Card title="Degrees of Freedom" icon="arrows-rotate">
+    8 DOF - 2 actuated joints per leg (Hip FE and Knee)
+  </Card>
+  <Card title="Weight" icon="weight-scale">
+    1.9kg (1.7kg robot + 0.2kg battery placeholder)
+  </Card>
+  <Card title="Communication" icon="ethernet">
+    Power and communication over wire (24V / Ethernet)
+  </Card>
+  <Card title="Electronics" icon="microchip">
+    Master board v2, micro drivers, and IMU
+  </Card>
+</CardGroup>
+
+## Key Specifications
+
+| Specification | Value |
+|--------------|-------|
+| Degrees of Freedom | 8 DOF (2 per leg) |
+| Robot Weight | 1.7kg |
+| Weight with Battery Placeholders | 1.9kg |
+| Body Structure Weight | 247g |
+| Leg Configuration | 4x 2DOF legs |
+| Power Supply | 24V over wire |
+| Communication | Ethernet |
+
+## Mechanical Design
+
+### Body Structure
+
+The Solo8 v2 features a weight-reduced body frame structure constructed from 3D printed components:
+
+- **Body Structure Bottom**: 38g
+- **Body Structure Front/Back Plates**: 24g each (identical)
+- **Body Structure Side Plates**: 52g each (identical)
+- **Body Structure Top**: 35g
+- **Total Body Weight**: 247g
+
+The body structure is designed to house all electronics while maintaining minimal weight. Multiple top plate options are available:
+- Standard top plate (35g)
+- Top plate with Vicon marker attachments (37g)
+- Top plate with roll bars for marker protection (55g)
+
+### Leg Modules
+
+Each leg uses a 2DOF configuration:
+- **Hip Flexion/Extension (FE)** joint
+- **Knee** joint
+
+Four identical [2DOF leg modules](/mechanics/leg-2dof-v2) attach to the body structure.
+
+**Actuator Module Wire Lengths:**
+- Hip FE Motor Phases: 6cm
+- Hip FE Encoder Wire: 10cm
+- Knee Motor Phases: 12cm
+- Knee Encoder Wire: 19cm
+
+## Electronics System
+
+### Master Board v2
+
+<Card title="Master Board" icon="microchip">
+  Custom electronics board for robot control and communication
+  
+  - Weight: 19g
+  - Handles Ethernet communication
+  - Coordinates motor drivers
+  - [Master Board Documentation](https://github.com/open-dynamic-robot-initiative/master-board)
+</Card>
+
+### Micro Driver Electronics
+
+The Solo8 v2 uses 4 Micro Driver v2 boards:
+- Each board controls 2 brushless motors
+- 2-card stack in front of robot (32g total)
+- 2-card stack in back of robot (32g total)
+- Total micro driver weight: 64g
+
+See [Micro Driver Board Documentation](/electronics/micro-driver) for details.
+
+### Inertia Measurement Unit
+
+**Lord Microstrain 3DM-CX5-25**
+- Weight: 13g
+- Extended measurement range:
+  - Gyro Rate: ±900 deg/sec
+  - Accelerometer range: ±20G
+- [Product Page](https://www.microstrain.com/inertial/3dm-cx5-25)
+
+**IMU Origin Position** (in robot coordinate system):
+- X: -10.18mm
+- Y: -38.35mm
+- Z: -7.85mm
+
+## Wiring Configuration
+
+### SPI Wires
+
+| Wire ID | Length | Connection |
+|---------|--------|------------|
+| #0 | 16cm | FLHFE and FLK |
+| #1 | 16cm | FRHFE and FRK |
+| #2 | 20cm | HLHFE and HLK |
+| #3 | 14cm | HRHFE and HRK |
+
+### Micro Driver Wires
+- 24x motor phase wires (7cm each)
+
+For complete wiring details, see the [Electronics Wiring Guide](/electronics/wiring-details).
+
+## Assembly Components
+
+### 3D Printed Parts
+
+All parts should be printed in the positive Z direction of the STL files.
+
+<CardGroup cols={2}>
+  <Card title="Body Structure Bottom" icon="square">
+    Weight: 38g
+  </Card>
+  <Card title="Body Structure Front/Back" icon="square">
+    Weight: 24g each (2 required)
+  </Card>
+  <Card title="Body Structure Sides" icon="square">
+    Weight: 52g each (2 required)
+  </Card>
+  <Card title="Body Structure Top" icon="square">
+    Weight: 35g (multiple options available)
+  </Card>
+</CardGroup>
+
+### Hardware Requirements
+
+**Fasteners:**
+- 25x M3x8 Socket Head Cap Screws (body structure)
+- 8x M3x12 Socket Head Cap Screws (legs to front plate)
+- 8x M2.5x20 Socket Head Cap Screws (micro driver electronics)
+- 3x M2x6 Socket Head Cap Screws (master board)
+- 3x M2.5x16 Slotted Screws - Polyamide (IMU)
+
+**Helicoil Threaded Inserts:**
+- 25x M3x4.5 Helicoil
+- 8x M3x6 Helicoil
+
+## Bill of Materials
+
+| Component | Quantity | Notes |
+|-----------|----------|-------|
+| 2DOF Leg Modules | 4 | Custom assembly |
+| Master Board v2 | 1 | Custom electronics |
+| Micro Driver Board v2 | 4 | Custom electronics |
+| IMU (3DM-CX5-25) | 1 | Extended measurement range |
+| Body Structure 3D Printed Parts | 1 set | See part list above |
+| Fasteners | Various | Stainless steel |
+| Helicoil Inserts | 33 | M3x4.5 and M3x6 |
+
+## Coordinate System
+
+The robot coordinate system origin is located at the geometric center of the body structure. The IMU sensor origin is offset from the robot origin as specified in the IMU section above.
+
+## Applications
+
+The Solo8 v2 is designed for:
+- Quadrupedal locomotion research
+- Dynamic movement studies
+- Machine learning experiments
+- Agile robot control development
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="2DOF Leg Assembly" icon="gear" href="/mechanics/leg-2dof-v2">
+    Build instructions for the leg modules
+  </Card>
+  <Card title="Electronics Wiring" icon="plug" href="/electronics/wiring-details">
+    Complete wiring guide and schematics
+  </Card>
+  <Card title="Master Board" icon="microchip" href="https://github.com/open-dynamic-robot-initiative/master-board">
+    Master board documentation and firmware
+  </Card>
+  <Card title="CAD Model" icon="cube" href="https://open-dynamic-robot-initiative.github.io/cad_files/quadruped_8dof_v2">
+    Interactive 3D CAD viewer
+  </Card>
+</CardGroup>

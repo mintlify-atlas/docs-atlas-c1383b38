@@ -1,0 +1,210 @@
+---
+title: Encoder Preparation
+description: Step-by-step guide for modifying and wiring the optical encoder
+---
+
+This guide describes how to prepare the encoder for the brushless actuator modules. The encoder provides position feedback for the output shaft.
+
+## Overview
+
+Encoder preparation involves:
+- Mechanical modification of mounting holes
+- Shortening and bending encoder pins
+- Soldering extension wires to encoder pins
+- Crimping Hirose connector to extension wires
+
+## Required Tools and Materials
+
+### Tools
+- Power drill or drill press
+- 3mm drill bit
+- 45° countersink/chamfer tool (90° included angle, 8mm diameter)
+- Soldering iron (temperature controlled)
+- Heat gun
+- Hirose DF13 crimping tool
+- Wire strippers
+- Flat pliers
+- Wire cutters
+- Tweezers
+
+### Materials
+- Optical encoder (with mounting holes)
+- 0.14mm² wire from Kabeltronik (5 wires needed)
+- Hirose DF13 5-pin connector housing
+- Hirose DF13 crimp contacts (5 pieces)
+- Heat shrink tubing (thin for individual wires, larger for bundling)
+- Solder
+- M3 flat head screws (for test fitting)
+
+<Warning>
+**Safety Precautions**
+- Wear safety glasses when drilling
+- Secure encoder properly before drilling to prevent spinning
+- Use temperature-controlled soldering iron to avoid damaging encoder
+- Work in well-ventilated area when soldering
+</Warning>
+
+## Mechanical Modification Encoder
+
+<Steps>
+
+<Step title="Enlarge mounting holes">
+Using a 3mm drill bit, carefully enlarge the two mounting holes on the encoder. The original holes are 2.8mm diameter.
+
+<Tip>
+Secure the encoder firmly before drilling. Start with low drill speed and increase gradually to prevent cracking the circuit board.
+</Tip>
+</Step>
+
+<Step title="Chamfer mounting holes">
+Using a 45° chamfer tool (90° included angle), chamfer both mounting holes. This allows M3 flat head screws to sit flush with the encoder surface.
+</Step>
+
+<Step title="Test fit screws">
+Install M3 flat head screws into the chamfered holes. The screw heads should be flush with or slightly below the encoder surface.
+</Step>
+
+<Step title="Shorten encoder pins">
+Using wire cutters, shorten the encoder pins to an appropriate length for easier wire attachment and assembly clearance.
+</Step>
+
+<Step title="Bend pins downward">
+Using flat pliers, carefully bend each pin 45 degrees downward. This makes wire attachment easier and improves wire routing in the shell.
+</Step>
+
+</Steps>
+
+## Soldering Extension Wires
+
+### Wiring Configuration
+
+The encoder uses 5 wires with the following connections:
+- Pin 1: +5V (Red)
+- Pin 2: Channel A (White)
+- Pin 3: GND (Black)
+- Pin 4: Channel B (Green)  
+- Pin 5: Index/Z (Yellow)
+
+<Warning>
+Follow the wiring diagram exactly. Incorrect wiring can damage the encoder or motor driver electronics.
+</Warning>
+
+<Steps>
+
+<Step title="Prepare extension wires">
+Cut five pieces of 0.14mm² wire in appropriate colors. Leave the wires a couple of centimeters longer than the expected final length.
+
+<Tip>
+If you're unsure about the correct wire length, you can stop after soldering the wires. Complete all other preparation steps and fully assemble the actuator module. Then determine the correct wire length and crimp the Hirose connector later.
+</Tip>
+</Step>
+
+<Step title="Prepare wire ends">
+Remove approximately 3-4mm of insulation from the wire ends. Twist the strands tightly and apply a small amount of solder to tin them. Trim to appropriate length.
+</Step>
+
+<Step title="Tin encoder pins">
+Apply a small amount of solder to each encoder pin to prepare for wire attachment.
+</Step>
+
+<Step title="Solder wires to pins">
+Solder each extension wire to its corresponding encoder pin according to the wiring diagram. Work carefully to avoid bridging adjacent pins.
+</Step>
+
+<Step title="Apply individual heat shrink">
+Cut short pieces of thin heat shrink tubing for each wire connection. Slide the tubing over each connection and apply using a heat gun. Keep the heat shrink as short as possible.
+</Step>
+
+<Step title="Bundle wires">
+Cut small pieces of larger diameter heat shrink to bundle the five wires together. Place these pieces along the wire bundle, leaving a couple of centimeters between them. Apply using a heat gun.
+
+<Tip>
+Bundling the wires makes cable management easier during actuator assembly and reduces the risk of wire damage.
+</Tip>
+</Step>
+
+</Steps>
+
+## Crimping Hirose Connector
+
+<Steps>
+
+<Step title="Determine wire length">
+If you have assembled the actuator module (without the encoder), measure the required wire length from the encoder mounting position to the cable exit point, allowing some slack for strain relief.
+</Step>
+
+<Step title="Prepare wires for crimping">
+Cut the extension wires to the required length. Using a wire stripper, remove approximately 1mm of insulation from each wire end. Do not tin the wire ends - crimp contacts require bare stranded wire.
+</Step>
+
+<Step title="Prepare crimp contacts">
+Gather 5 Hirose DF13 crimp contacts and the Hirose crimping tool.
+</Step>
+
+<Step title="Crimp each wire">
+For each wire:
+1. Insert the wire as straight as possible into the crimping tool
+2. Carefully push the wire inward until the strands touch the end stop of the tool
+3. Close the handle all the way
+4. Release and remove the crimped contact
+
+<Tip>
+**Proper crimp**: The insulation should be captured by the first clamp, and the wire strands should be captured by the second clamp. Check each crimp visually before proceeding.
+</Tip>
+</Step>
+
+<Step title="Verify crimps">
+Inspect each crimped contact:
+- The insulation clamp should securely hold the wire insulation
+- The wire clamp should securely hold the bare strands
+- The wire should not pull out of the contact with gentle tugging
+</Step>
+
+<Step title="Prepare connector housing">
+Get the Hirose DF13 5-pin connector housing.
+</Step>
+
+<Step title="Insert contacts into housing">
+Using tweezers, insert each crimped wire into the correct position in the connector housing according to the wiring diagram. Each contact should click into place.
+
+<Warning>
+**Pin position matters**: Ensure each wire is inserted into the correct position in the connector. Incorrect pin assignment will cause encoder malfunction.
+</Warning>
+</Step>
+
+<Step title="Verify insertion">
+Gently tug on each wire to ensure the contacts are fully locked into the housing.
+</Step>
+
+</Steps>
+
+## Wiring Diagram Reference
+
+Hirose Connector Pin Assignment (looking at connector face):
+```
+┌─────────────┐
+│ 1  2  3  4  5│
+└─────────────┘
+```
+
+- Pin 1: +5V (Red) - Power supply
+- Pin 2: Channel A (White) - Quadrature signal A  
+- Pin 3: GND (Black) - Ground
+- Pin 4: Channel B (Green) - Quadrature signal B
+- Pin 5: Index/Z (Yellow) - Index pulse
+
+## Quality Check
+
+Before proceeding to actuator assembly, verify:
+- Mounting holes are properly chamfered for flush screw installation
+- All wire connections are secure and properly insulated
+- Wires are bundled neatly
+- Hirose connector pins are in correct positions
+- No solder bridges between encoder pins
+- Wire bundle length is appropriate for intended application
+
+## Related Guides
+
+- [Motor Preparation](/assembly/motor-preparation)
+- [Motor Shaft Preparation](/assembly/motor-shaft-preparation)
+- [Actuator Assembly](/assembly/actuator-assembly)

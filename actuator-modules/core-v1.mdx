@@ -1,0 +1,311 @@
+---
+title: 'Actuator Module Core v1'
+description: 'Light-weight, torque-controlled actuator module with dual-stage transmission and brushless motor'
+---
+
+## Overview
+
+The Brushless Actuator Module Core v1 is a light-weight, low-cost, minimal complexity, torque-controlled actuator module designed for robotic research. It features a brushless outrunner motor, high-resolution optical encoder, and a dual-stage timing belt transmission using primarily 3D printed parts and off-the-shelf components.
+
+<Note>
+  **Updated Version Available**: The improved [Actuator Module Core v1.1](/actuator-modules/core-v1-1) is now available with the ODRI Encoder Kit.
+</Note>
+
+### Key Specifications
+
+<CardGroup cols={3}>
+  <Card title="Weight" icon="weight-hanging">
+    150g total assembly
+  </Card>
+  <Card title="Torque Output" icon="gauge-high">
+    2.5 Nm @ 12A
+  </Card>
+  <Card title="Segment Length" icon="ruler">
+    160mm
+  </Card>
+</CardGroup>
+
+## Core Components
+
+The actuator module uses the same core components across all robot configurations described in the Open Robot Actuator Hardware repository. The only difference between modules is the surrounding shell structure.
+
+<Info>
+  Core components weight: **95g** (excluding shell structure)
+</Info>
+
+## Dual-Stage Transmission
+
+The module employs a dual-stage timing belt transmission system:
+
+- **First stage**: 3:1 gear reduction
+- **Second stage**: 3:1 gear reduction
+- **Total gear reduction**: 9:1
+
+The AT3 GEN III timing belts provide precise power transmission with minimal backlash through custom-profiled pulleys.
+
+## Off-the-Shelf Components
+
+### Brushless DC Motor
+
+**T-Motor Antigravity 4004 300kV**
+
+<AccordionGroup>
+  <Accordion title="Motor Specifications">
+    - 24 magnets / 12 pole pairs / 18 slots
+    - 3-phase WYE configuration (Star configuration)
+    - Rotor diameter: 45mm
+    - Weight: 53g
+    - Sold in sets of 2 pieces
+  </Accordion>
+  <Accordion title="Ordering Information">
+    - [T-Motor Store](http://store-en.tmotor.com/goods.php?id=438)
+    - [Globeflight #1974](https://www.globe-flight.de/T-Motor-GF-Antigravity-Set-4004-300KV-2-pcs)
+  </Accordion>
+</AccordionGroup>
+
+### Optical Encoder
+
+**Broadcom AEDT-9810-Z00**
+
+- 5000 pulses per revolution per channel
+- 20,000 counts per revolution at the microcontroller
+- 5V two-channel quadrature output with index pulse (ABZ)
+- Code wheel diameter: 26mm
+- Weight: 5g
+
+<Tip>
+  The codewheel must be ordered separately from PWB Encoders GmbH (Order #104768: Codewheel with index / 625cpr 3K for AEDT98X / ID 7mm / OD 25.56mm)
+</Tip>
+
+**Ordering Sources:**
+- Mouser: #630-AEDT9810Z00
+- DigiKey: #516-3256-ND
+
+### Timing Belts
+
+**Conti Synchroflex AT3 GEN III** - Heavy duty polyurethane with steel cord reinforcements
+
+| Stage | Length | Teeth | Width | Weight |
+|-------|--------|-------|-------|--------|
+| First | 150mm | 50 | 4mm | 1.5g |
+| Second | 201mm | 67 | 6mm | 3.0g |
+
+**Total timing belt weight**: 4.5g
+
+### Bearings
+
+**EZO Stainless Steel Miniature Roller Bearings** (Total weight: 16g)
+
+<CardGroup cols={3}>
+  <Card title="Output Bearing">
+    **EZO 61705 2RS VA**
+    - 32mm × 25mm × 4mm
+    - Weight: 6.9g
+    - Quantity: 2
+  </Card>
+  <Card title="Transmission Bearing">
+    **EZO MR84 VA**
+    - 8mm × 4mm × 2mm
+    - Weight: 0.4g
+    - Quantity: 3
+  </Card>
+  <Card title="Tensioner Bearing">
+    **EZO 683 2Z VA**
+    - 7mm × 3mm × 3mm
+    - Weight: 0.4g
+    - Quantity: 2
+  </Card>
+</CardGroup>
+
+### Fasteners
+
+**Total weight**: 2.9g
+
+- Motor fasteners: M3 × 5 flat head screw (4 pieces)
+- Timing belt tensioner fasteners: M3 × 10 flat head screw (2 pieces)
+- Tensioner washers: M2.5 washer (2 pieces)
+- Output shaft helical insert: Helicoil M3 × 6 (2 pieces)
+- Encoder fasteners: M3 × 16 Phillips flat head screw - Polyamide plastic (2 pieces)
+
+## Machined Parts
+
+**Total weight**: 5.9g
+
+Three components must be machined from metal:
+
+<Steps>
+  <Step title="Motor Pulley">
+    AT3 10-tooth pulley machined from aluminum
+    
+    - Material: Aluminum
+    - Weight: 0.6g
+    - Technical drawing: [motor_pulley_at3_t10.PDF](drawings/motor_pulley_at3_t10.PDF)
+  </Step>
+  <Step title="Center Pulley">
+    AT3 10-tooth center pulley machined from aluminum
+    
+    - Material: Aluminum
+    - Weight: 2.1g
+    - Technical drawing: [center_pulley_at3_t10.PDF](drawings/center_pulley_at3_t10.PDF)
+  </Step>
+  <Step title="Motor Shaft">
+    Custom motor shaft from precision ground stainless steel
+    
+    - Material: 4mm stainless steel rod (1.4301 EN10278 h9)
+    - Weight: 3.2g
+    - Technical drawing: [motor_shaft.PDF](drawings/motor_shaft.PDF)
+  </Step>
+</Steps>
+
+<Warning>
+  **Custom AT3 Profile**: The tooth profile has been modified from standard AT3 dimensions to reduce backlash. Do NOT use standard AT3 pulleys or cutting tools.
+</Warning>
+
+<Note>
+  **Alternative**: You can order the [ODRI Encoder Kit](https://www.pwb-encoders.com) that includes all machined parts pre-assembled. See [Actuator Module v1.1](/actuator-modules/core-v1-1) for details.
+</Note>
+
+## 3D Printed Parts
+
+**Total weight**: 11.3g
+
+<Warning>
+  The tooth profile of the pulleys must be precise and concentric. Use stereolithography (SLA), Polyjet, or Multijet printers for all parts.
+</Warning>
+
+**Print Direction**: Positive Z direction of STL files for all components
+
+| Part | Weight | STL File |
+|------|--------|----------|
+| Encoder Codewheel PWB Mount | 0.3g | encoder_codewheel_pwb_mount.STL |
+| Transmission Pulley AT3 T30 Center | 4.2g | transmission_pulley_at3_t30_center.STL |
+| Transmission Pulley AT3 T30 Output | 6.7g | transmission_pulley_at3_t30_output.STL |
+| Timing Belt Tensioner Roller (10mm) | 0.2g each | transmission_belt_tensioner_roller_10.0mm.STL |
+
+<Tip>
+  Multiple tensioner roller diameters are available (10.0mm, 10.5mm, 11.0mm, 11.5mm) to adjust timing belt tension as needed.
+</Tip>
+
+## Wiring and Connectors
+
+### Motor Phase Connectors
+
+- **Type**: 2mm gold connectors (Reely RE-1373188)
+- **Quantity**: 3 pairs
+- **Wire**: LiY 0.50 mm² black cable
+
+### Encoder Connector
+
+- **Type**: Hirose DF13 Socket 5-pin
+- **Crimp terminals**: Hirose DF13-2630SCF (5 pieces)
+- **Wire**: LifY 0.14 mm² (colors: red, yellow, black, white, green)
+- **Tool required**: Hirose DF13 crimp tool
+
+<CardGroup cols={2}>
+  <Card title="Encoder Wiring Convention" icon="diagram-project">
+    See source documentation for detailed wiring diagrams showing proper connection to the microcontroller.
+  </Card>
+  <Card title="Crimp Tool" icon="wrench">
+    Hirose DF13-TB2630HC crimp tool required for proper terminal installation.
+  </Card>
+</CardGroup>
+
+## Alternative Components
+
+### Encoder Options
+
+<Tabs>
+  <Tab title="Option A (Default)">
+    **Broadcom AEDT-9810-Z00** encoder + separate PWB codewheel
+    
+    - Encoder: Mouser #630-AEDT9810Z00 or DigiKey #516-3256-ND
+    - Codewheel: PWB Encoders Order #104768
+    - Mount: encoder_codewheel_pwb_mount.STL
+  </Tab>
+  <Tab title="Option B">
+    **Broadcom AEDM-5810-Z12** encoder kit (includes codewheel)
+    
+    - Mouser: #630-AEDM5810Z12
+    - DigiKey: #516-3253-ND
+    - Requires codewheel modification
+    - Mount: encoder_codewheel_kit_mount.STL
+  </Tab>
+  <Tab title="Option C">
+    **ODRI Encoder Kit** (fully assembled)
+    
+    - Includes all machined parts
+    - Order from PWB Encoders: Kit #109381
+    - See [v1.1 documentation](/actuator-modules/core-v1-1)
+  </Tab>
+</Tabs>
+
+### Timing Belt Tensioner Options
+
+<Tabs>
+  <Tab title="Option A (Default)">
+    7mm × 3mm × 3mm bearings (EZO 683 2Z VA) with 3D printed rollers
+  </Tab>
+  <Tab title="Option B">
+    10mm × 3mm × 4mm bearings (SKF 623-2Z) - no rollers needed
+    
+    Requires M3 washers instead of M2.5
+  </Tab>
+</Tabs>
+
+## Assembly Documentation
+
+<CardGroup cols={2}>
+  <Card title="Step-by-Step Instructions" icon="list-check">
+    Complete assembly guides available in source repository:
+    - Motor preparation
+    - Motor shaft preparation
+    - Encoder preparation
+    - Center pulley preparation
+    - Output pulley preparation
+    - Shell preparation
+    - Final module assembly
+  </Card>
+  <Card title="Testing Procedures" icon="flask">
+    Actuator module testing procedures cover:
+    - Encoder calibration
+    - Motor phase identification
+    - Torque control verification
+    - Performance validation
+  </Card>
+</CardGroup>
+
+## Technical Resources
+
+<CardGroup cols={2}>
+  <Card title="Technical Drawings" icon="file-pdf">
+    Complete PDF drawings available for all machined and custom parts in the source repository.
+  </Card>
+  <Card title="STL Files" icon="cube">
+    All 3D printable component files provided in the source repository stl_files directory.
+  </Card>
+  <Card title="Assembly Guide" icon="book">
+    Detailed step-by-step instructions with photos for complete module assembly.
+  </Card>
+  <Card title="Bill of Materials" icon="list">
+    Complete BOM with part numbers and ordering information from multiple suppliers worldwide.
+  </Card>
+</CardGroup>
+
+## Related Pages
+
+<CardGroup cols={2}>
+  <Card title="Actuator Module v1.1" href="/actuator-modules/core-v1-1" icon="arrow-up">
+    See the updated version with ODRI Encoder Kit
+  </Card>
+  <Card title="Specifications" href="/actuator-modules/specifications" icon="table">
+    View complete technical specifications
+  </Card>
+</CardGroup>
+
+---
+
+**Authors**: Felix Grimminger
+
+**License**: BSD 3-Clause License
+
+**Copyright**: © 2019-2021 Max Planck Gesellschaft and New York University

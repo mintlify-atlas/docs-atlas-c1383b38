@@ -1,0 +1,198 @@
+---
+title: Robot Calibration
+description: Procedures and tools for calibrating robot joint positions
+---
+
+## Overview
+
+<img src="/images/joint_calibration_1.png" width="500" />
+
+When the robot is turned on, the joint angles are unknown. The calibration procedure ensures accurate joint positioning by:
+
+1. Manually aligning the legs before startup so joints are roughly in zero position
+2. Moving all joints to find the closest encoder index position for each joint
+3. Adding an offset to the actual position to move all joints into zero position
+4. Storing offsets between index positions and zero joint positions for each degree of freedom
+
+<Warning>
+If an actuator module is repaired, replaced, or modified, the offset between the index pulse and the zero joint position must be measured and saved again.
+</Warning>
+
+## Calibration Tools
+
+<img src="/images/calibration_tools_1.jpg" width="500" />
+
+We use 3D printed calibration tools to align the legs in the zero position. These tools help determine the correct offsets from the index position for each joint. Steel pins that fit into the screw heads of the actuator modules are used to align the segments.
+
+---
+
+## Quadruped 8DOF Calibration Tool
+
+<img src="/images/calibration_tool_8dof_1.jpg" width="400" />
+<img src="/images/calibration_tool_8dof_2.png" width="400" />
+
+This calibration tool is compatible with:
+- Quadruped Robot 8dof v1
+- Quadruped Robot 8dof v2
+
+### Bill of Materials
+
+<img src="/images/calibration_tool_8dof_3.png" width="450" />
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|----------|---------------------|----------|
+| Calibration Tool Quadruped 8dof | 2 | [STL file](stl_files/calibration_tool_quadruped_8dof.STL) | 3D printed part. Print with "sparse double dense" setting on FDM printer |
+| Calibration Tool Quadruped 8dof - Mirrored | 2 | [STL file](stl_files/calibration_tool_quadruped_8dof_mirror.STL) | 3D printed part. Print with "sparse double dense" setting on FDM printer |
+| Pin Spacer Tool 5mm | 1 | [STL file](stl_files/pin_spacer_5mm.STL) | 3D printed tool |
+| Pin 2mm x 16mm | 8 | [Online Schrauben](https://online-schrauben.de/shop/Stifte-ohne-Gewinde/DIN-7-Toleranzfeld-m6-Zylinderstifte-Toleranzfeld-m6-aehnl.-ISO-2338-Form-A/Edelstahl-Rostfrei-A1-1.4305/2,0-mm-Durchmesser) | Stainless Steel A1 |
+| Pin 2.5mm x 12mm | 8 | [Online Schrauben](https://online-schrauben.de/shop/Stifte-ohne-Gewinde/DIN-7-Toleranzfeld-m6-Zylinderstifte-Toleranzfeld-m6-aehnl.-ISO-2338-Form-A/Edelstahl-Rostfrei-A1-1.4305/2,5-mm-Durchmesser) | Stainless Steel A1 |
+
+### Preparing the Tools
+
+<img src="/images/calibration_tool_preparation_5.png" width="350" />
+
+**Installing 2mm Pins:**
+
+<img src="/images/calibration_tool_preparation_1.png" width="350" />
+
+1. Use a 1.9mm drill bit to adjust the hole diameters for the 2mm pins
+2. Install the 2mm pins using a hammer
+3. The pins should protrude 5mm from the surface
+4. The Pin Spacer Tool can help position the pin correctly
+
+**Installing 2.5mm Pins:**
+
+<img src="/images/calibration_tool_preparation_2.png" width="300" />
+
+1. Use a 2.4mm drill bit to adjust the hole diameters for the 2.5mm pins
+2. Install the 2.5mm pins using a hammer
+
+### Installation Procedure
+
+<img src="/images/quadruped_8dof_calibration_1.jpg" width="400" />
+
+1. Insert the pins into the screw heads of the actuator module and the lower leg
+2. Make sure that the tool is fully seated and that there is no gap between the parts
+3. Use velcro straps around the knee to keep the calibration tools in place
+
+---
+
+## Quadruped 12DOF Calibration Tool
+
+<img src="/images/calibration_tool_12dof_2.png" width="400" />
+
+This calibration tool is compatible with:
+- Quadruped Robot 12dof v1
+
+### Bill of Materials
+
+<img src="/images/calibration_tool_12dof_3.png" width="550" />
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|----------|---------------------|----------|
+| Calibration Tool Quadruped 12dof v1 | 2 | [STL file](stl_files/calibration_tool_quadruped_12dof_v1.STL) | 3D printed part. Print with "sparse double dense" setting on FDM printer |
+| Calibration Tool Quadruped 12dof v1 - Mirrored | 2 | [STL file](stl_files/calibration_tool_quadruped_12dof_v1_mirror.STL) | 3D printed part. Print with "sparse double dense" setting on FDM printer |
+| Calibration Tool Quadruped 12dof v1 Connector | 2 | [STL file](stl_files/calibration_tool_quadruped_12dof_v1_connector.STL) | 3D printed part |
+| Pin Spacer Tool 4mm | 1 | [STL file](stl_files/pin_spacer_4mm.STL) | 3D printed tool |
+| Pin 2mm x 16mm | 8 | [Online Schrauben](https://online-schrauben.de/shop/Stifte-ohne-Gewinde/DIN-7-Toleranzfeld-m6-Zylinderstifte-Toleranzfeld-m6-aehnl.-ISO-2338-Form-A/Edelstahl-Rostfrei-A1-1.4305/2,0-mm-Durchmesser) | Stainless Steel A1 |
+| Pin 2.5mm x 12mm | 8 | [Online Schrauben](https://online-schrauben.de/shop/Stifte-ohne-Gewinde/DIN-7-Toleranzfeld-m6-Zylinderstifte-Toleranzfeld-m6-aehnl.-ISO-2338-Form-A/Edelstahl-Rostfrei-A1-1.4305/2,5-mm-Durchmesser) | Stainless Steel A1 |
+| Socket Head Cap Screw M3 x 16 | 8 | [Online Schrauben](https://online-schrauben.de/shop/Schrauben/Innensechskantschrauben/ISO-4762-DIN-912-Zylinderkopfschrauben-mit-Innensechskant-aehnl.-DIN-912/Edelstahl-Rostfrei-A2/M-3-Gewinde-M-metrisches-Regelgewinde) | Stainless Steel A2 |
+| Threaded Inserts M3 x 4.5 | 8 | [Hoffmann](https://www.hoffmann-group.com/US/en/hus/Power-tools-and-workshop-supplies/Soldering-tools-cleaning-devices-thread-repair/Thread-insert-set%2C-100-pieces-1-5×D/p/082818) / [McMaster](https://www.mcmaster.com/91732A647/) | Helicoil |
+
+### Preparing the Tools
+
+<img src="/images/calibration_tool_preparation_5.png" width="350" />
+
+**Installing 2mm Pins:**
+
+<img src="/images/calibration_tool_preparation_3.png" width="350" />
+
+1. Use a 1.9mm drill bit to adjust the hole diameters for the 2mm pins
+2. Install the 2mm pins using a hammer
+3. The pins should protrude 4mm from the surface
+4. The Pin Spacer Tool can help position the pin correctly
+
+**Installing 2.5mm Pins:**
+
+<img src="/images/calibration_tool_preparation_2.png" width="300" />
+
+1. Use a 2.4mm drill bit to adjust the hole diameters for the 2.5mm pins
+2. Install the 2.5mm pins using a hammer
+
+**Preparing the Connector:**
+
+<img src="/images/calibration_tool_preparation_4.png" width="300" />
+
+1. Increase the square holes on the side of the connector in small steps
+2. Drill with 2.5mm / 2.7mm / 2.9mm and 3.1mm diameter
+3. Install M3x4.5 Helicoil threaded inserts in all four locations
+
+### Installation Procedure
+
+<img src="/images/quadruped_12dof_calibration_1.jpg" width="400" />
+
+1. Insert the pins into the screw heads of the actuator module and the lower leg
+2. Make sure that the tool is fully seated and that there is no gap between the parts
+3. Use velcro straps around the knees to keep the calibration tools in place
+4. Use M3x16 screws to install the connector part
+
+---
+
+## Biped 6DOF Calibration Tool
+
+<img src="/images/calibration_tool_biped_6dof_1.png" width="450" />
+
+This calibration tool is compatible with:
+- Biped Robot 6dof v1
+
+### Bill of Materials
+
+<img src="/images/calibration_tool_biped_6dof_2.png" width="300" />
+
+| Description | Quantity | Ordering Information | Comments |
+|-------------|----------|---------------------|----------|
+| Calibration Tool Biped 6dof v1 | 1 | [STL file](stl_files/calibration_tool_biped_6dof_v1.STL) | 3D printed part. Print with "sparse double dense" setting on FDM printer |
+| Calibration Tool Biped 6dof v1 - Mirrored | 1 | [STL file](stl_files/calibration_tool_biped_6dof_v1_mirror.STL) | 3D printed part. Print with "sparse double dense" setting on FDM printer |
+| Calibration Tool Biped 6dof v1 Connector | 1 | [STL file](stl_files/calibration_tool_biped_6dof_v1_connector.STL) | 3D printed part |
+| Pin Spacer Tool 4mm | 1 | [STL file](stl_files/pin_spacer_4mm.STL) | 3D printed tool |
+| Pin 2mm x 16mm | 4 | [Online Schrauben](https://online-schrauben.de/shop/Stifte-ohne-Gewinde/DIN-7-Toleranzfeld-m6-Zylinderstifte-Toleranzfeld-m6-aehnl.-ISO-2338-Form-A/Edelstahl-Rostfrei-A1-1.4305/2,0-mm-Durchmesser) | Stainless Steel A1 |
+| Pin 2.5mm x 12mm | 4 | [Online Schrauben](https://online-schrauben.de/shop/Stifte-ohne-Gewinde/DIN-7-Toleranzfeld-m6-Zylinderstifte-Toleranzfeld-m6-aehnl.-ISO-2338-Form-A/Edelstahl-Rostfrei-A1-1.4305/2,5-mm-Durchmesser) | Stainless Steel A1 |
+| Socket Head Cap Screw M3 x 16 | 4 | [Online Schrauben](https://online-schrauben.de/shop/Schrauben/Innensechskantschrauben/ISO-4762-DIN-912-Zylinderkopfschrauben-mit-Innensechskant-aehnl.-DIN-912/Edelstahl-Rostfrei-A2/M-3-Gewinde-M-metrisches-Regelgewinde) | Stainless Steel A2 |
+| Threaded Inserts M3 x 4.5 | 4 | [Hoffmann](https://www.hoffmann-group.com/US/en/hus/Power-tools-and-workshop-supplies/Soldering-tools-cleaning-devices-thread-repair/Thread-insert-set%2C-100-pieces-1-5×D/p/082818) / [McMaster](https://www.mcmaster.com/91732A647/) | Helicoil |
+
+### Preparing the Tools
+
+<img src="/images/calibration_tool_preparation_5.png" width="350" />
+
+**Installing 2mm Pins:**
+
+<img src="/images/calibration_tool_preparation_3.png" width="350" />
+
+1. Use a 1.9mm drill bit to adjust the hole diameters for the 2mm pins
+2. Install the 2mm pins using a hammer
+3. The pins should protrude 4mm from the surface
+4. The Pin Spacer Tool can help position the pin correctly
+
+**Installing 2.5mm Pins:**
+
+<img src="/images/calibration_tool_preparation_2.png" width="300" />
+
+1. Use a 2.4mm drill bit to adjust the hole diameters for the 2.5mm pins
+2. Install the 2.5mm pins using a hammer
+
+**Preparing the Connector:**
+
+<img src="/images/calibration_tool_preparation_4.png" width="300" />
+
+1. Increase the square holes on the side of the connector in small steps
+2. Drill with 2.5mm / 2.7mm / 2.9mm and 3.1mm diameter
+3. Install M3x4.5 Helicoil threaded inserts in all four locations
+
+### Installation Procedure
+
+<img src="/images/biped_6dof_calibration_1.jpg" width="400" />
+
+1. Insert the pins into the screw heads of the actuator module and the lower leg
+2. Make sure that the tool is fully seated and that there is no gap between the parts
+3. Use velcro straps around the knees to keep the calibration tools in place
+4. Use M3x16 screws to install the connector part

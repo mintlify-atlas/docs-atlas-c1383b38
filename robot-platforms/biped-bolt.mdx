@@ -1,0 +1,267 @@
+---
+title: 'Biped Bolt'
+description: '6-DOF bipedal robot with passive ankles - humanoid locomotion platform at 1.34kg'
+---
+
+# Biped Robot Bolt (6dof v1)
+
+The Biped Bolt is a 6-degree-of-freedom bipedal robot featuring two 3DOF legs with passive ankle joints. The robot is designed for bipedal locomotion research with extended leg lengths compared to the quadruped platforms.
+
+## Overview
+
+<CardGroup cols={2}>
+  <Card title="Degrees of Freedom" icon="arrows-rotate">
+    6 DOF - 3 actuated joints per leg + passive ankles
+  </Card>
+  <Card title="Weight" icon="weight-scale">
+    1.34kg total weight
+  </Card>
+  <Card title="Leg Length" icon="ruler">
+    200mm upper and lower legs (25% longer than quadruped)
+  </Card>
+  <Card title="Communication" icon="ethernet">
+    24V power / Ethernet interface wire
+  </Card>
+</CardGroup>
+
+## Key Specifications
+
+| Specification | Value |
+|--------------|-------|
+| Degrees of Freedom | 6 active DOF (3 per leg) |
+| Total Weight | 1.34kg |
+| Body Structure Weight | 99g |
+| Leg Module Weight | 540g each |
+| Upper Leg Length | 200mm |
+| Lower Leg Length | 200mm |
+| Power Supply | 24V over wire |
+| Communication | Ethernet |
+
+## Mechanical Design
+
+### Body Structure
+
+The compact body structure weighs only 99g and includes:
+
+**3D Printed Components** (87g total):
+- Body Structure Front: 19g
+- Body Structure Back Rev A: 14g
+- Body Structure Right Side: 9g
+- Body Structure Left Side: 9g
+- Body Structure Bottom: 17g
+- Body Structure Top (standard): 14g
+
+**Top Plate Options:**
+- Standard Top: 14g
+- Top with Vicon Markers: 15g
+- Top with IMU Attachment: 15g
+- Top with IMU and Vicon Markers: 16g
+
+### Biped Leg Modules
+
+Each leg features:
+
+1. **Hip Abduction/Adduction (AA)**: Lateral leg movement
+2. **Hip Flexion/Extension (FE)**: Forward/backward leg movement
+3. **Knee**: Lower leg rotation
+4. **Passive Ankle Joint**: Line contact foot for yaw stabilization
+
+**Key Features:**
+- Weight: 540g per leg
+- Leg length: 25% longer than quadruped legs (200mm vs 160mm)
+- Line contact feet help stabilize yaw orientation
+- No yaw control (no leg rotation DOF)
+
+See the [Biped Leg 3DOF Documentation](/mechanics/biped-leg-3dof-v1) for complete details.
+
+### Hip Height
+
+The hip height varies with lower leg angle:
+- **At 45° lower leg angle**: ~280mm
+- **At 60° lower leg angle**: ~320mm
+- **At 90° lower leg angle**: ~400mm
+
+## Electronics System
+
+### Master Board v2
+
+<Card title="Master Board" icon="microchip">
+  Central control board for the biped
+  
+  - Weight: 19g
+  - Ethernet communication
+  - SPI interface to motor drivers
+  - [Documentation](https://github.com/open-dynamic-robot-initiative/master-board)
+</Card>
+
+### Micro Driver Boards
+
+**Micro Driver Stack** (3 cards):
+- Weight: 47g total
+- Each board controls 2 brushless motors
+- 3 boards control all 6 actuators
+- Located in body structure
+
+See the [Micro Driver Documentation](/electronics/micro-driver) for details.
+
+### Inertia Measurement Unit
+
+**Lord Microstrain 3DM-CX5-25**
+- Weight: 13g
+- Mounted to top element of body structure
+- Label pointing downward
+- Same orientation as robot coordinate system
+- [Product Page](https://www.microstrain.com/inertial/3dm-cx5-25)
+
+**IMU Origin Position** (in robot coordinate system):
+- X: -0.13mm
+- Y: -6.35mm
+- Z: 77.40mm
+
+## Wiring Configuration
+
+### Actuator Module Wiring
+
+| Joint | Motor Phases | Encoder Wire |
+|-------|-------------|-------------|
+| Hip AA (RHAA, LHAA) | 20cm | 28cm |
+| Hip FE (RHFE, LHFE) | 27cm | 33cm |
+| Knee (RK, LK) | 35cm | 42cm |
+
+### Additional Wiring
+
+<CardGroup cols={2}>
+  <Card title="Robot Interface Wire">
+    - Ethernet Wire: 6m (4 conductors)
+    - Power Wires: 6m (24V and ground)
+  </Card>
+  <Card title="Internal Wiring">
+    - SPI Wires: 3x 10cm (5 conductors each)
+    - IMU Wire: 25cm (4 conductors)
+    - Motor Phase Wires: 18x 11cm
+  </Card>
+</CardGroup>
+
+Complete wiring details: [Electronics Wiring Guide](/electronics/wiring-details)
+
+## Assembly Components
+
+### Hip AA Bearings
+
+**Stainless Steel Bearings ET2520 2Z VA**
+- Dimensions: 25mm x 20mm x 4mm
+- Weight: 3.4g each
+- Quantity: 2 required
+
+### Fasteners
+
+**Body Structure:**
+- M3x8 Socket Head Cap Screws: 18 (body structure)
+- M3x8 Socket Head Cap Screws: 6 (Hip AA modules)
+
+**Electronics:**
+- M2.5x25 Socket Head Cap Screws: 4 (micro driver stack)
+- M2x5 Socket Head Cap Screws: 2 (master board)
+- M2x20 Socket Head Cap Screws: 2 (master board)
+- M2.5x16 Slotted Screws: 3 (IMU - polyamide plastic, shorten to 13mm)
+
+### Helicoil Thread Inserts
+
+- **M3 x 4.5mm**: 24 inserts (1.5xD, Böllhoff 41890030045)
+- **M2.5 x 3.75mm**: 4 inserts (1.5xD, Böllhoff 41890250375)
+
+## Bill of Materials
+
+| Component | Quantity | Notes |
+|-----------|----------|-------|
+| Biped Leg 3DOF Right Side | 1 | Custom assembly |
+| Biped Leg 3DOF Left Side | 1 | Custom assembly |
+| Master Board v2 | 1 | Custom electronics |
+| Micro Driver Board v2 | 3 | Custom electronics |
+| IMU (3DM-CX5-25) | 1 | Extended measurement range |
+| Hip AA Bearings (ET2520 2Z VA) | 2 | Stainless steel |
+| Body Structure 3D Printed Parts | 1 set | Multiple top plate options |
+| Master Board Protection | 1 | 3D printed |
+| Micro Driver Stack Spacer | 8 | 3D printed |
+| Fasteners | Various | Stainless steel |
+| Helicoil Inserts | 28 total | M3 and M2.5 sizes |
+| Vicon Markers (optional) | 8 | Ø 9.5mm with M4x10 set screws |
+
+## Robot Stand
+
+A custom stand is available for the biped:
+
+**Stand Components:**
+- Stand Attachment: 23g (3D printed)
+- Aluminum Profiles (Item Size 8):
+  - Back: 70cm
+  - Top: 25cm (tap M8x1.25 thread)
+  - Bottom: 30cm
+  - Side: 45cm
+- Angle Brackets: 4x 90-degree 40mm brackets
+- End Caps: 4
+- Rubber Feet: 3
+
+The stand allows the biped to be held upright during testing and development.
+
+## Coordinate System
+
+The robot coordinate system origin is located at the center of the body structure. The IMU coordinate system shares the same orientation as the robot coordinate system, with the offset documented in the IMU section.
+
+For detailed coordinate system conventions, see [Conventions](/mechanics/conventions).
+
+## Vicon Object for Motion Capture
+
+**Body Structure Top with Vicon Markers**
+- Weight: 23g (top element alone)
+- Total weight with markers: 106g (complete body structure)
+- 8 markers (Ø 9.5mm)
+- Used for base state estimation
+
+The Vicon markers on the body are essential for motion capture since the biped cannot control its yaw angle.
+
+## Robot Calibration
+
+A dedicated calibration tool is available for the biped. See the [Biped 6dof Calibration Tool](/mechanics/robot-calibration#biped-6dof) documentation.
+
+## Design Considerations
+
+<AccordionGroup>
+  <Accordion title="Why No Leg Rotation?">
+    The biped has no leg rotation degree of freedom, meaning the yaw angle of the robot cannot be actively controlled. The line contact of the feet helps stabilize the yaw orientation passively.
+  </Accordion>
+  
+  <Accordion title="Extended Leg Length">
+    Compared to the quadruped robots, the upper and lower leg lengths were increased by 25% (from 160mm to 200mm) to provide appropriate proportions for bipedal locomotion.
+  </Accordion>
+  
+  <Accordion title="Passive Ankle Joints">
+    Each leg features a passive ankle joint with line contact feet. This design helps the robot maintain balance and provides compliance during ground contact.
+  </Accordion>
+</AccordionGroup>
+
+## Applications
+
+The Biped Bolt is designed for:
+- Bipedal locomotion research
+- Balance and stability control
+- Walking and running gaits
+- Machine learning for humanoid robots
+- Underactuated control strategies
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Biped Leg Assembly" icon="gear" href="/mechanics/biped-leg-3dof-v1">
+    Complete biped leg build instructions
+  </Card>
+  <Card title="Electronics Wiring" icon="plug" href="/electronics/wiring-details">
+    Detailed wiring guide and schematics
+  </Card>
+  <Card title="Actuator Modules" icon="cog" href="/mechanics/actuator-module">
+    Core actuator module documentation
+  </Card>
+  <Card title="CAD Model" icon="cube" href="https://open-dynamic-robot-initiative.github.io/cad_files/biped">
+    Interactive 3D CAD viewer
+  </Card>
+</CardGroup>

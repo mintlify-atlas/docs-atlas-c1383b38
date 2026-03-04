@@ -1,0 +1,348 @@
+---
+title: Actuator Module Testing
+description: Testing procedures and motor phase sequence determination for assembled actuators
+---
+
+After completing the actuator assembly, the module must be tested to verify proper operation and determine the correct motor phase sequence for the motor driver.
+
+## Overview
+
+Actuator testing involves:
+- Mechanical verification of assembly quality
+- Encoder signal verification
+- Motor phase sequence determination
+- Current draw verification
+- Thermal performance testing
+- Final quality check
+
+<Warning>
+**Safety First**
+- Never connect power without proper current limiting
+- Do not exceed rated voltage (typically 24V for these actuators)
+- Monitor temperature during testing - the motor should not exceed 80°C
+- Keep fingers away from moving parts during powered operation
+- Have emergency stop readily available
+</Warning>
+
+## Required Equipment
+
+### Test Equipment
+- Motor driver board (micro driver or compatible)
+- Power supply (24V, minimum 5A capacity)
+- Multimeter
+- Oscilloscope (optional, for encoder signal verification)
+- IR thermometer or thermal camera
+- Test stand or fixture to hold actuator
+
+### Connections
+- Motor phase cable (3 wires)
+- Encoder cable (5 wires: +5V, GND, A, B, Index)
+- Power supply cables
+
+## Pre-Test Mechanical Verification
+
+Before applying power, perform these mechanical checks:
+
+<Steps>
+
+<Step title="Check free rotation">
+Manually rotate the output shaft through its full range:
+- Rotation should be smooth throughout
+- No binding or tight spots
+- No unusual noise or grinding
+- Resistance should feel even
+
+<Warning>
+If you feel binding, do NOT apply power. Disassemble and check for:
+- Timing belt teeth not engaged properly
+- Bearings not seated correctly
+- Codewheel touching encoder
+- Rotor rubbing on stator
+</Warning>
+</Step>
+
+<Step title="Inspect for clearances">
+Visually inspect:
+- Codewheel has clearance from encoder (0.5-1mm gap)
+- Timing belts are centered on pulleys
+- No wires pinched between shell halves
+- All fasteners are secure
+</Step>
+
+<Step title="Check encoder mounting">
+Verify:
+- Encoder screws are tight
+- Encoder body is not touching codewheel
+- Encoder connector is secure
+</Step>
+
+</Steps>
+
+## Encoder Signal Verification
+
+<Steps>
+
+<Step title="Apply encoder power">
+Connect encoder power:
+- +5V to encoder power pin (typically red wire)
+- GND to encoder ground pin (typically black wire)
+
+<Tip>
+Use a current-limited power supply set to 50mA maximum. A properly functioning encoder draws 15-30mA.
+</Tip>
+</Step>
+
+<Step title="Verify power consumption">
+Measure encoder current draw. Typical values:
+- Normal: 15-30mA
+- Short circuit: >50mA (indicates wiring problem)
+- Open circuit: less than 5mA (indicates poor connection)
+</Step>
+
+<Step title="Check encoder signals with multimeter">
+With encoder powered, slowly rotate the output shaft and measure:
+- Channel A: Should toggle between 0V and 5V
+- Channel B: Should toggle between 0V and 5V (90° phase shift from A)
+- Index: Should pulse once per revolution
+
+If signals don't toggle:
+- Check wiring connections
+- Verify encoder is powered
+- Check codewheel is rotating (watch through encoder gap)
+- Inspect codewheel for damage or contamination
+</Step>
+
+<Step title="(Optional) Oscilloscope verification">
+For detailed signal quality verification:
+1. Connect oscilloscope to Channel A and Channel B
+2. Rotate output shaft at moderate speed
+3. Verify:
+   - Clean square wave signals
+   - 90° phase relationship between A and B
+   - Signal voltage swings rail-to-rail (0V to 5V)
+   - No excessive noise or ringing
+</Step>
+
+</Steps>
+
+## Motor Phase Sequence Determination
+
+The correct motor phase sequence must be determined for proper motor operation with the driver.
+
+<Steps>
+
+<Step title="Initial motor connection">
+Connect motor phase wires to driver in arbitrary order. Label them as A, B, C (or U, V, W depending on driver convention).
+</Step>
+
+<Step title="Apply low current test">
+Set motor driver to:
+- Current limit: 0.5A (low current for safety)
+- Velocity: Very slow rotation (e.g., 1 rad/s)
+- Position control mode (if available)
+
+Apply power and command slow rotation.
+</Step>
+
+<Step title="Observe motor behavior">
+**Correct phase sequence**: Motor rotates smoothly in commanded direction.
+
+**Incorrect phase sequence**: Motor will exhibit one of these behaviors:
+- Stuttering or cogging
+- Rotating in wrong direction
+- Not rotating at all (vibrating/humming)
+- Excessive current draw
+</Step>
+
+<Step title="If phase sequence is incorrect">
+If motor doesn't rotate smoothly:
+1. Disconnect power
+2. Swap two motor phase wires (e.g., swap B and C)
+3. Retest
+4. If still incorrect, try a different pair
+
+There are 6 possible phase combinations:
+- ABC, ACB, BAC, BCA, CAB, CBA
+
+Only one will produce smooth rotation in the correct direction.
+
+<Tip>
+**Systematic approach**: Start with ABC. If wrong, try ACB. If still wrong, try BAC. Continue until correct sequence is found.
+</Tip>
+</Step>
+
+<Step title="Verify direction">
+Once smooth rotation is achieved:
+1. Command positive velocity
+2. Verify output shaft rotates in expected direction
+3. Check encoder count increases in expected direction
+
+If direction is wrong but operation is smooth, simply reverse two phases.
+</Step>
+
+<Step title="Document phase sequence">
+Label the motor phase wires permanently with the correct sequence for your driver. Many teams use colored heat shrink or labels.
+</Step>
+
+</Steps>
+
+## Performance Testing
+
+<Steps>
+
+<Step title="Increase current gradually">
+With correct phase sequence established:
+1. Increase current limit to 1A
+2. Command slow rotation and verify smooth operation
+3. Gradually increase to 2A, 3A, etc.
+4. Test up to rated current (typically 8-12A for these actuators)
+
+<Warning>
+Monitor motor temperature continuously during current testing. If motor exceeds 80°C, reduce current or allow cooling time.
+</Warning>
+</Step>
+
+<Step title="Test velocity range">
+Test motor at various speeds:
+- Very slow (0.1 rad/s) - verify no cogging
+- Medium (5 rad/s) - typical operation speed
+- Fast (20+ rad/s) - verify no vibration
+
+Note any unusual behavior at specific speeds.
+</Step>
+
+<Step title="Test position control">
+If using position control:
+1. Command step changes in position
+2. Verify actuator reaches commanded position
+3. Check for overshoot or oscillation
+4. Verify encoder count matches commanded position
+</Step>
+
+<Step title="Current draw verification">
+Measure current draw during operation:
+- No load: less than 0.5A at moderate speed
+- Light load: 1-3A typical
+- Heavy load: Up to rated current
+
+Excessively high current with no load indicates:
+- Mechanical binding
+- Incorrect phase sequence
+- Damaged motor windings
+</Step>
+
+<Step title="Thermal testing">
+Run actuator at typical operating current for 10-15 minutes:
+1. Measure motor case temperature every 2 minutes
+2. Temperature should stabilize below 80°C
+3. If temperature exceeds 80°C, reduce duty cycle or improve cooling
+
+<Tip>
+**Typical temperatures**: At 3A continuous current, motor case temperature typically reaches 50-60°C at ambient temperature of 20-25°C.
+</Tip>
+</Step>
+
+<Step title="Noise and vibration check">
+During operation:
+- Listen for unusual noises (grinding, clicking, squealing)
+- Feel for excessive vibration
+- Check that timing belts remain centered on pulleys
+
+Unusual noise or vibration may indicate:
+- Timing belt teeth skipping
+- Bearing damage
+- Loose fasteners
+- Rotor/stator rubbing
+</Step>
+
+</Steps>
+
+## Final Quality Check
+
+After testing, perform final inspection:
+
+<Steps>
+
+<Step title="Power-off inspection">
+Disconnect power and check:
+- All fasteners remain tight
+- No visible wear on timing belts
+- Timing belts still centered on pulleys
+- No signs of overheating (discolored plastics, melted insulation)
+</Step>
+
+<Step title="Free rotation check">
+Manually rotate output shaft:
+- Should still feel smooth (not worse than before testing)
+- No new noises or binding
+</Step>
+
+<Step title="Documentation">
+Record for future reference:
+- Correct motor phase sequence (wire colors and driver connections)
+- Encoder channel assignment
+- Serial number or build date (label on actuator)
+- Any notes about assembly or testing
+</Step>
+
+</Steps>
+
+## Acceptance Criteria
+
+An actuator passes testing if:
+
+✓ Motor rotates smoothly with no binding throughout full range  
+✓ Encoder signals are clean and toggle correctly  
+✓ Correct motor phase sequence has been determined  
+✓ Current draw is within expected range (less than 0.5A no load at moderate speed)  
+✓ Temperature remains below 80°C at rated current  
+✓ No unusual noise or vibration during operation  
+✓ Position control (if applicable) accurately tracks commands  
+✓ All mechanical fasteners remain secure after testing  
+
+## Troubleshooting
+
+### Motor won't rotate
+- Verify motor driver is powered and enabled
+- Check motor phase connections
+- Verify current limit is not set too low
+- Check for mechanical binding
+
+### Encoder not working
+- Verify encoder power supply (5V)
+- Check encoder wiring and connector
+- Verify codewheel is not touching encoder
+- Inspect codewheel for damage or contamination
+- Check codewheel is rotating with motor shaft
+
+### Excessive current draw
+- Check for mechanical binding
+- Verify motor phase sequence is correct
+- Check for damaged motor windings (measure phase resistance)
+- Verify timing belts are not over-tensioned
+
+### Overheating
+- Reduce duty cycle
+- Improve cooling (airflow)
+- Verify current limit is appropriate
+- Check for mechanical losses (binding, belt friction)
+
+### Encoder position drifts
+- Codewheel may be wobbling (check bonding alignment)
+- Encoder gap may be too large (>1mm)
+- Electrical noise interference (check grounding and shielding)
+- Check index pulse is occurring once per revolution
+
+## Next Steps
+
+With testing complete, your actuator is ready for integration:
+- Install actuator in robot assembly
+- Configure motor driver parameters
+- Implement control algorithms
+- Perform system-level testing
+
+## Related Guides
+
+- [Actuator Assembly](/assembly/actuator-assembly)
+- [Motor Preparation](/assembly/motor-preparation)
+- [Encoder Preparation](/assembly/encoder-preparation)

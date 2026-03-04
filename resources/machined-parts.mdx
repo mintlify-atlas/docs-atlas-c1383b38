@@ -1,0 +1,251 @@
+---
+title: Machined Parts
+description: Technical specifications and manufacturing instructions for machined metal components
+---
+
+The actuator module requires three precision-machined metal parts: motor shaft, motor pulley, and center pulley. These components are critical to the performance of the timing belt transmission system.
+
+<img src="../images/machined_parts_1.jpg" width="400" />
+*Machined parts - motor shaft, motor pulley, and center pulley*
+
+## ODRI Encoder Kit Option
+
+<Tip>
+  As an alternative to manufacturing these parts yourself, you can order the **ODRI Encoder Kit** which includes all machined parts, the code wheel, and encoder. See the [Actuator Module Core v1.1 Documentation](../actuator_module_v1.1.md#brushless-actuator-module-core-v11) for details.
+</Tip>
+
+## Timing Belt Pulleys
+
+### Critical Design Considerations
+
+<Warning>
+  **Do NOT use standard AT3 timing belt pulley dimensions or tools.** The tooth profile has been modified from the original AT3 specification to reduce backlash. Custom manufacturing is required.
+</Warning>
+
+For best performance, the tooth profile of the pulleys must be very precise. Two manufacturing methods are available:
+
+### Option A: Form Cutter (Recommended)
+
+This method uses a custom form cutter to machine the precise tooth profile.
+
+<img src="../images/at3_form_cutter.jpg" width="400" />
+*Custom Form Cutter with AT3 tooth profile*
+
+**Form Cutter Specifications:**
+- **Shaft Diameter:** 3mm
+- **Teeth:** 3 teeth
+- **Helix Angle:** 20 degrees
+- **Material to Cut:** 7075 aluminum
+
+**Manufacturing Instructions:**
+
+1. **Order Custom Form Cutter:**
+   - Find a company that offers custom tooling and can produce custom form cutters
+   - Provide this technical drawing: [PDF Drawing - Pulley AT3 T10 Form Cutter](../drawings/pulley_at3_t10_form_cutter.PDF)
+   - Specify that the tool will be used to machine 7075 aluminum
+
+2. **Machine the Pulleys:**
+   - Send the custom form cutter and drawings to a machine shop
+   - Provide these technical drawings:
+     - [PDF Drawing - Motor Pulley AT3 T10](../drawings/motor_pulley_at3_t10.PDF)
+     - [PDF Drawing - Center Pulley AT3 T10](../drawings/center_pulley_at3_t10.PDF)
+   - Material: 7075 aluminum
+
+<img src="../images/pulleys_form_cutter_1.jpg" width="400" />
+*Aluminum AT3 pulleys machined with custom form cutter*
+
+### Option B: Wire EDM Cutting
+
+Alternatively, the tooth profile can be generated using Wire EDM (Wire Electrical Discharge Machining).
+
+<img src="../images/pulleys_wire_edm.jpg" width="400" />
+*Pulleys manufactured using Wire EDM*
+
+**Considerations:**
+- Initial testing has been completed to evaluate this option
+- **Cost:** No significant advantage over form cutter method
+- **Surface Finish:** Much rougher surface compared to form cutter method
+- **Durability Concerns:** Unknown effect on timing belt lifespan due to rougher surface
+
+**Technical Files:**
+- [PDF Drawing - Wire EDM Geometry](../drawings/pulley_at3_t10_wire_edm.PDF)
+- [DXF File - Wire EDM Geometry](../drawings/pulley_at3_t10_wire_edm.zip)
+
+<Note>
+  The form cutter method (Option A) is recommended as it provides superior surface finish and proven performance.
+</Note>
+
+### Remaining Machining Operations
+
+After the tooth profile is created (using either method), the remaining machining steps are completed on a lathe:
+- Outer diameter finishing
+- Bore diameter
+- Hub features
+- Face features
+
+## Motor Pulleys
+
+### Motor Pulley Specifications
+
+**Motor Pulley AT3 T10**
+- **Material:** 7075 Aluminum
+- **Weight:** 0.6g
+- **Teeth:** 10 teeth, AT3 profile (modified)
+- **Technical Drawing:** [PDF Drawing - Motor Pulley](../drawings/motor_pulley_at3_t10.PDF)
+
+**Manufacturing Process:**
+1. Create tooth profile using custom form cutter (Option A) or Wire EDM (Option B)
+2. Complete remaining features on lathe
+3. Ensure tight tolerances on bore to fit motor shaft
+
+### Center Pulley Specifications
+
+**Center Pulley AT3 T10**
+- **Material:** 7075 Aluminum
+- **Weight:** 2.1g
+- **Teeth:** 10 teeth, AT3 profile (modified)
+- **Technical Drawing:** [PDF Drawing - Center Pulley](../drawings/center_pulley_at3_t10.PDF)
+
+**Manufacturing Process:**
+1. Create tooth profile using custom form cutter (Option A) or Wire EDM (Option B)
+2. Complete remaining features on lathe
+3. Ensure bearing seat dimensions are accurate
+
+## Motor Shafts
+
+<img src="../images/motor_shaft_1.jpg" width="400" />
+*Precision ground motor shaft*
+
+### Material Specifications
+
+**Stock Material:**
+- **Material:** Precision Ground Stainless Steel Rod 1.4301 EN10278 h9
+- **Diameter:** 4.0mm (actual diameter: 3.97mm - 3.99mm)
+- **Tolerance:** h9
+- **Supplier:** [Weinmann Aach](https://weinmann-aach.de/) (Germany)
+- **Product Code:** erd4
+
+<Note>
+  The stock material diameter (3.97mm - 3.99mm) fits the motor bearings without additional adjustments. This precision ground material saves machining time.
+</Note>
+
+### Motor Shaft Specifications
+
+**Motor Shaft**
+- **Material:** Stainless Steel 1.4301 (4mm h9 precision ground rod)
+- **Weight:** 3.2g
+- **Technical Drawing:** [PDF Drawing - Motor Shaft](../drawings/motor_shaft.PDF)
+
+**Manufacturing Process:**
+1. Start with 4mm h9 precision ground stainless steel rod
+2. Machine according to technical drawing
+3. Key features:
+   - Precise diameter for motor bearing fit
+   - Pulley mounting section
+   - Code wheel mounting section
+   - Shoulder dimensions
+
+## Machining Tolerances
+
+### Critical Tolerances
+
+Ensure the following tolerances are maintained:
+
+| Feature | Tolerance | Notes |
+|---------|-----------|-------|
+| Pulley tooth profile | ±0.05mm | Critical for belt engagement |
+| Bearing seats | h7 | For proper bearing fit |
+| Shaft diameters | h9 | For motor bearing and pulley fit |
+| Concentricity | ±0.02mm | Between bearing seats and tooth profile |
+
+### Quality Checks
+
+After machining, verify:
+1. **Tooth Profile:** Check with timing belt for proper engagement
+2. **Bearing Fit:** Test fit bearings (should be light press fit)
+3. **Concentricity:** Measure runout with dial indicator
+4. **Surface Finish:** Ensure smooth surfaces on bearing seats
+
+## Material Properties
+
+### 7075 Aluminum (Pulleys)
+
+**Properties:**
+- High strength-to-weight ratio
+- Good machinability
+- Excellent fatigue resistance
+- Lightweight (density: 2.81 g/cm³)
+
+**Heat Treatment:**
+- T6 temper recommended for maximum strength
+
+### Stainless Steel 1.4301 (Motor Shaft)
+
+**Properties:**
+- Corrosion resistant
+- Good mechanical properties
+- Precision ground surface finish
+- Non-magnetic
+
+**Equivalent Standards:**
+- AISI 304
+- EN 1.4301
+
+## Assembly Preparation
+
+After machining, before assembly:
+
+1. **Deburr all edges** - Remove any sharp edges or burrs
+2. **Clean thoroughly** - Remove all machining oils and debris
+3. **Inspect dimensions** - Verify all critical dimensions with calipers
+4. **Test fit components** - Verify fit with bearings and shafts before final assembly
+
+## Technical Drawing Summary
+
+| Component | Drawing | Material | Weight |
+|-----------|---------|----------|--------|
+| Motor Pulley AT3 T10 | [PDF](../drawings/motor_pulley_at3_t10.PDF) | 7075 Aluminum | 0.6g |
+| Center Pulley AT3 T10 | [PDF](../drawings/center_pulley_at3_t10.PDF) | 7075 Aluminum | 2.1g |
+| Motor Shaft | [PDF](../drawings/motor_shaft.PDF) | Stainless Steel 1.4301 | 3.2g |
+
+**Total Weight of Machined Parts:** 5.9g
+
+## Supplier Contact Information
+
+### Stock Material Supplier
+
+**Weinmann Aach** (Germany)
+- Website: [weinmann-aach.de](https://weinmann-aach.de/)
+- Product: Precision Ground Stainless Steel Rod 1.4301 EN10278 h9 4.0mm (erd4)
+- Ships within Europe
+
+### Form Cutter Manufacturers
+
+Contact custom tooling companies that specialize in form cutters. Provide the technical drawing and specify:
+- Profile geometry per drawing
+- 3mm shaft diameter
+- 3 teeth
+- 20° helix angle
+- Material to be cut: 7075 aluminum
+
+### Machine Shops
+
+Any qualified machine shop with:
+- CNC or manual milling capability
+- Lathe capability
+- Ability to hold tight tolerances (±0.05mm)
+- Experience with aluminum and stainless steel
+
+## Cost Considerations
+
+**Form Cutter Method:**
+- Higher initial cost (custom form cutter)
+- Lower per-part cost for multiple units
+- Better surface finish
+- Faster production for quantities >10 units
+
+**Wire EDM Method:**
+- Lower initial tooling cost
+- Higher per-part cost
+- Acceptable for prototype quantities
+- Rougher surface finish

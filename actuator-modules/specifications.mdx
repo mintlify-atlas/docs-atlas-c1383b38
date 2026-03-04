@@ -1,0 +1,461 @@
+---
+title: 'Actuator Module Specifications'
+description: 'Comprehensive technical specifications for the Open Robot Actuator Module Core v1 and v1.1'
+---
+
+## Overview
+
+This page provides complete technical specifications for the Brushless Actuator Module Core. Specifications apply to both [v1.0](/actuator-modules/core-v1) and [v1.1](/actuator-modules/core-v1-1) modules, which are functionally identical.
+
+## Performance Specifications
+
+<CardGroup cols={2}>
+  <Card title="Torque Output" icon="gauge-high">
+    **2.5 Nm** @ 12A continuous
+    
+    Peak torque higher depending on thermal limits
+  </Card>
+  <Card title="Gear Ratio" icon="gears">
+    **9:1** total reduction
+    
+    Dual-stage: 3:1 × 3:1
+  </Card>
+  <Card title="Encoder Resolution" icon="crosshairs">
+    **20,000 counts/rev** at microcontroller
+    
+    5,000 pulses/rev per channel (quadrature)
+  </Card>
+  <Card title="Control Mode" icon="sliders">
+    **Torque-controlled**
+    
+    Current-based motor control
+  </Card>
+</CardGroup>
+
+## Physical Specifications
+
+### Dimensions
+
+| Parameter | Value | Notes |
+|-----------|-------|-------|
+| **Segment Length** | 160mm | End-to-end module length |
+| **Motor Diameter** | 45mm | Rotor outer diameter |
+| **Output Bearing OD** | 32mm | Outer diameter |
+| **Output Bearing ID** | 25mm | Inner diameter for mounting |
+| **Codewheel Diameter** | 26mm | Optical encoder codewheel |
+| **Codewheel ID** | 7mm | Motor shaft mounting |
+
+### Weight Breakdown
+
+<Tabs>
+  <Tab title="Total Assembly">
+    | Component Category | Weight |
+    |--------------------|--------|
+    | **Complete Module** | **150g** |
+    | Core components (no shell) | 95g |
+    | Shell structure | ~55g |
+  </Tab>
+  <Tab title="Core Components">
+    | Component | Weight | Quantity | Subtotal |
+    |-----------|--------|----------|----------|
+    | **Motor** | 53g | 1 | 53g |
+    | **Encoder/Codewheel** | 5g | 1 | 5g |
+    | **Machined Parts** | - | - | **5.9g** |
+    | - Motor shaft | 3.2g | 1 | 3.2g |
+    | - Motor pulley | 0.6g | 1 | 0.6g |
+    | - Center pulley | 2.1g | 1 | 2.1g |
+    | **3D Printed Parts** | - | - | **11.3g** |
+    | - Encoder mount | 0.3g | 1 | 0.3g |
+    | - Center pulley (T30) | 4.2g | 1 | 4.2g |
+    | - Output pulley (T30) | 6.7g | 1 | 6.7g |
+    | - Tensioner rollers | 0.2g | 2 | 0.4g |
+    | **Timing Belts** | - | - | **4.5g** |
+    | - First stage (150mm) | 1.5g | 1 | 1.5g |
+    | - Second stage (201mm) | 3.0g | 1 | 3.0g |
+    | **Bearings** | - | - | **16g** |
+    | - Output bearings | 6.9g | 2 | 13.8g |
+    | - Transmission bearings | 0.4g | 3 | 1.2g |
+    | - Tensioner bearings | 0.4g | 2 | 0.8g |
+    | **Fasteners** | 2.9g | - | 2.9g |
+    | **TOTAL CORE** | - | - | **95g** |
+  </Tab>
+  <Tab title="v1.1 ODRI Kit">
+    | Component | Weight |
+    |-----------|--------|
+    | **ODRI Encoder Kit (complete)** | **11g** |
+    | - Motor shaft assembly | 4.6g |
+    | - Center pulley | ~2.1g |
+    | - Encoder head | ~5g |
+    | - Codewheel | (included) |
+  </Tab>
+</Tabs>
+
+## Motor Specifications
+
+### T-Motor Antigravity 4004 300kV
+
+<CardGroup cols={2}>
+  <Card title="Electrical">
+    - **KV Rating**: 300 RPM/V
+    - **Configuration**: 3-phase WYE (Star)
+    - **Pole Pairs**: 12
+    - **Slots**: 18
+    - **Magnets**: 24
+    - **Continuous Current**: 12A
+  </Card>
+  <Card title="Mechanical">
+    - **Type**: Brushless outrunner
+    - **Rotor Diameter**: 45mm
+    - **Weight**: 53g
+    - **Bearings**: Integrated
+    - **Shaft**: Custom prepared
+  </Card>
+</CardGroup>
+
+## Encoder Specifications
+
+### Broadcom AEDT-9810-Z00
+
+| Parameter | Specification |
+|-----------|---------------|
+| **Type** | Optical incremental encoder |
+| **Resolution** | 5,000 pulses/revolution per channel |
+| **Counts** | 20,000 counts/rev (quadrature) |
+| **Output Type** | Two-channel quadrature + index (ABZ) |
+| **Output Voltage** | 5V logic |
+| **Codewheel** | 26mm diameter, 625 cycles per revolution |
+| **Weight** | 5g (encoder + codewheel) |
+| **Mounting** | Custom 3D printed bracket |
+
+<Info>
+  **Accuracy**: The high 5,000 cpr resolution provides excellent position accuracy for torque control applications.
+</Info>
+
+## Transmission Specifications
+
+### Dual-Stage Timing Belt System
+
+<Tabs>
+  <Tab title="Overall">
+    | Parameter | Value |
+    |-----------|-------|
+    | **Total Reduction** | 9:1 |
+    | **First Stage** | 3:1 (10T → 30T) |
+    | **Second Stage** | 3:1 (10T → 30T) |
+    | **Belt Type** | AT3 GEN III |
+    | **Tooth Pitch** | 3mm |
+    | **Backlash** | Minimal (custom profile) |
+  </Tab>
+  <Tab title="First Stage">
+    | Component | Specification |
+    |-----------|---------------|
+    | **Motor Pulley** | 10 teeth, aluminum |
+    | **Center Pulley** | 30 teeth, 3D printed |
+    | **Belt Length** | 150mm (50 teeth) |
+    | **Belt Width** | 4mm |
+    | **Belt Weight** | 1.5g |
+    | **Reduction** | 3:1 |
+  </Tab>
+  <Tab title="Second Stage">
+    | Component | Specification |
+    |-----------|---------------|
+    | **Center Pulley** | 10 teeth, aluminum |
+    | **Output Pulley** | 30 teeth, 3D printed |
+    | **Belt Length** | 201mm (67 teeth) |
+    | **Belt Width** | 6mm |
+    | **Belt Weight** | 3.0g |
+    | **Reduction** | 3:1 |
+  </Tab>
+</Tabs>
+
+### Timing Belt Details
+
+**Conti Synchroflex AT3 GEN III**
+
+- **Material**: Heavy-duty polyurethane with steel cord reinforcement
+- **Profile**: AT3 (3mm pitch)
+- **Generation**: GEN III (latest version)
+- **Total Weight**: 4.5g both belts
+- **Manufacturer**: Continental (Contitech)
+
+<Warning>
+  **Custom Tooth Profile**: Pulley tooth profile is modified from standard AT3 to reduce backlash. Do not substitute with standard AT3 pulleys.
+</Warning>
+
+## Bearing Specifications
+
+### EZO Stainless Steel Miniature Bearings
+
+<CardGroup cols={3}>
+  <Card title="Output Bearing">
+    **EZO 61705 2RS VA**
+    
+    - Outer Diameter: 32mm
+    - Inner Diameter: 25mm
+    - Thickness: 4mm
+    - Weight: 6.9g each
+    - Quantity: 2
+    - Type: Deep groove ball bearing
+    - Seals: 2RS (rubber seals both sides)
+    - Material: Stainless steel (VA)
+  </Card>
+  <Card title="Transmission Bearing">
+    **EZO MR84 VA**
+    
+    - Outer Diameter: 8mm
+    - Inner Diameter: 4mm
+    - Thickness: 2mm
+    - Weight: 0.4g each
+    - Quantity: 3
+    - Type: Miniature ball bearing
+    - Seals: Open
+    - Material: Stainless steel (VA)
+  </Card>
+  <Card title="Tensioner Bearing">
+    **EZO 683 2Z VA**
+    
+    - Outer Diameter: 7mm
+    - Inner Diameter: 3mm
+    - Thickness: 3mm
+    - Weight: 0.4g each
+    - Quantity: 2
+    - Type: Miniature ball bearing
+    - Seals: 2Z (metal shields)
+    - Material: Stainless steel (VA)
+  </Card>
+</CardGroup>
+
+<Tip>
+  **Alternative**: Chrome steel bearings can be substituted for lower cost, but stainless steel is recommended for corrosion resistance.
+</Tip>
+
+## Machined Parts Specifications
+
+### v1.0 Custom Machined Parts
+
+<Tabs>
+  <Tab title="Motor Shaft">
+    | Parameter | Specification |
+    |-----------|---------------|
+    | **Material** | Stainless steel 1.4301 |
+    | **Stock Size** | 4mm diameter h9 tolerance |
+    | **Tolerance** | 3.97mm - 3.99mm |
+    | **Finish** | Precision ground |
+    | **Weight** | 3.2g |
+    | **Features** | Custom ends for codewheel and bearing |
+    | **Drawing** | motor_shaft.PDF |
+  </Tab>
+  <Tab title="Motor Pulley">
+    | Parameter | Specification |
+    |-----------|---------------|
+    | **Material** | Aluminum |
+    | **Teeth** | 10 |
+    | **Profile** | AT3 custom (modified) |
+    | **Weight** | 0.6g |
+    | **Machining** | Form cutter or Wire EDM |
+    | **Drawing** | motor_pulley_at3_t10.PDF |
+  </Tab>
+  <Tab title="Center Pulley">
+    | Parameter | Specification |
+    |-----------|---------------|
+    | **Material** | Aluminum |
+    | **Teeth** | 10 |
+    | **Profile** | AT3 custom (modified) |
+    | **Weight** | 2.1g |
+    | **Machining** | Form cutter or Wire EDM |
+    | **Drawing** | center_pulley_at3_t10.PDF |
+  </Tab>
+</Tabs>
+
+### v1.1 ODRI Kit Parts
+
+| Component | Material | Specification | Included in Kit |
+|-----------|----------|---------------|------------------|
+| **Motor Shaft Assembly** | Stainless steel + aluminum | Pre-assembled with bearings and pulley | ✅ |
+| **Center Pulley** | Aluminum 7075 | 10 teeth, AT3 profile | ✅ |
+| **Encoder Head** | PCB/optical | Broadcom AEDT-9810-Z00 | ✅ |
+| **Codewheel** | Glass/metal | 5000 cpr, mounted on shaft | ✅ |
+
+<Info>
+  The ODRI Kit (v1.1) eliminates all custom machining requirements while providing identical performance to v1.0.
+</Info>
+
+## 3D Printed Parts Specifications
+
+| Part Name | Weight | Teeth | Material | Print Method |
+|-----------|--------|-------|----------|-------------|
+| **Encoder Codewheel PWB Mount** | 0.3g | - | Resin | SLA/Polyjet/Multijet |
+| **Center Pulley T30** | 4.2g | 30 | Resin | SLA/Polyjet/Multijet |
+| **Output Pulley T30** | 6.7g | 30 | Resin | SLA/Polyjet/Multijet |
+| **Tensioner Roller 10mm** | 0.2g | - | Resin | SLA/Polyjet/Multijet |
+
+<Warning>
+  **Print Quality Critical**: Tooth profiles must be precise and concentric. FDM printing is NOT recommended for pulley parts.
+</Warning>
+
+### Available Tensioner Roller Sizes
+
+- 10.0mm (default)
+- 10.5mm
+- 11.0mm
+- 11.5mm
+
+Multiple sizes allow fine-tuning of timing belt tension.
+
+## Electrical Specifications
+
+### Motor Connections
+
+| Parameter | Specification |
+|-----------|---------------|
+| **Connector Type** | 2mm gold-plated bullet connectors |
+| **Wire Gauge** | 0.50 mm² (LiY cable) |
+| **Quantity** | 3 phase wires |
+| **Current Capacity** | 12A continuous, higher peak |
+
+### Encoder Connections
+
+| Parameter | Specification |
+|-----------|---------------|
+| **Connector Type** | Hirose DF13 5-pin socket |
+| **Wire Gauge** | 0.14 mm² (LifY cable) |
+| **Signals** | 5 (A, B, Z, VCC, GND) |
+| **Voltage** | 5V logic |
+| **Wire Colors** | Red, yellow, black, white, green |
+
+## Performance Characteristics
+
+### Torque-Speed Curve
+
+<CardGroup cols={2}>
+  <Card title="Continuous Operation">
+    - **Rated Torque**: 2.5 Nm @ 12A
+    - **Rated Speed**: Variable (motor-dependent)
+    - **Efficiency**: High (timing belt transmission)
+    - **Thermal Limit**: Depends on cooling
+  </Card>
+  <Card title="Peak Performance">
+    - **Peak Torque**: >2.5 Nm (short duration)
+    - **Peak Current**: >12A (thermal limited)
+    - **Control Bandwidth**: High (direct drive feel)
+    - **Backdrivability**: Excellent (low friction)
+  </Card>
+</CardGroup>
+
+### Control Characteristics
+
+| Parameter | Specification |
+|-----------|---------------|
+| **Control Type** | Torque (current) control |
+| **Sensor Type** | Incremental encoder |
+| **Position Resolution** | 20,000 counts/rev output shaft |
+| **Velocity Estimation** | From encoder differentiation |
+| **Torque Estimation** | From motor current |
+| **Response Time** | Fast (low inertia) |
+
+## Material Summary
+
+<Tabs>
+  <Tab title="Metals">
+    | Component | Material | Specification |
+    |-----------|----------|---------------|
+    | Motor shaft | Stainless steel 1.4301 | Precision ground h9 |
+    | Motor pulley | Aluminum | 7075 or 6061 |
+    | Center pulley | Aluminum 7075 | High strength |
+    | Bearings | Stainless steel | EZO quality |
+    | Fasteners | Stainless steel A2 | Corrosion resistant |
+  </Tab>
+  <Tab title="Plastics">
+    | Component | Material | Method |
+    |-----------|----------|--------|
+    | Pulleys (T30) | Photopolymer resin | SLA/Polyjet/Multijet |
+    | Tensioner rollers | Photopolymer resin | SLA/Polyjet/Multijet |
+    | Encoder mount | Photopolymer resin | SLA/Polyjet/Multijet |
+    | Encoder screws | Polyamide (PA) | Injection molded |
+  </Tab>
+  <Tab title="Composites">
+    | Component | Material | Specification |
+    |-----------|----------|---------------|
+    | Timing belts | Polyurethane + steel | Conti GEN III |
+    | Motor wires | Copper + PVC | LiY 0.50mm² |
+    | Encoder wires | Copper + PVC | LifY 0.14mm² |
+  </Tab>
+</Tabs>
+
+## Comparison Table: v1.0 vs v1.1
+
+| Specification | v1.0 | v1.1 | Notes |
+|---------------|------|------|-------|
+| **Total Weight** | 150g | 150g | Identical |
+| **Torque Output** | 2.5 Nm @ 12A | 2.5 Nm @ 12A | Identical |
+| **Gear Ratio** | 9:1 | 9:1 | Identical |
+| **Encoder Resolution** | 20,000 counts/rev | 20,000 counts/rev | Identical |
+| **Machined Parts** | Custom ordered | ODRI Kit | Different sourcing |
+| **Assembly Time** | Longer | Shorter | Kit pre-assembled |
+| **Cost** | Lower (if machining available) | Higher (kit premium) | Trade-off |
+| **Machining Required** | Yes | No | Key difference |
+| **Performance** | Excellent | Excellent | Functionally identical |
+| **Compatibility** | Full | Full | Interchangeable |
+
+## Tolerances and Fits
+
+### Critical Dimensions
+
+| Interface | Nominal | Tolerance | Fit Type |
+|-----------|---------|-----------|----------|
+| Motor shaft diameter | 4.0mm | h9 (3.97-3.99mm) | Clearance to bearing |
+| Codewheel bore | 7.0mm | +0.05mm | Press fit to shaft |
+| Output bearing OD | 32mm | Standard | Press fit to pulley |
+| Output bearing ID | 25mm | Standard | Clearance to shaft |
+| Pulley tooth profile | AT3 custom | ±0.05mm | Critical for backlash |
+
+## Environmental Specifications
+
+| Parameter | Specification | Notes |
+|-----------|---------------|-------|
+| **Operating Temperature** | 0°C to 50°C | Typical lab/field use |
+| **Storage Temperature** | -20°C to 60°C | Standard conditions |
+| **Humidity** | 20% to 80% RH | Non-condensing |
+| **IP Rating** | IP20 | Not sealed, indoor use |
+| **Shock Resistance** | Moderate | Designed for legged robots |
+| **Vibration** | Good | Low-backlash transmission |
+
+<Info>
+  These specifications are for standard laboratory and indoor robotic applications. Additional sealing or protection may be needed for harsh environments.
+</Info>
+
+## Quality and Standards
+
+### Component Quality
+
+- **Bearings**: EZO precision miniature bearings
+- **Timing Belts**: Continental GEN III industrial grade
+- **Motor**: T-Motor hobby-grade (high performance)
+- **Encoder**: Broadcom industrial optical encoder
+- **Fasteners**: DIN/ISO standard metric hardware
+
+### Design Standards
+
+- **License**: BSD 3-Clause (open source)
+- **Design Origin**: Max Planck Institute / NYU research
+- **Documentation**: Complete technical drawings provided
+- **Testing**: Validated in multiple research platforms
+
+## Related Pages
+
+<CardGroup cols={2}>
+  <Card title="Actuator Module v1.0" href="/actuator-modules/core-v1" icon="gear">
+    Detailed v1.0 documentation
+  </Card>
+  <Card title="Actuator Module v1.1" href="/actuator-modules/core-v1-1" icon="box">
+    Updated v1.1 with ODRI Kit
+  </Card>
+</CardGroup>
+
+---
+
+**Authors**: Felix Grimminger
+
+**License**: BSD 3-Clause License
+
+**Copyright**: © 2019-2021 Max Planck Gesellschaft and New York University

@@ -1,0 +1,239 @@
+---
+title: 3D Printed Parts
+description: Guide to 3D printing technologies, materials, and specifications for actuator module components
+---
+
+The actuator module uses two categories of 3D printed parts, each requiring different printing technologies for optimal results.
+
+## Printing Technologies
+
+### Large Structural Parts
+
+For **large structural parts** like shells and robot body structures, use:
+
+- **FDM (Fused Deposition Modeling)** printer
+- **SLS (Selective Laser Sintering)** printer
+
+These technologies are suitable for parts that require strength and durability but not extremely fine detail.
+
+### Small Precision Parts
+
+For **small parts requiring high precision** like timing belt pulleys, use:
+
+- **Multijet** printer
+- **SLA (Stereolithography)** printer
+
+These technologies provide the accuracy needed for components with tight tolerances, such as the AT3 timing belt pulley tooth profile.
+
+<img src="../images/3d_printing_1.jpg" width="400" />
+*Comparison of 3D printed parts: Body structure from FDM printer (left) and pulley from Multijet printer (right)*
+
+## Printing Tolerances
+
+<Warning>
+  Printing tolerances vary significantly depending on the supplier, printing technology, and even between orders from the same supplier.
+</Warning>
+
+### Critical Surfaces
+
+The most critical surfaces for shell parts are the **bearing seats** (colored yellow in technical drawings). These require precise dimensions:
+
+- If bearing seat diameters are too tight, use an end mill to adjust the diameter
+- If bearing seat diameters are much too large, bearings will not be held securely and parts may be unusable
+
+<Tip>
+  Ideally, produce 3D printed parts on your own printer. This allows you to perform test prints and adjust printer settings or STL files as needed.
+</Tip>
+
+## MPI Tübingen Printer Specifications
+
+### Fortus FDM Printer
+
+The Fortus 360mc FDM Printer is used for structural components with the following specifications:
+
+**Material and Settings:**
+- **Model Material:** PC-ABS black
+- **Support Material:** SR20
+- **Nozzle:** T12 nozzle for material and support
+- **Slice Height:** 0.178mm
+- **Support Removal:** Mechanical removal or alkaline bath
+- **Interior Settings:**
+  - Standard solid interior for shell and body parts
+  - Sparse double dense for lower legs
+
+### Projet Multijet Printer
+
+The Projet 3500 HD Max Multijet Printer is used for precision components:
+
+**Material and Post-Processing:**
+- **Model Material:** VisiJet M3X
+- **Support Material:** S300 Wax
+- **Post-Processing Steps:**
+  1. Oven for removing wax support material
+  2. Ultrasonic bath with baby oil for removing remaining wax
+  3. Ultrasonic bath with soap water for cleaning
+  4. Quenching in ice water
+
+## Ordering from 3D Systems
+
+### Shell Parts (SLS Printing)
+
+Shells should be printed using **Selective Laser Sintering (SLS)** with high-strength material.
+
+**Ordering Instructions:**
+
+1. Go to [3D Systems Part on Demand Service](https://www.3dsystems.com/on-demand-manufacturing)
+2. Login or create an account
+3. Upload STL files:
+   - `actuator_shell_base.stl`
+   - `actuator_shell_cover.stl`
+4. **Choose Printing Technology:** SLS - Selective Laser Sintering
+5. **Choose Material:** Duraform HST
+6. Select number of copies
+7. **Do NOT order online** - save order and note the order number
+8. Email 3D Systems engineering support with:
+   - Order number
+   - Request for quote with printing direction in **positive z-axis** direction of STL files
+
+<Warning>
+  **Print orientation is critical!** If you order directly from the online system, parts will be automatically placed by an algorithm. If placed at random angles, parts may be unusable. Always request specific print orientation through engineering support.
+</Warning>
+
+**Recommended Print Direction:**
+- Positive z-axis direction of STL files
+- This ensures critical bearing seat surfaces are oriented correctly
+
+### Pulleys and Code Wheel Mount (SLA Printing)
+
+These precision parts should be printed using **Stereolithography (SLA)** or **Multijet**.
+
+**Ordering Instructions:**
+
+1. Go to [3D Systems Part on Demand Service](https://www.3dsystems.com/on-demand-manufacturing)
+2. Login or create account
+3. Upload STL files:
+   - `encoder_codewheel_pwb_mount.stl`
+   - `transmission_pulley_at3_t30_center.stl`
+   - `transmission_pulley_at3_t30_output.stl`
+4. **Choose Printing Technology:** SLA - Stereolithography
+5. **Choose Material:** Accura Extreme Grey
+6. Select number of copies
+7. **Do NOT order online** - save order and note order number
+8. Email engineering support with:
+   - Order number
+   - Request for quote with printing direction in positive z-axis direction
+
+## 3D Systems Engineering Support
+
+| Region | Contact |
+|--------|----------|
+| **Germany** | anfrage@3dsystems.com / Phone: 06105-3248-456 |
+| **France** | lydie.caze@3dsystems.com |
+| **US** | chris.lewis@3dsystems.com |
+| **Webpage** | [3D Systems Part on Demand Service](https://www.3dsystems.com/on-demand-manufacturing) |
+
+## 3D Printed Parts List
+
+All STL files are available in the source repository's `stl_files` directory.
+
+### Encoder Mount
+
+**Encoder Codewheel PWB Mount**
+- **Weight:** 0.3g
+- **File:** `encoder_codewheel_pwb_mount.STL`
+- **Use:** For Broadcom AEDT-9810-Z00 encoder
+- **Printer:** SLA, Polyjet, or Multijet
+
+**Encoder Codewheel Kit Mount**
+- **Weight:** 0.3g
+- **File:** `encoder_codewheel_kit_mount.STL`
+- **Use:** For AEDM-5810-Z12 encoder kit
+- **Printer:** SLA, Polyjet, or Multijet
+
+### Transmission Pulleys
+
+**Transmission Pulley AT3 T30 Center**
+- **Weight:** 4.2g
+- **Teeth:** 30
+- **File:** `transmission_pulley_at3_t30_center.STL`
+- **Printer:** SLA, Polyjet, or Multijet
+- **Note:** Tooth profile requires high precision
+
+**Transmission Pulley AT3 T30 Output**
+- **Weight:** 6.7g
+- **Teeth:** 30
+- **File:** `transmission_pulley_at3_t30_output.STL`
+- **Printer:** SLA, Polyjet, or Multijet
+- **Note:** Tooth profile requires high precision
+
+### Timing Belt Tensioner Rollers
+
+**Transmission Belt Tensioner Rollers**
+- **Weight:** 0.2g each
+- **Quantity Required:** 2
+- **Printer:** SLA, Polyjet, or Multijet
+
+Multiple diameter options available to adjust timing belt tension:
+
+| Diameter | STL File |
+|----------|----------|
+| 10.0mm | `transmission_belt_tensioner_roller_10.0mm.STL` |
+| 10.5mm | `transmission_belt_tensioner_roller_10.5mm.STL` |
+| 11.0mm | `transmission_belt_tensioner_roller_11.0mm.STL` |
+| 11.5mm | `transmission_belt_tensioner_roller_11.5mm.STL` |
+
+**Default:** 10.0mm diameter
+
+### Shell Parts
+
+**Actuator Shell Base and Cover**
+- **Printer:** FDM (Fortus) or SLS
+- **Material:** PC-ABS (FDM) or Duraform HST (SLS)
+- **Files:** `actuator_shell_base.STL`, `actuator_shell_cover.STL`
+
+## Printing Direction
+
+<Note>
+  The recommended printing direction for **all parts** is the positive z-axis direction of the STL files. This ensures optimal strength and dimensional accuracy for critical surfaces.
+</Note>
+
+## Quality Control
+
+### Critical Dimensions
+
+After printing, verify these critical dimensions:
+
+1. **Bearing seat diameters** - must hold bearings securely without excessive force
+2. **Pulley tooth profiles** - must mesh properly with timing belts
+3. **Mounting hole locations** - must align with mating parts
+4. **Thread boss dimensions** - must accept helicoil inserts properly
+
+### Test Fitting
+
+Before final assembly:
+- Test fit bearings in their seats
+- Check pulley/belt engagement
+- Verify all fastener holes
+- Test encoder mount alignment
+
+## Material Properties
+
+### PC-ABS (FDM)
+- Good impact resistance
+- Suitable for structural components
+- Can be post-machined if needed
+
+### Duraform HST (SLS)
+- High strength and stiffness
+- Excellent dimensional accuracy
+- Good fatigue resistance
+
+### VisiJet M3X (Multijet)
+- High detail resolution
+- Smooth surface finish
+- Suitable for precision mechanical parts
+
+### Accura Extreme Grey (SLA)
+- High tensile strength
+- Good dimensional stability
+- Excellent surface finish

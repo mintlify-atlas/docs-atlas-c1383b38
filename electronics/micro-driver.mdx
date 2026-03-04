@@ -1,0 +1,359 @@
+---
+title: Micro Driver Electronics
+description: Miniaturized dual brushless motor driver for compact robot designs
+---
+
+# Micro Driver Electronics
+
+<img src="/images/electronics/micro_driver_v2_1.jpg" alt="Micro Driver v2.1" width="500" />
+
+## Overview
+
+The Micro Driver is a miniaturized version of the Texas Instruments evaluation boards, providing the same motor control capabilities in a compact form factor ideal for integrated robot designs.
+
+### Key Specifications
+
+- **Type**: Dual brushless motor driver
+- **Control frequency**: 10kHz torque control per motor
+- **Communication**: SPI with Master Board at 1kHz
+- **Board layers**: 6-layer FR4
+- **Copper thickness**: 35μm
+- **Dimensions**: 51mm × 50mm
+- **Weight**: 13g
+- **Input voltage**: 5V - 32V (typically 24V)
+- **Current rating**: Similar to TI boards (15A continuous, 20A peak)
+
+## LED Status Indicators
+
+### GREEN/BLUE LED (System and Motor Status)
+
+- **Off**: System disabled
+- **On**: System enabled
+- **Slow blinking**: Motor enabled
+- **Fast blinking**: Aligning motor
+
+### RED LED
+
+Turns on when there is an error condition.
+
+## Size Comparison
+
+<img src="/images/electronics/motor_driver_comparison.png" alt="Motor driver comparison" width="500" />
+
+The Micro Driver is significantly smaller than the TI evaluation boards:
+
+| Feature | TI Boards | Micro Driver | Improvement |
+|---------|-----------|--------------|-------------|
+| **Size** | Large format | 51mm × 50mm | 10x smaller |
+| **Weight** | 85g | 13g | 6.5x lighter |
+| **Programming** | Onboard USB | External JTAG | More compact |
+| **Communication** | CAN/USB | SPI | Faster, integrated |
+
+## Design Files
+
+### Eagle Design Files
+
+<img src="/images/electronics/microDriver_v2.png" alt="Micro Driver PCB layout" width="600" />
+
+[Download MicroDriver v2 Eagle Design Files](eagle_design_files/microDriver_v2.zip)
+
+### Production Files
+
+- [MicroDriver v2 Gerber Set](production_files/microDriver_v2_gerber.zip)
+- [MicroDriver v2 Assembly Packet](production_files/microDriver_v2_assembly.zip)
+
+<img src="/images/electronics/micro_drivers_v2_1.jpg" alt="Production Micro Driver boards" width="500" />
+
+## Ordering Instructions
+
+### Beta Layout (Europe)
+
+Beta Layout has permission to replicate the MicroDriver v2 board. They ship worldwide.
+
+<Steps>
+  <Step title="Request Quote">
+    Email **info.de@beta-layout.com** and request a quote for replicating the MicroDriver v2 boards according to order number **AU-201909/38760**.
+  </Step>
+  
+  <Step title="Board Production Quote">
+    Beta Layout will send you a quote for producing the boards and for the placing and soldering service (NOT including electronic components).
+  </Step>
+  
+  <Step title="Component Sourcing">
+    After placing the order, Beta Layout will source the components and send you the component list with actual prices for approval.
+    
+    <Note>
+    Recent orders: Component cost approximately €50 per board.
+    </Note>
+  </Step>
+  
+  <Step title="Assembly Options">
+    Order boards with all components placed and soldered EXCEPT:
+    - Precision resistors
+    - Hirose connectors
+    
+    These components require manual soldering (see instructions below).
+  </Step>
+</Steps>
+
+### MacroFab (USA)
+
+In the United States, the Micro Driver boards can be ordered from [MacroFab](https://macrofab.com/).
+
+Upload the production files and follow their ordering process for PCB assembly.
+
+## Bill of Materials
+
+### Micro Driver Board Components
+
+<img src="/images/electronics/micro_driver_components_1.jpg" alt="Micro Driver components" width="500" />
+
+| Component | Details | Ordering Information | Purpose |
+|-----------|---------|---------------------|----------|
+| MicroDriver v2 PCB | 6-layer board | [BetaLayout](https://us.beta-layout.com/pcb/) or [MacroFab](https://macrofab.com/) | Base board |
+| Precision Resistors | 7mΩ ±1%<br/>CRE2512-FZ-R007E-3 | RS 824-0348<br/>Mouser 652-CRE2512FZR007E-3 | Phase current measurement |
+| Right Angle Pin Header | Pitch 2.54mm | RS 360-6364 | Motor phase and power connection |
+| Hirose DF13 Header 5-pin | DF13-5P-1.25DS(20) | DigiKey H2202-ND | Encoder and SPI connectors |
+
+### Flash Adapter and Programming
+
+<img src="/images/electronics/flash_adapter_1.jpg" alt="JTAG flash adapter" width="500" />
+
+| Component | Details | Ordering Information | Purpose |
+|-----------|---------|---------------------|----------|
+| JTAG Emulator | Spectrum Digital XDS100V2 | DigiKey 702302-ND<br/>Farnell 1831927 | Programming interface |
+| Pin Header 8-position | 1.27mm pitch<br/>Amphenol ICC 20021111-00008T4LF | DigiKey 609-3711-ND | Flash cable - Micro Driver side |
+| Pin Header | 2.54mm pitch<br/>Assmann AWL254-DG-G72A | RS 674-2347 | Flash cable - Emulator side |
+| Ribbon Cable | HARTING 09180107001<br/>Pitch 1.27mm | DigiKey 1195-4452-ND | Flash cable |
+
+## Assembly Instructions
+
+The Micro Drivers arrive from the manufacturer without connectors and precision resistors. These components must be manually soldered.
+
+### Precision Resistor Soldering
+
+The six precision resistors (7mΩ) must be soldered on the back of the Micro Driver for phase current measurement.
+
+<Steps>
+  <Step title="Prepare Board">
+    <img src="/images/electronics/micro_driver_resistor_soldering_preparation.jpg" alt="Resistor preparation" width="500" />
+    
+    Position the board with the back side facing up. Identify the six resistor locations.
+  </Step>
+  
+  <Step title="Initial Tack">
+    <img src="/images/electronics/micro_driver_resistor_soldering.jpg" alt="Resistor soldering" width="500" />
+    
+    **Trick:** Apply solder at the tip of one pad to initially fix the resistor. Then solder the other side and return to properly fix the initial side.
+  </Step>
+  
+  <Step title="Complete Soldering">
+    <img src="/images/electronics/micro_driver_resistor_final.jpg" alt="Completed resistors" width="500" />
+    
+    Ensure all six resistors are properly soldered with good solder joints.
+  </Step>
+</Steps>
+
+### Hirose Connector Soldering
+
+<img src="/images/electronics/micro_driver_stack_1.jpg" alt="Micro Driver stack with right angle connectors" width="500" />
+
+Two connector options are available:
+
+<Tabs>
+  <Tab title="Right Angle Connectors">
+    **Recommended for stacked configurations**
+    
+    <img src="/images/electronics/micro_driver_hirose_connectors_1.jpg" alt="Right angle connectors" width="500" />
+    
+    - Mounted on the **bottom side** of the board
+    - Allows connecting/disconnecting without disassembling stack
+    - Better for compact robot designs
+    - Part: DF13-5P-1.25DS(20)
+  </Tab>
+  
+  <Tab title="Straight Connectors">
+    **Alternative option**
+    
+    <img src="/images/electronics/micro_driver_hirose_connectors_1.jpg" alt="Straight connectors" width="500" />
+    
+    - Mounted on the **top side** of the board
+    - Simpler soldering process
+    - Compatible with same wiring interface
+    - Part: DF13-5S-1.25C
+  </Tab>
+</Tabs>
+
+#### Encoder Connectors (2x per board)
+
+<Steps>
+  <Step title="Position Board">
+    <img src="/images/electronics/micro_driver_hirose_preparation.jpg" alt="Position board in vise" width="500" />
+    
+    Use a vise to clamp the board and locate the Hirose connector positions.
+  </Step>
+  
+  <Step title="Solder Connectors">
+    <img src="/images/electronics/micro_driver_hirose_soldering.jpg" alt="Solder Hirose connectors" width="500" />
+    
+    Solder the two encoder connectors (5-pin each) onto the board. Ensure proper alignment before soldering.
+  </Step>
+</Steps>
+
+#### SPI Connector (1x per board)
+
+<img src="/images/electronics/micro_driver_hirose_connectors_2.jpg" alt="SPI connector" width="500" />
+
+Solder the SPI communication connector (5-pin) using the same process as the encoder connectors.
+
+<Note>
+**Pin Assignment:** Both right angle and straight connectors maintain identical pin assignments when mounted as specified, ensuring compatibility with the actuator module wiring interface.
+</Note>
+
+### Motor Phase and Power Wire Preparation
+
+#### Power Wires
+
+<Steps>
+  <Step title="Solder Pin Header">
+    <img src="/images/electronics/power_preparation_1.jpg" alt="Power pin header" width="400" />
+    
+    Solder a two-pin right angle connector to the power terminals.
+  </Step>
+  
+  <Step title="Add Extension Wires">
+    <img src="/images/electronics/power_preparation_2.jpg" alt="Power extension wires" width="400" />
+    
+    Shorten the pins, solder extension wires (0.5mm²), and apply heat shrink.
+  </Step>
+</Steps>
+
+#### Motor Phase Wires
+
+<Steps>
+  <Step title="Prepare Pin and Mating Connector">
+    <img src="/images/electronics/motor_phase_preparation_1.jpg" alt="Right angle pin and mating connector" width="400" />
+    
+    <img src="/images/electronics/motor_phase_preparation_2.jpg" alt="Use mating connector" width="400" />
+    
+    Use a mating connector to hold the right angle pin during soldering.
+  </Step>
+  
+  <Step title="Solder Pins">
+    <img src="/images/electronics/motor_phase_preparation_3.jpg" alt="Orient and solder" width="400" />
+    
+    Orient the pin as desired, apply solder, and shorten the pins.
+    
+    <img src="/images/electronics/motor_phase_preparation_4.jpg" alt="All six connections" width="400" />
+    
+    Repeat for all six motor phase connections.
+  </Step>
+  
+  <Step title="Add Extension Wires">
+    <img src="/images/electronics/motor_phase_preparation_5.jpg" alt="Extension wires" width="400" />
+    
+    Apply extension wires (0.5mm²) and heat shrink.
+  </Step>
+  
+  <Step title="Attach Connectors">
+    <img src="/images/electronics/motor_phase_preparation_6.jpg" alt="Motor phase connectors" width="400" />
+    
+    Attach 2mm motor phase connectors and label the wires. On one board, attach a 2-pin Hirose wire to power the Master Board.
+  </Step>
+</Steps>
+
+## Programming and Flashing
+
+<img src="/images/electronics/udrive_programmable.jpg" alt="Micro Driver with JTAG connection" width="600" />
+
+The Micro Driver boards are programmed using a JTAG emulator connected via USB.
+
+### Flash Cable Wiring
+
+<Warning>
+**Important:** A long cable may cause communication problems when flashing. A cable length of 10 cm works well.
+</Warning>
+
+<img src="/images/electronics/wire_programmable.jpg" alt="Flash cable" width="600" />
+
+| Emulator Connector | Micro Driver Connector |
+|-------------------|------------------------|
+| <img src="/images/electronics/udrive_wireng_programmable.png" width="400" /> | <img src="/images/electronics/udrive_wireng_micro_driver.png" width="300" /> |
+
+### JTAG Connection
+
+<img src="/images/electronics/micro_driver_v2_1_jtag.jpg" alt="JTAG connector location" width="500" />
+
+The JTAG connector is an 8-pin header with 1.27mm pitch on the Micro Driver board.
+
+### Programming Steps
+
+1. Connect the JTAG emulator to your computer via USB
+2. Connect the flash cable between the emulator and Micro Driver
+3. Ensure the Micro Driver is powered (5V-32V)
+4. Use Code Composer Studio or appropriate IDE to flash firmware
+5. Verify successful programming via LED status
+
+## Communication with Master Board
+
+The Micro Driver communicates with the Master Board via SPI at 1kHz.
+
+### SPI Connection
+
+<img src="/images/electronics/spi_wiring_1.png" alt="SPI wiring" width="600" />
+
+See [Wiring](/electronics/wiring) for detailed SPI connection information between Micro Drivers and Master Board.
+
+## Micro Driver Stack Configuration
+
+<img src="/images/electronics/micro_driver_stack_front.jpg" alt="Micro Driver stack" width="500" />
+
+Multiple Micro Driver boards can be stacked for compact multi-motor configurations:
+
+- Up to 6 boards per Master Board
+- Right angle connectors recommended for stacks
+- SPI daisy-chain connection between boards
+- Shared power distribution
+
+## Advantages Over TI Boards
+
+1. **Size and Weight**: 10x smaller, 6x lighter
+2. **Integration**: Designed to fit inside robot structures
+3. **SPI Communication**: Faster, synchronized control with Master Board
+4. **Stackability**: Multiple boards in compact configuration
+5. **Production Ready**: Professional PCB for final robot designs
+
+## Design Resources
+
+- Eagle schematic and board files
+- Gerber files for manufacturing
+- Assembly instructions and BOM
+- Component placement files
+- Testing and validation documentation
+
+## Compatible Robots
+
+The Micro Driver is used in:
+- TriFinger v2 and v3
+- Quadruped Robot 12dof
+- Solo v2 and v3
+- NYU Finger
+- All compact robot designs with Master Board
+
+## Resources
+
+- [Open Dynamic Robot Initiative Website](https://open-dynamic-robot-initiative.github.io)
+- [YouTube Channel](https://www.youtube.com/channel/UCx32JW2oIrax47Gjq8zNI-w)
+- [Community Forum](https://odri.discourse.group/categories)
+- [Research Paper](https://arxiv.org/pdf/1910.00093.pdf)
+- [Master Board Documentation](https://github.com/open-dynamic-robot-initiative/master-board)
+
+## Authors
+
+Jonathan Fiene, Julian Viereck, Felix Grimminger
+
+## License
+
+BSD 3-Clause License
+
+Copyright (c) 2019-2021, Max Planck Gesellschaft and New York University

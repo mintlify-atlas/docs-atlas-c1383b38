@@ -1,0 +1,184 @@
+---
+title: Motor Shaft Preparation
+description: Step-by-step guide for assembling the motor shaft with pulley and codewheel
+---
+
+This guide describes how to prepare the motor shaft assembly, which consists of bonding the aluminum motor pulley to the stainless steel motor shaft, and bonding the codewheel to its mount.
+
+## Overview
+
+The motor shaft preparation involves:
+- Bonding the aluminum motor pulley to the motor shaft using Loctite 648
+- Installing and bonding the codewheel to its mount using superglue
+- Proper alignment and curing for strong, permanent bonds
+
+## Required Tools and Materials
+
+### Tools
+- Digital calipers with depth gauge
+- 4mm reamer
+- Cotton swabs
+- Toothpicks for glue application
+- Heat-resistant surface or oven (70°C capability)
+
+### Materials
+- Custom stainless steel motor shaft (4mm diameter)
+- Aluminum motor pulley (AT3 T10)
+- Codewheel (from PWB or encoder kit)
+- 3D printed codewheel mount (specific to codewheel source)
+- Loctite 648 retaining compound
+- Loctite 406 superglue
+- Ethanol for cleaning
+- 3D printed tool: Motor shaft pulley bonding tool
+- 3D printed tool: Codewheel bonding tool
+
+<Warning>
+**Safety Requirements**
+- Wear nitril gloves when handling Loctite products to protect skin
+- Work in well-ventilated area
+- Ethanol is flammable - keep away from heat sources
+- When using oven for curing, ensure proper ventilation
+</Warning>
+
+## Bonding the Pulley to the Motor Shaft
+
+<Steps>
+
+<Step title="Verify bonding tool depth">
+Before bonding, verify that the 3D printed bonding tool will support the pulley in the correct position. Using digital calipers, measure the depth of the tool - it should be approximately 6.6mm.
+
+<Tip>
+When the motor shaft is placed on the tool, the distance between the tool surface and the end of the motor shaft should be about 26.8mm.
+</Tip>
+</Step>
+
+<Step title="Clean bonding surfaces">
+Using a cotton swab and ethanol, thoroughly clean the bonding surfaces of both the motor shaft and the internal surface of the pulley. Allow to dry completely.
+</Step>
+
+<Step title="Apply Loctite 648">
+Put on nitril gloves. Using a toothpick, apply a thin, even layer of Loctite 648 onto the bonding surfaces of both the motor shaft and the pulley bore.
+</Step>
+
+<Step title="Join the parts">
+Insert the motor shaft into the pulley and rotate it slightly to distribute the Loctite. Using a cotton swab, remove excess Loctite from the bottom surface.
+</Step>
+
+<Step title="Position on bonding tool">
+Place the motor shaft and pulley assembly on the bonding tool. Ensure the flats on the motor shaft are pointing upwards. Remove excess Loctite from the top using a cotton swab.
+
+<Warning>
+**Critical alignment**: Verify that the motor shaft is perfectly vertical and fully inserted into the tool. Misalignment will cause timing belt tracking issues.
+</Warning>
+</Step>
+
+<Step title="Initial curing">
+Let the assembly cure at room temperature for several hours (2-3 hours minimum).
+</Step>
+
+<Step title="Heat curing for full strength">
+Leave the parts on the bonding tool and place them in an oven. Cure at 70°C for approximately 3 hours to achieve full bond strength.
+
+<Tip>
+Keeping the assembly on the tool during oven curing ensures proper alignment is maintained throughout the curing process.
+</Tip>
+</Step>
+
+<Step title="Verify bond">
+After cooling, verify that the pulley is securely bonded and cannot rotate on the shaft.
+</Step>
+
+</Steps>
+
+## Bonding the Codewheel
+
+### Selecting the Correct Codewheel Mount
+
+<Warning>
+There are two different codewheel sources, and each requires a specific mount:
+- **Option A**: Codewheel ordered from PWB - use codewheel_pwb_mount.STL
+- **Option B**: Codewheel from encoder kit - use codewheel_kit_mount.STL
+
+Make sure you use the correct mount file for your codewheel source.
+</Warning>
+
+<Steps>
+
+<Step title="Test fit the codewheel">
+Place the codewheel on the codewheel mount and verify it fits properly. The codewheel should sit completely flat without wobbling when turned.
+
+<Tip>
+If the codewheel doesn't sit flat, there may be residue from 3D printing in the corner of the part. Use a flat screwdriver to scrape off any residue from the mounting surface.
+</Tip>
+</Step>
+
+<Step title="Prepare for bonding">
+For easier alignment during bonding, insert the motor shaft assembly (with pulley attached) into the bearings of the stator, with the flats facing downward.
+</Step>
+
+<Step title="Adjust codewheel mount bore">
+Using a 4mm reamer, adjust the inner diameter of the codewheel mount to fit smoothly on the motor shaft.
+</Step>
+
+<Step title="Install and align the mount">
+Place the codewheel mount on the motor shaft and align the teeth of the pulley with the teeth on the mount. Push the mount all the way down.
+</Step>
+
+<Step title="Verify mount position">
+Check the distance between the end of the motor shaft and the top of the mount. The distance should be approximately 2mm (±0.1-0.2mm is acceptable).
+</Step>
+
+<Step title="Prepare bonding materials">
+Gather:
+- Codewheel (with printed side facing up)
+- Loctite 406 superglue
+- Toothpicks
+- Cotton swabs
+- 3D printed codewheel bonding tool
+- Nitril gloves
+
+<Warning>
+**Critical orientation**: The print on the codewheel must be readable from the top. Installing the codewheel upside down will result in incorrect encoder readings.
+</Warning>
+</Step>
+
+<Step title="Apply superglue">
+Put on nitril gloves. Using a toothpick, apply a thin, even layer of Loctite 406 superglue to the top surface of the codewheel mount.
+</Step>
+
+<Step title="Bond the codewheel">
+Place the codewheel on the mount (printed side up, text readable). Using the 3D printed bonding tool, push the codewheel all the way down. Hold firm pressure for 30 seconds.
+</Step>
+
+<Step title="Remove tool and cure">
+Gently remove the bonding tool and wait several minutes for the glue to fully cure.
+</Step>
+
+<Step title="Verify alignment">
+Rotate the motor shaft and observe the codewheel. It should remain horizontal and not wobble during rotation.
+
+<Warning>
+If the codewheel wobbles, the encoder will not function correctly. The assembly must be redone.
+</Warning>
+</Step>
+
+<Step title="Remove from stator">
+Carefully remove the motor shaft assembly from the stator. The motor shaft assembly is now complete and ready for installation.
+</Step>
+
+</Steps>
+
+## Quality Check
+
+Before proceeding to actuator assembly, verify:
+- Motor pulley is securely bonded to shaft with no rotation
+- Codewheel is bonded flat and perpendicular to shaft
+- Codewheel does not wobble when shaft is rotated
+- Printed text on codewheel is readable from top
+- All components spin freely without binding
+
+## Related Guides
+
+- [Motor Preparation](/assembly/motor-preparation)
+- [Encoder Preparation](/assembly/encoder-preparation)
+- [Actuator Assembly](/assembly/actuator-assembly)

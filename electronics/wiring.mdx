@@ -1,0 +1,450 @@
+---
+title: Wiring and Connections
+description: Detailed wiring instructions for actuator modules, electronics boards, and communication interfaces
+---
+
+# Wiring and Connections
+
+This guide covers all wiring and connection details for the Open Robot Actuator Hardware electronics system.
+
+## Actuator Module Wiring
+
+<img src="/images/electronics/interface_motor_modules.jpg" alt="Actuator module electrical interface" width="400" />
+
+### Interface Overview
+
+Each actuator module has two types of electrical connections:
+
+1. **Encoder wire**: 5-pole Hirose DF13 connector
+2. **Motor phase wires**: 3 wires with 2mm Reely gold connectors
+
+### Encoder Wire Specification
+
+- **Wire gauge**: 0.14 mm² Kabeltronik wires
+- **Connector**: 5-pole Hirose DF13 socket (housing)
+- **Crimp terminals**: Hirose DF13 crimp terminals
+- **Crimp tool**: Hirose DF13 crimp tool
+
+### Motor Phase Wire Specification
+
+- **Wire gauge**: 0.50 mm² Kabeltronik wires
+- **Connector**: 2mm Reely gold connectors (bullet connectors)
+- **Number of wires**: 3 (phase A, B, C)
+
+### Wire Length Measurement
+
+<img src="/images/electronics/wire_length_1.png" alt="Wire length measurement for actuator modules" width="600" />
+
+Wire length is measured from the surface where the wires exit the shell to the connector interface.
+
+### Encoder Pin Assignment
+
+<img src="/images/electronics/encoder_wiring_micro_driver.png" alt="Encoder wiring with Kabeltronik wires" width="600" />
+
+**Color Code and Pin Assignment:**
+
+| Pin | Color | Signal | Description |
+|-----|-------|--------|-------------|
+| 1 | Black | GND | Ground |
+| 2 | Red | VCC | Power (5V) |
+| 3 | Yellow | A | Encoder channel A |
+| 4 | Green | B | Encoder channel B |
+| 5 | Blue | I | Index signal |
+
+### Alternative: Ribbon Cable
+
+<img src="/images/electronics/encoder_wiring_micro_driver_ribbon_cable.png" alt="Encoder wiring with ribbon cables" width="600" />
+
+For prototyping, ribbon cables can be used instead of individual wires.
+
+## Micro Driver Board Wiring
+
+<img src="/images/electronics/micro_driver_stack_front.jpg" alt="Fully assembled Micro Driver stack" width="500" />
+
+### Connection Types
+
+1. **Motor phase wires**: Right angle pin headers with 0.50 mm² wires
+2. **Power supply**: Right angle pin headers with 0.50 mm² wires and XT30 connectors
+3. **Encoder connections**: 5-pole Hirose DF13 connectors
+4. **SPI connections**: 5-pole Hirose DF13 connectors
+
+### Wire Length Measurement
+
+<img src="/images/electronics/wire_length_2.png" alt="Wire length for electronics boards" width="600" />
+
+Wire length is measured from the edge of the electronics board to the connector interface.
+
+### Power Connector Convention
+
+<img src="/images/electronics/power_connectors.png" alt="Power connector convention" width="500" />
+
+**XT30 Connector Standard:**
+- **Red wire/connector**: Positive (+24V)
+- **Black wire/connector**: Ground (GND)
+- **Male connector**: On supply/source side
+- **Female connector**: On load/device side
+
+### Components
+
+- **Motor phase wires**: 0.50 mm² Kabeltronik wires
+- **Motor phase connectors**: 2mm Reely gold connectors
+- **Power wires**: 0.50 mm² Kabeltronik wires
+- **Power connectors**: XT30 connectors
+- **Pin headers**: Right angle, 2.54mm pitch
+
+## SPI Wiring
+
+<img src="/images/electronics/spi_wires.jpg" alt="SPI wires" width="600" />
+
+SPI wires connect the Master Board to the Micro Driver boards for real-time communication.
+
+### Specifications
+
+- **Wire gauge**: 0.14 mm² Kabeltronik wires
+- **Connectors**: 5-pole Hirose DF13 sockets on both ends
+- **Crimp terminals**: Hirose DF13 crimp terminals
+- **Crimp tool**: Hirose DF13 crimp tool
+
+<Warning>
+**Important:** The SPI bus operates at high frequencies. Keep wires as short as possible for reliable communication.
+</Warning>
+
+### SPI Bus Topology
+
+<img src="/images/electronics/spi_wiring_1.png" alt="SPI bus connection diagram" width="700" />
+
+**Configuration:**
+- Daisy-chain connection from Master Board to all Micro Drivers
+- Each Micro Driver has input and output SPI connectors
+- Last board in chain may need termination
+
+### SPI Pin Assignment
+
+| Pin | Color | Signal | Description |
+|-----|-------|--------|-------------|
+| 1 | Black | GND | Ground |
+| 2 | Red | CLK | Clock signal |
+| 3 | Yellow | MOSI | Master Out, Slave In |
+| 4 | Green | MISO | Master In, Slave Out |
+| 5 | Blue | CS | Chip Select |
+
+## IMU Wire
+
+<img src="/images/electronics/imu_wire_1.jpg" alt="Wire for Inertial Measurement Unit" width="600" />
+
+The IMU (Inertial Measurement Unit) connects to the Master Board for measuring robot orientation and acceleration.
+
+### Components
+
+- **Ribbon cable**: 10-pin rectangular connector
+- **Extension wires**: 4-pin Hirose DF13 connector
+- **Protocol**: I2C communication
+
+### Pin Assignment
+
+Detailed pin assignment is documented in the [Master Board Wiring Documentation](https://github.com/open-dynamic-robot-initiative/master-board/blob/master/documentation/masterboard_wiring.md#imu).
+
+## Robot Interface Wire
+
+The robot interface wire provides a single cable for both power and optionally communication to the robot.
+
+### Supply Side
+
+<img src="/images/electronics/connection_wire_3.jpg" alt="Robot interface wire - supply side" width="500" />
+
+**Components:**
+- **Wire gauge**: 1 mm² Kabeltronik wires
+- **Connector**: 4mm power connectors (banana plugs)
+- **Colors**: Red (+24V), Black (GND)
+
+### Robot Side
+
+<img src="/images/electronics/connection_wire_2.jpg" alt="Robot interface wire - robot side" width="500" />
+
+**Components:**
+- **Wire gauge**: 1 mm² Kabeltronik wires
+- **Power connector**: XT30 connector
+- **Colors**: Red (+24V), Black (GND)
+
+### Custom Ethernet Cable Option
+
+<img src="/images/electronics/ethernet_connector.png" alt="Custom 4-wire ethernet cable" width="500" />
+
+For integrated robots, a custom 4-wire Ethernet cable can combine power and data:
+
+**Advantages:**
+- Reduced diameter and stiffness
+- Combined power and Ethernet in single cable
+- Better cable management
+
+**Components:**
+- **Ethernet connectors**: RJ45 connectors
+- **Crimp tool**: Ethernet crimp tool
+- **Wire allocation**: 2 wires for power, 2 wires for Ethernet data
+
+**Pin Assignment:**
+
+| Pin | Wire Color | Function |
+|-----|------------|----------|
+| 1 | Orange/White | Data + |
+| 2 | Orange | Data - |
+| 3 | Green/White | Power + (24V) |
+| 6 | Green | Power - (GND) |
+
+<Note>
+The ethernet connectors are identical on both sides. You can use a standard Ethernet cable instead of a custom one.
+</Note>
+
+## TI Launchpad Encoder Wiring
+
+<img src="/images/electronics/encoder_wiring_launchpad.jpg" alt="Encoder wiring for TI Launchpad with ribbon cables" width="700" />
+
+When using TI Evaluation Boards, encoders can be wired using ribbon cables for prototyping.
+
+### QEP Port Assignment
+
+- **QEP_A**: Encoder for motor on booster pack position 1
+- **QEP_B**: Encoder for motor on booster pack position 2
+
+See [TI Evaluation Boards](/electronics/ti-evaluation-boards) for detailed pin assignment.
+
+## CAN Connector Wiring
+
+<img src="/images/electronics/can_wiring.jpg" alt="CAN connector wiring" width="700" />
+
+For communication with Texas Instruments Evaluation Boards via CAN bus.
+
+### Components
+
+- **Wire**: 2-pole twisted pair
+- **Connector**: 9-pin D-sub connector (male)
+- **CAN card**: PEAK PCI Express CAN card (or similar)
+
+### Pin Assignment
+
+| Pin | Signal | Description |
+|-----|--------|-------------|
+| 2 | CAN_L | CAN bus low |
+| 3 | GND | Ground |
+| 7 | CAN_H | CAN bus high |
+
+### CAN Hardware
+
+<img src="/images/electronics/can_card.jpg" alt="Dual channel CAN card" width="400" />
+
+<img src="/images/electronics/can_connector.jpg" alt="9-pin D-sub connector" width="400" />
+
+**Recommended CAN card:**
+- PEAK PCI Express CAN card (dual channel)
+- USB CAN adapters also compatible
+
+## Foot Sensor Wiring
+
+<img src="/images/electronics/foot_sensor_wiring.jpg" alt="Foot sensor wiring" width="700" />
+
+For robots with foot contact sensors (quadruped, biped robots).
+
+### Connection
+
+- Force-sensitive resistors or contact switches
+- Connected to analog inputs on Master Board or microcontroller
+- Wire through leg structure to electronics
+
+## Wire Management
+
+### Braided Cable Sleeve
+
+<img src="/images/electronics/braided_sleeve_1.jpg" alt="Braided cable sleeve" width="500" />
+
+Use braided expandable sleeve for wire protection and organization:
+
+- Protects wires from abrasion
+- Improves cable appearance
+- Allows bundle expansion for connectors
+- Available in various diameters
+
+### Heat Shrink Tubing
+
+<img src="/images/electronics/heat_shrink_1.jpg" alt="Heat shrink tubing" width="500" />
+
+Apply heat shrink tubing for:
+
+- Strain relief at connectors
+- Wire bundling
+- Insulation protection
+- Professional appearance
+
+### Label Maker
+
+<img src="/images/electronics/heat_shrink_label_maker_1.jpg" alt="Heat shrink label maker" width="500" />
+
+Use a label maker with heat shrink labels for:
+
+- Motor phase identification (A, B, C)
+- Wire function labeling
+- Board identification
+- Professional documentation
+
+## Crimping Techniques
+
+### Hirose DF13 Crimping
+
+<img src="/images/electronics/hirose_crimp_tool_1.jpg" alt="Hirose crimp tool" width="500" />
+
+**Tools required:**
+- Hirose DF13 crimp tool
+- Wire strippers (0.14 mm² wire)
+- Flush cutters
+
+<img src="/images/electronics/hirose_crimps_1.jpg" alt="Hirose crimp terminals" width="500" />
+
+**Process:**
+1. Strip 2-3mm of insulation from wire
+2. Insert wire into crimp terminal
+3. Position in crimp tool (correct cavity)
+4. Compress firmly to crimp
+5. Verify mechanical connection (pull test)
+6. Insert crimped terminal into housing
+
+<img src="/images/electronics/hirose_precrimp_1.jpg" alt="Pre-crimped Hirose wires" width="500" />
+
+<Note>
+**Tip:** Pre-crimped Hirose wires are available from some suppliers, eliminating the need for crimping.
+</Note>
+
+### Ethernet Connector Crimping
+
+<img src="/images/electronics/ethernet_crimp_tool_1.jpg" alt="Ethernet crimp tool" width="500" />
+
+For crimping RJ45 connectors on custom Ethernet cables:
+
+1. Strip outer jacket (25mm)
+2. Arrange wires according to pin assignment
+3. Trim wires to equal length
+4. Insert into RJ45 connector
+5. Ensure wires reach end of connector
+6. Crimp with RJ45 crimp tool
+7. Test continuity
+
+## Component Reference
+
+### Connectors
+
+| Component | Type | Ordering Information |
+|-----------|------|---------------------|
+| Hirose DF13 Socket 5-pin | Housing | DigiKey H2179-ND |
+| Hirose DF13 Straight Header 5-pin | Pin header | DigiKey H2202-ND |
+| Hirose DF13 Right Angle Header 5-pin | Pin header | DigiKey H11614-ND |
+| Hirose DF13 Crimp Terminals | Crimp | DigiKey H9992CT-ND |
+| XT30 Connector Pair | Power | HobbyKing, Amazon |
+| 2mm Gold Connector | Motor phase | Conrad 1373994 |
+| RJ45 Connector | Ethernet | Various suppliers |
+| 9-pin D-sub Male | CAN | Various suppliers |
+
+### Wire
+
+| Component | Type | Ordering Information |
+|-----------|------|---------------------|
+| Kabeltronik 0.14 mm² | Encoder/SPI | Conrad, RS Components |
+| Kabeltronik 0.50 mm² | Motor phase/power | Conrad, RS Components |
+| Kabeltronik 1 mm² | Main power | Conrad, RS Components |
+| Ribbon Cable 1.27mm pitch | Prototyping | DigiKey, Mouser |
+
+### Tools
+
+| Tool | Purpose | Ordering Information |
+|------|---------|---------------------|
+| Hirose Crimp Tool | DF13 crimping | Digi-Key H2177-ND |
+| Ethernet Crimp Tool | RJ45 crimping | Various suppliers |
+| Wire Strippers | Wire preparation | Hardware stores |
+| Heat Gun | Heat shrink | Hardware stores |
+| Multimeter | Continuity testing | Electronics suppliers |
+
+## Testing and Verification
+
+### Continuity Testing
+
+<img src="/images/electronics/multimeter.jpg" alt="Multimeter for testing" width="400" />
+
+After wiring, always verify connections:
+
+1. **Visual inspection**: Check all crimp connections
+2. **Continuity test**: Verify electrical connection between ends
+3. **Insulation test**: Ensure no shorts between wires
+4. **Pull test**: Gently pull on wires to verify mechanical connection
+5. **Power test**: Apply power and measure voltages before connecting motors
+
+### Common Issues
+
+<AccordionGroup>
+  <Accordion title="No encoder signal">
+    - Check power (5V) to encoder
+    - Verify pin assignment (A, B channels)
+    - Test continuity of all 5 wires
+    - Check Hirose connector seating
+  </Accordion>
+  
+  <Accordion title="Motor not spinning">
+    - Verify 3 motor phase connections
+    - Check phase wire order (try swapping two phases)
+    - Measure motor phase resistance (should be low, ~1Ω)
+    - Check for shorts between phases
+  </Accordion>
+  
+  <Accordion title="SPI communication errors">
+    - Verify all 5 SPI wires connected
+    - Check wire length (should be short)
+    - Ensure proper grounding
+    - Test with known-good wire
+  </Accordion>
+  
+  <Accordion title="Power issues">
+    - Verify polarity (red=+, black=GND)
+    - Check voltage at each board
+    - Measure voltage drop under load
+    - Ensure adequate wire gauge for current
+  </Accordion>
+</AccordionGroup>
+
+## Safety Considerations
+
+<Warning>
+**Always follow these safety guidelines:**
+
+1. **Disconnect power** before making or changing connections
+2. **Verify polarity** before connecting power
+3. **Check voltage levels** before connecting to sensitive electronics
+4. **Use proper wire gauge** for current requirements
+5. **Insulate all connections** to prevent shorts
+6. **Test without motors** first when bringing up new electronics
+7. **Use emergency stop** button during testing
+</Warning>
+
+## Best Practices
+
+1. **Plan wire routing** before cutting wires to length
+2. **Label all wires** during assembly
+3. **Use consistent color coding** throughout the robot
+4. **Apply strain relief** at all connectors
+5. **Keep SPI/encoder wires** away from motor power wires
+6. **Document custom wiring** for future maintenance
+7. **Test each subsystem** before final integration
+8. **Use wire management** (braided sleeve, zip ties) for professional results
+
+## Resources
+
+- [Open Dynamic Robot Initiative Website](https://open-dynamic-robot-initiative.github.io)
+- [YouTube Channel](https://www.youtube.com/channel/UCx32JW2oIrax47Gjq8zNI-w)
+- [Community Forum](https://odri.discourse.group/categories)
+- [Research Paper](https://arxiv.org/pdf/1910.00093.pdf)
+- [Electronic Components Details](details_components.md)
+
+## Authors
+
+Felix Grimminger
+
+## License
+
+BSD 3-Clause License
+
+Copyright (c) 2019-2020, Max Planck Gesellschaft and New York University

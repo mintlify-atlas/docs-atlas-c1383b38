@@ -1,0 +1,250 @@
+---
+title: 'Quadruped Solo12'
+description: '12-DOF quadruped robot with 3DOF legs - complete locomotion platform at 2.5kg'
+---
+
+# Quadruped Robot Solo12 (12dof v1)
+
+The Solo12 is a fully-featured 12-degree-of-freedom quadruped robot with torque-controlled actuators. Each leg has 3 active degrees of freedom, enabling complex locomotion behaviors and dynamic maneuvers.
+
+<Note>
+  The Solo12 robot is now commercially available from [PAL Robotics](https://solo.pal-robotics.com/solo) as a fully assembled robot or as a complete kit.
+</Note>
+
+## Overview
+
+<CardGroup cols={2}>
+  <Card title="Degrees of Freedom" icon="arrows-rotate">
+    12 DOF - 3 actuated joints per leg (Hip AA, Hip FE, Knee)
+  </Card>
+  <Card title="Weight" icon="weight-scale">
+    2.5kg total weight
+  </Card>
+  <Card title="Dimensions" icon="ruler">
+    45cm x 30cm x 6cm (body)
+  </Card>
+  <Card title="Communication" icon="ethernet">
+    24V power / Ethernet over wire
+  </Card>
+</CardGroup>
+
+## Key Specifications
+
+| Specification | Value |
+|--------------|-------|
+| Degrees of Freedom | 12 DOF (3 per leg) |
+| Total Weight | 2.5kg |
+| Body Structure Weight | 300g |
+| Leg Module Weight | 485g each |
+| Body Dimensions | 45cm x 30cm x 6cm |
+| Power Supply | 24V over wire |
+| Communication | Ethernet |
+| Electronics Weight | 94g (micro drivers) + 19g (master board) |
+
+## Mechanical Design
+
+### Body Structure
+
+The Solo12 body structure (300g) consists of modular 3D printed components:
+
+<CardGroup cols={2}>
+  <Card title="Frame Components">
+    - Body Structure Back: 12g
+    - Body Structure Front: 12g
+    - Body Structure Sides: 18g each (4 total)
+    - Body Structure Bottom: 10g (2 required)
+  </Card>
+  <Card title="Top Plates">
+    - Standard Center Plate: 24g
+    - Center Plate with Handle: 29g
+    - Center Plate with Vicon Markers: 30g
+  </Card>
+</CardGroup>
+
+Additional structural components:
+- **Body Structure Top IMU**: 12g
+- **Body Structure Top Master Board**: 11g
+- **Hip AA Support**: 20g each (4 required)
+- **LED Cover**: 0.4g (transparent material)
+
+### 3DOF Leg Modules
+
+Each leg features three degrees of freedom:
+
+1. **Hip Abduction/Adduction (AA)**: Lateral leg movement
+2. **Hip Flexion/Extension (FE)**: Forward/backward leg movement  
+3. **Knee**: Lower leg rotation
+
+**Weight per leg**: 485g
+
+See the [3DOF Leg Documentation](/mechanics/leg-3dof-v1) for complete details.
+
+### Range of Motion
+
+**Hip AA Joint:**
+- Standard range: 215 degrees
+- Extended range: 325 degrees (when Hip FE moves simultaneously)
+
+**Hip FE and Knee Joints:**
+- Multiple rotations possible
+- Enables stepping onto obstacles and recovery from falls
+- Wire routing through Hip FE joint limits total rotations
+
+## Electronics System
+
+### Master Board v2
+
+<Card title="Master Board" icon="microchip">
+  Central control board for the robot
+  
+  - Weight: 19g
+  - Ethernet communication interface
+  - Coordinates all motor drivers
+  - SPI communication with micro drivers
+  - [Documentation](https://github.com/open-dynamic-robot-initiative/master-board)
+</Card>
+
+### Micro Driver Boards
+
+The Solo12 uses 6 Micro Driver v2 boards organized in two stacks:
+
+**Front Stack** (3 boards):
+- Controls front left and front right legs
+- Total weight: 47g per stack
+
+**Hind Stack** (3 boards):
+- Controls hind left and hind right legs
+- Total weight: 47g per stack
+
+Each board controls 2 brushless motors. See the [Micro Driver Documentation](/electronics/micro-driver) for details.
+
+### Motor Assignment
+
+| Joint ID | Joint Name | Driver Card | Motor Port | Motor Index |
+|----------|-----------|-------------|------------|--------------|
+| 0 | FL_HAA | 0 | 0 | 0 |
+| 1 | FL_HFE | 1 | 1 | 3 |
+| 2 | FL_K | 1 | 0 | 2 |
+| 3 | FR_HAA | 0 | 1 | 1 |
+| 4 | FR_HFE | 2 | 1 | 5 |
+| 5 | FR_K | 2 | 0 | 4 |
+| 6 | HL_HAA | 3 | 0 | 6 |
+| 7 | HL_HFE | 4 | 1 | 9 |
+| 8 | HL_K | 4 | 0 | 8 |
+| 9 | HR_HAA | 3 | 1 | 7 |
+| 10 | HR_HFE | 5 | 1 | 11 |
+| 11 | HR_K | 5 | 0 | 10 |
+
+### Inertia Measurement Unit
+
+**Lord Microstrain 3DM-CX5-25**
+- Weight: 13g
+- Mounted in front of robot
+- Label pointing downward
+- Extended measurement range:
+  - Gyro Rate: ±900 deg/sec
+  - Accelerometer Range: ±20G
+- [Product Page](https://www.microstrain.com/inertial/3dm-cx5-25)
+
+**IMU Origin Position** (in robot coordinate system):
+- X: 104.07mm
+- Y: -6.35mm
+- Z: 15.40mm
+
+## Assembly Components
+
+### Hip AA Bearings
+
+**Stainless Steel Bearings ET2520 2Z VA**
+- Dimensions: 25mm x 20mm x 4mm
+- Weight: 3.4g each
+- Quantity: 4 required
+
+### Fasteners
+
+<CardGroup cols={2}>
+  <Card title="Body Structure">
+    - M3x12 Socket Head Cap Screws: 16
+    - M3x8 Socket Head Cap Screws: 8
+    - M3x14 Socket Head Cap Screws: 8 (Hip AA support)
+  </Card>
+  <Card title="Electronics">
+    - M2.5x25 Socket Head Cap Screws: 8 (micro driver stack)
+    - M2.5x10 Socket Head Cap Screws: 16 (Hip AA modules)
+    - M2.5x16 Slotted Screws: 3 (IMU - polyamide plastic)
+  </Card>
+</CardGroup>
+
+### Helicoil Thread Inserts
+
+- **M3 x 4.5mm**: 32 inserts
+- Type: 1.5xD, Böllhoff 41890030045
+
+## Wiring Details
+
+Complete wiring documentation is available in the [Electronics Wiring Guide](/electronics/wiring-details).
+
+Key wiring considerations:
+- Motor phase wires routed through leg joints
+- SPI communication wires to each micro driver stack
+- IMU communication wire (4 conductors)
+- Power and Ethernet interface wire
+
+## Bill of Materials
+
+| Component | Quantity | Notes |
+|-----------|----------|-------|
+| 3DOF Leg Modules | 4 | Custom assembly |
+| Master Board v2 | 1 | Custom electronics |
+| Micro Driver Board v2 | 6 | Custom electronics |
+| IMU (3DM-CX5-25) | 1 | Extended measurement range |
+| Hip AA Bearings (ET2520 2Z VA) | 4 | Stainless steel |
+| Body Structure 3D Printed Parts | 1 set | Multiple part options available |
+| Hip Adapter | 2 | Installed on FR and HL legs |
+| Fasteners | Various | Stainless steel |
+| Helicoil Inserts M3x4.5 | 32 | 1.5xD |
+| Vicon Markers (optional) | 13 | Ø 9.5mm with M4x10 set screws |
+
+## Coordinate System
+
+The robot coordinate system origin is located at the center of the body structure. The IMU coordinate system has the same orientation as the robot coordinate system, with the offset documented above.
+
+For complete coordinate system conventions, see [Conventions](/mechanics/conventions).
+
+## Robot Calibration
+
+A dedicated calibration tool is available for the Solo12. See the [Quadruped 12dof Calibration Tool](/mechanics/robot-calibration#quadruped-12dof) documentation.
+
+## Vicon Object for Motion Capture
+
+**Body Structure Center Plate with Vicon Markers**
+- Weight: 43g
+- 13 markers (Ø 9.5mm)
+- Can replace standard center plate
+- Used for base state estimation
+
+## Applications
+
+The Solo12 is designed for:
+- Advanced quadrupedal locomotion research
+- Dynamic maneuvers and acrobatic behaviors
+- Machine learning and reinforcement learning
+- Whole-body control development
+- Outdoor terrain navigation (with autonomy upgrade)
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="3DOF Leg Assembly" icon="gear" href="/mechanics/leg-3dof-v1">
+    Complete leg module build instructions
+  </Card>
+  <Card title="Electronics Wiring" icon="plug" href="/electronics/wiring-details">
+    Detailed wiring guide and schematics
+  </Card>
+  <Card title="Commercial Option" icon="shopping-cart" href="https://solo.pal-robotics.com/solo">
+    Purchase from PAL Robotics
+  </Card>
+  <Card title="CAD Model" icon="cube" href="https://open-dynamic-robot-initiative.github.io/cad_files/quadruped_12dof">
+    Interactive 3D CAD viewer
+  </Card>
+</CardGroup>

@@ -1,0 +1,112 @@
+---
+title: Conventions
+description: Coordinate systems, naming conventions, and design standards
+---
+
+## Robot Coordinate System
+
+<img src="/images/robot_coordinate_system.png" width="400" />
+
+All robot coordinate systems follow this convention:
+
+- **Positive X Axis**: Forward
+- **Positive Y Axis**: Left
+- **Positive Z Axis**: Upwards
+
+## Leg Naming Convention
+
+<img src="/images/leg_naming_convention.png" width="400" />
+
+For quadruped robots, legs are named according to their position:
+
+- **FR**: Front Right Leg
+- **FL**: Front Left Leg
+- **HR**: Hind Right Leg
+- **HL**: Hind Left Leg
+
+## Degree of Freedom Naming Convention
+
+<img src="/images/dof_naming_convention.png" width="400" />
+
+### Joint Types
+
+- **Hip AA**: Hip Abduction Adduction
+- **Hip FE**: Hip Flexion Extension
+- **Knee**: Knee Flexion Extension
+
+### DOF Abbreviations
+
+We use the following abbreviations to label the degrees of freedom:
+
+| DOF Abbreviation | DOF Name |
+|------------------|----------|
+| FRHAA | Front Right Hip Abduction Adduction |
+| FRHFE | Front Right Hip Flexion Extension |
+| FRK | Front Right Knee |
+| FLHAA | Front Left Hip Abduction Adduction |
+| FLHFE | Front Left Hip Flexion Extension |
+| FLK | Front Left Knee |
+| HRHAA | Hind Right Hip Abduction Adduction |
+| HRHFE | Hind Right Hip Flexion Extension |
+| HRK | Hind Right Knee |
+| HLHAA | Hind Left Hip Abduction Adduction |
+| HLHFE | Hind Left Hip Flexion Extension |
+| HLK | Hind Left Knee |
+
+## Direction of Rotation
+
+### Motor Rotation
+
+<img src="/images/convention_motor_rotation.png" width="400" />
+
+The positive direction of rotation is **counterclockwise** when looking at the motor from the top.
+
+### Leg Rotation
+
+<img src="/images/convention_leg_rotation.png" width="250" />
+
+The positive direction of rotation is **clockwise** when looking at the robot leg from the side.
+
+## Neutral Standing Height
+
+<img src="/images/neutral_standing_height.png" width="300" />
+
+We consider the leg to be at neutral standing height when:
+- Hip FE angle is at **45 degrees**
+- Knee angle is at **90 degrees**
+
+Our quadrupeds have:
+- Segment length: **16cm**
+- Neutral standing height: **24cm**
+
+---
+
+## Mechanical Conventions
+
+### 3D Printing Direction
+
+<img src="/images/printing_direction.png" width="450" />
+
+The recommended printing direction is the **positive z-axis direction** of the STL files.
+
+### Mechanical Interface for Actuator Modules
+
+<img src="/images/mechanical_interface_output.png" width="450" />
+
+We use the same mechanical output interface for all actuator modules.
+
+### Mechanical Interface for Segments
+
+<img src="/images/mechanical_interface_segment.png" width="450" />
+
+---
+
+## Electronics Conventions
+
+### Wiring Conventions
+
+<a href="../../electronics/details/details_wiring.md">
+  <img src="/images/encoder_wiring_micro_driver.png" width="400" />
+</a>
+
+The wiring conventions for the actuator modules and the electronics are documented in the [Details Wiring](../../electronics/details/details_wiring.md) page.

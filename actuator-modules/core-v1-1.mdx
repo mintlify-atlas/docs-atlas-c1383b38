@@ -1,0 +1,381 @@
+---
+title: 'Actuator Module Core v1.1'
+description: 'Updated actuator module with ODRI Encoder Kit for simplified assembly and reduced machining requirements'
+---
+
+## Overview
+
+The Brushless Actuator Module Core v1.1 is an updated version of the [core v1 module](/actuator-modules/core-v1) that uses the "Plug & Play" ODRI Encoder Kit from PWB Encoders GmbH. This eliminates the need for custom machining of pulleys and motor shafts, significantly simplifying the build process.
+
+<Info>
+  **Key Advantage**: The ODRI Encoder Kit includes all machined parts pre-assembled, eliminating interaction with machine shops and reducing preparation time.
+</Info>
+
+### Key Specifications
+
+<CardGroup cols={3}>
+  <Card title="Weight" icon="weight-hanging">
+    150g total assembly
+  </Card>
+  <Card title="Torque Output" icon="gauge-high">
+    2.5 Nm @ 12A
+  </Card>
+  <Card title="Segment Length" icon="ruler">
+    160mm
+  </Card>
+</CardGroup>
+
+## What's New in v1.1
+
+The v1.1 module maintains the same core functionality and performance as v1.0 but simplifies the sourcing and assembly process:
+
+<Steps>
+  <Step title="ODRI Encoder Kit">
+    Pre-assembled motor shaft unit with high-resolution code wheel, center pulley, and modified encoder head available as an off-the-shelf product.
+    
+    **Kit Contents**:
+    - Fully prepared motor shaft assembly
+    - Center pulley (Aluminum 7075)
+    - Broadcom AEDT-9810-Z00 encoder head
+    - Total kit weight: 11g
+  </Step>
+  <Step title="Simplified Assembly">
+    All motor shaft preparation steps are pre-completed, eliminating:
+    - Custom machining coordination with machine shops
+    - Motor shaft preparation procedures
+    - Codewheel mounting and alignment
+    - Pulley installation on motor shaft
+  </Step>
+  <Step title="Identical Performance">
+    Functionally equivalent to self-made assemblies - components are compatible and interchangeable between v1.0 and v1.1.
+  </Step>
+</Steps>
+
+<Note>
+  If you want to machine parts yourself or already have machining capabilities, refer to the [Actuator Module Core v1](/actuator-modules/core-v1) documentation.
+</Note>
+
+## ODRI Encoder Kit
+
+### Kit Description
+
+<img src="/images/pwb_odri_kit_components.jpg" alt="ODRI Encoder Kit Components" />
+
+The ODRI Encoder Kit (Order #109381) from PWB Encoders GmbH includes:
+
+<CardGroup cols={3}>
+  <Card title="Motor Shaft Assembly" icon="gear">
+    Complete motor shaft with bearings, motor pulley, and codewheel mounted and aligned
+    
+    Weight: 4.6g
+  </Card>
+  <Card title="Center Pulley" icon="circle">
+    Precision-machined aluminum 7075 center pulley with AT3 tooth profile
+    
+    10 teeth, custom profile
+  </Card>
+  <Card title="Encoder Head" icon="microchip">
+    Broadcom AEDT-9810-Z00 optical encoder with 5000 cpr resolution
+    
+    Pre-tested and verified
+  </Card>
+</CardGroup>
+
+### Ordering Information
+
+- **Product**: "Plug & Play" ODRI Encoder Kit v1.0
+- **Order Number**: 109381
+- **Supplier**: [PWB Encoders GmbH](https://www.pwb-encoders.com/en)
+- **Contact**: info@pwb-encoders.com
+- **Shipping**: Worldwide
+
+<Tip>
+  Send an email to info@pwb-encoders.com requesting a quote for the ODRI Encoder Kit v1.0 (Order #109381). PWB ships worldwide.
+</Tip>
+
+## Core Components
+
+The v1.1 module uses identical core components to v1.0, with only the encoder and machined parts sourcing changed.
+
+<Info>
+  Core components weight: **95g** (excluding shell structure)
+</Info>
+
+### Component Overview
+
+All specifications match the v1.0 module:
+
+- **Transmission**: Dual-stage timing belt system with 9:1 total reduction (3:1 per stage)
+- **Motor**: T-Motor Antigravity 4004 300kV (53g)
+- **Encoder**: Broadcom AEDT-9810-Z00 with 5000 cpr (included in ODRI Kit)
+- **Timing Belts**: Conti Synchroflex AT3 GEN III (4.5g total)
+- **Bearings**: EZO stainless steel miniature bearings (16g total)
+- **Fasteners**: Various M3 screws and helical inserts (2.9g)
+
+See [Actuator Module Core v1](/actuator-modules/core-v1) for detailed component specifications.
+
+## 3D Printed Parts
+
+**Total weight**: 11g
+
+<Warning>
+  Use stereolithography (SLA), Polyjet, or Multijet printers for precise tooth profiles on pulleys.
+</Warning>
+
+**Print Direction**: Positive Z direction of STL files for all components
+
+| Part | Weight | STL File | Notes |
+|------|--------|----------|-------|
+| Transmission Pulley AT3 T30 Center | 4.2g | transmission_pulley_at3_t30_center.STL | SLA/Multijet/Polyjet |
+| Transmission Pulley AT3 T30 Output | 6.7g | transmission_pulley_at3_t30_output.STL | SLA/Multijet/Polyjet |
+| Timing Belt Tensioner Roller (10mm) | 0.2g each | transmission_belt_tensioner_roller_10.0mm.STL | SLA/Multijet/Polyjet |
+
+<Tip>
+  Multiple tensioner roller diameters available (10.0mm, 10.5mm, 11.0mm, 11.5mm) for belt tension adjustment.
+</Tip>
+
+<Note>
+  **Encoder Mount Not Needed**: The ODRI Encoder Kit eliminates the need for the encoder codewheel mount (encoder_codewheel_pwb_mount.STL or encoder_codewheel_kit_mount.STL).
+</Note>
+
+## Off-the-Shelf Components
+
+### Brushless DC Motor
+
+**T-Motor Antigravity 4004 300kV**
+
+<AccordionGroup>
+  <Accordion title="Motor Specifications">
+    - 24 magnets / 12 pole pairs / 18 slots
+    - 3-phase WYE configuration (Star configuration)
+    - Rotor diameter: 45mm
+    - Weight: 53g
+    - Sold in sets of 2 pieces
+  </Accordion>
+  <Accordion title="Ordering Information">
+    - [T-Motor Store](http://store-en.tmotor.com/goods.php?id=438)
+    - [Globeflight #1974](https://www.globe-flight.de/T-Motor-GF-Antigravity-Set-4004-300KV-2-pcs)
+  </Accordion>
+</AccordionGroup>
+
+### Timing Belts
+
+**Conti Synchroflex AT3 GEN III** - Heavy duty polyurethane with steel cord reinforcements
+
+| Stage | Length | Teeth | Width | Weight |
+|-------|--------|-------|-------|--------|
+| First | 150mm | 50 | 4mm | 1.5g |
+| Second | 201mm | 67 | 6mm | 3.0g |
+
+**Total weight**: 4.5g
+
+**Ordering**:
+- First stage: Reiff #60047626 (contact e-services@reiff-gruppe.de for 4mm width)
+- Second stage: Reiff #60005258
+- Alternative: [Beltingonline](https://www.beltingonline.com/at3-gen-iii-synchroflex-timing-belts-4593)
+
+### Bearings
+
+**EZO Stainless Steel Miniature Roller Bearings** (Total weight: 16g)
+
+<CardGroup cols={3}>
+  <Card title="Output Bearing">
+    **EZO 61705 2RS VA**
+    - 32mm × 25mm × 4mm
+    - Weight: 6.9g
+    - Quantity: 2
+  </Card>
+  <Card title="Transmission Bearing">
+    **EZO MR84 VA**
+    - 8mm × 4mm × 2mm
+    - Weight: 0.4g
+    - Quantity: 3
+  </Card>
+  <Card title="Tensioner Bearing">
+    **EZO 683 2Z VA**
+    - 7mm × 3mm × 3mm
+    - Weight: 0.4g
+    - Quantity: 2
+  </Card>
+</CardGroup>
+
+**Ordering Sources**:
+- **Italy**: Emiliana Cuscinetti or Doppiaemme
+- **USA**: EZO USA
+- **Worldwide**: SBN (info@sbn.de) - Part numbers: C02748 (output), N09724 (transmission), N05560 (tensioner)
+- **Alternative**: Chrome steel bearings from Online Bearing Store
+
+### Fasteners
+
+**Total weight**: 2.9g
+
+| Fastener Type | Size | Quantity | Material | Ordering |
+|---------------|------|----------|----------|----------|
+| Motor | M3 × 5 flat head | 4 | Stainless steel | Online Schrauben |
+| Timing belt tensioner | M3 × 10 flat head | 2 | Stainless steel | Online Schrauben |
+| Tensioner washers | M2.5 washer | 2 | Stainless steel | Online Schrauben |
+| Encoder | M3 × 16 Phillips flat head | 2 | Polyamide plastic | Conrad #839967 |
+| Output shaft insert | Helicoil M3 × 6 | 2 | Steel | RS #470-834, McMaster #91732A773 |
+
+<Warning>
+  M3 Helicoil tools required for helical insert installation.
+</Warning>
+
+## Wiring and Connectors
+
+### Motor Phase Connectors
+
+- **Type**: 2mm gold connectors (Reely RE-1373188)
+- **Quantity**: 3 pairs
+- **Ordering**: Conrad #1373188 (2 pairs/set) or HobbyKing (10 pairs/set)
+- **Wire**: LiY 0.50 mm² black cable
+  - Kabeltronik #1601050 (most flexible)
+  - Conrad #609337
+  - McMaster #8054T14
+
+### Encoder Connector
+
+- **Housing**: Hirose DF13 Socket 5-pin
+  - RS #143-015
+  - DigiKey #H2182-ND
+- **Crimp terminals**: Hirose DF13-2630SCF (5 pieces)
+  - RS #503-8325
+  - DigiKey #H9992CT-ND
+- **Wire**: LifY 0.14 mm² (Kabeltronik #1601014)
+  - Colors: red, yellow, black, white, green
+- **Crimp tool**: Hirose DF13-TB2630HC (RS #503-8331)
+
+<Info>
+  **Encoder Wiring Convention**: Follow standard color coding with proper shielding to microcontroller. See source documentation for detailed wiring diagrams.
+</Info>
+
+## Alternative Components
+
+### Timing Belt Tensioner - Option B
+
+<Tabs>
+  <Tab title="Default (Option A)">
+    7mm × 3mm × 3mm bearings (EZO 683 2Z VA) with 3D printed rollers and M2.5 washers
+  </Tab>
+  <Tab title="Alternative (Option B)">
+    10mm × 3mm × 4mm bearings (SKF 623-2Z) - no rollers needed
+    
+    - RS Germany: #285-0807
+    - Quality Bearings Online: 623-2Z
+    - Requires M3 washers (instead of M2.5)
+    - Fasteners: M3 × 10 flat head screws (2 pieces)
+  </Tab>
+</Tabs>
+
+## Comparison: v1.0 vs v1.1
+
+<CardGroup cols={2}>
+  <Card title="v1.0 (Self-Made)" icon="tools">
+    **Advantages:**
+    - Lower cost if machining available
+    - Full control over part specifications
+    - Learn complete fabrication process
+    
+    **Requirements:**
+    - Machine shop access or coordination
+    - Motor shaft preparation skills
+    - Codewheel alignment expertise
+    - Additional assembly time
+  </Card>
+  <Card title="v1.1 (ODRI Kit)" icon="box">
+    **Advantages:**
+    - No machine shop needed
+    - Faster assembly process
+    - Pre-tested and aligned components
+    - Reduced preparation steps
+    
+    **Requirements:**
+    - Higher component cost
+    - Wait time for kit delivery
+    - Less customization flexibility
+  </Card>
+</CardGroup>
+
+<Note>
+  Both versions are **functionally identical** and produce the same performance. Components are fully compatible and interchangeable.
+</Note>
+
+## Bill of Materials Summary
+
+The v1.1 BOM differs from v1.0 in the following items:
+
+**Replaced (v1.0 → v1.1)**:
+- ❌ Broadcom AEDT-9810-Z00 encoder (separate)
+- ❌ PWB Codewheel #104768
+- ❌ Motor pulley (machined aluminum)
+- ❌ Center pulley (machined aluminum)
+- ❌ Motor shaft (machined stainless steel)
+- ❌ Encoder codewheel PWB mount (3D printed)
+
+**Added (v1.1)**:
+- ✅ ODRI Encoder Kit #109381 (includes all above components pre-assembled)
+
+**Unchanged**:
+- Motor, timing belts, bearings, fasteners, other 3D printed parts, wiring components
+
+## Assembly Documentation
+
+<CardGroup cols={2}>
+  <Card title="Simplified Assembly" icon="list-check">
+    v1.1 eliminates these preparation steps:
+    - Motor shaft preparation
+    - Codewheel mounting
+    - Motor pulley installation
+    - Center pulley preparation (partially)
+    
+    Remaining steps:
+    - Motor preparation
+    - Encoder preparation (simplified)
+    - Output pulley preparation
+    - Shell preparation
+    - Final module assembly
+  </Card>
+  <Card title="Testing Procedures" icon="flask">
+    Testing procedures identical to v1.0:
+    - Encoder calibration
+    - Motor phase identification
+    - Torque control verification
+    - Performance validation
+  </Card>
+</CardGroup>
+
+## Technical Resources
+
+<CardGroup cols={2}>
+  <Card title="ODRI Kit Product Flyer" icon="file-pdf">
+    View the official ["Plug & Play" ODRI Encoder KIT Product Flyer](https://www.pwb-encoders.com) from PWB Encoders.
+  </Card>
+  <Card title="Technical Drawings" icon="diagram-project">
+    Complete PDF drawings available in source repository for reference and shell design.
+  </Card>
+  <Card title="STL Files" icon="cube">
+    All required 3D printable component files in source repository stl_files directory.
+  </Card>
+  <Card title="Assembly Guide" icon="book">
+    Step-by-step instructions with photos for complete v1.1 module assembly.
+  </Card>
+</CardGroup>
+
+## Related Pages
+
+<CardGroup cols={2}>
+  <Card title="Actuator Module v1.0" href="/actuator-modules/core-v1" icon="arrow-down">
+    View the original version with custom machined parts
+  </Card>
+  <Card title="Specifications" href="/actuator-modules/specifications" icon="table">
+    Complete technical specifications table
+  </Card>
+</CardGroup>
+
+---
+
+**Authors**: Felix Grimminger
+
+**License**: BSD 3-Clause License
+
+**Copyright**: © 2019-2021 Max Planck Gesellschaft and New York University

@@ -1,0 +1,312 @@
+---
+title: 'Legs and Testbeds'
+description: 'Individual leg modules and testing platforms for development and validation'
+---
+
+# Legs and Testbeds
+
+This page covers the individual leg modules and test platforms used for development, validation, and performance evaluation of the Open Robot Actuator Hardware.
+
+## Leg Modules
+
+### 2DOF Leg v2
+
+<Card title="2DOF Leg v2" icon="gear">
+  Two-degree-of-freedom leg with Hip FE and Knee joints
+  
+  **Applications:**
+  - Quadruped Solo8 v2
+  - Leg Test Stand v2
+  - Simplified locomotion research
+  
+  **Configuration:**
+  - Hip Flexion/Extension joint
+  - Knee joint
+  - Total weight: ~200g (depending on configuration)
+</Card>
+
+**3D Printed Components:**
+
+<CardGroup cols={2}>
+  <Card title="Hip Module Shell">
+    - Base: 27g
+    - Cover: 15g
+  </Card>
+  <Card title="Upper Leg Module Shell">
+    - Base: 27g
+    - Cover: 15g
+  </Card>
+</CardGroup>
+
+**Lower Leg Options:**
+- **Lower Leg v2**: 20g (FDM printer with "sparse double dense" setting)
+- **Lower Leg v3**: 20g (solid part, alternative to v2)
+
+Both lower leg versions provide the same functionality with different manufacturing approaches.
+
+### 3DOF Leg v1
+
+<Card title="3DOF Leg v1" icon="cog">
+  Three-degree-of-freedom leg used in Solo12 quadruped
+  
+  **Weight:** 485g per leg
+  
+  **Joints:**
+  - Hip Abduction/Adduction (AA)
+  - Hip Flexion/Extension (FE)
+  - Knee
+  
+  **Applications:**
+  - Quadruped Solo12
+  - FingerEdu modules
+  - NYU Finger
+</Card>
+
+**3D Printed Components** (139g total):
+- Hip AA Module Shell Base: 21g
+- Hip AA Module Shell Cover: 16g
+- Hip FE Module Shell Base: 25g (standard) or 26g (Alt A)
+- Hip FE Module Shell Cover: 16g
+- Upper Leg Module Shell Base: 27g
+- Upper Leg Module Shell Cover: 15g
+- Lower Leg v2 or v3: 20g
+
+**Special Features:**
+
+<AccordionGroup>
+  <Accordion title="Hip FE Alternative Base Shell">
+    An alternative version of the Hip FE Base shell (Alt A) is available to simplify wire routing. This design improvement was contributed by Pau Martinez.
+    
+    See [GitHub Issue #38](https://github.com/open-dynamic-robot-initiative/open_robot_actuator_hardware/issues/38) for details.
+  </Accordion>
+  
+  <Accordion title="Joint Rotation Limiters">
+    Optional rotation limiters can be installed to prevent multiple rotations and wire winding:
+    
+    - **Single Stopper**: Limits upper leg rotation (14g)
+    - **Double Stopper**: Limits both upper and lower leg rotation
+    - Uses silicone tube sections to soften impacts
+    - Compatible with foot-switch configurations
+  </Accordion>
+</AccordionGroup>
+
+**Bill of Materials:**
+
+| Component | Quantity | Notes |
+|-----------|----------|-------|
+| Core Components | 3 | Actuator module cores |
+| 3D Printed Shell Parts | 1 set | See list above |
+| Rubber Foot | 1 | Bicycle tire segment (75mm x 7mm) |
+| M3 Fasteners | Various | Different lengths for connections |
+| M2.5 Fasteners | 27 | Socket head cap screws |
+| Helical Inserts M2.5x3.75 | 27 | 1.5xD |
+| Washer M3 | 2 | Stainless steel |
+
+## Test Platforms
+
+### Leg Test Stand v2
+
+<Card title="Leg Test Stand v2" icon="flask">
+  Advanced testing platform for 2DOF leg evaluation with external sensors
+  
+  **Key Features:**
+  - Linear guided vertical DOF (85cm range)
+  - 6-axis force-torque sensor
+  - Height sensor (string potentiometer)
+  - Optional pull-up motor for automated reset
+  
+  **Specifications:**
+  - Vertical range: 85cm
+  - Pull-force height sensor: ~2N
+  - Carriage weight (with electronics and leg): 713g
+  - Power: 24V, Ethernet communication
+</Card>
+
+**Sensor Systems:**
+
+<CardGroup cols={2}>
+  <Card title="Force-Torque Sensor">
+    **ATI Mini-40-E**
+    - 6-axis measurement
+    - SI-40-2 calibration
+    - NetBA interface box required
+    - Ethernet communication at 1kHz
+  </Card>
+  <Card title="Height Sensor">
+    **Waycon LX-PA-40**
+    - String potentiometer
+    - 1000mm measurement range
+    - Analog output
+    - Continuous position tracking
+  </Card>
+</CardGroup>
+
+**Electronics:**
+- Master Board v2: 19g
+- Micro Driver Board v2: 13g (1 board for 2 motors)
+- Total electronics stack: 45g
+
+**Mechanical Components:**
+
+<CardGroup cols={2}>
+  <Card title="Linear Guide System">
+    - Linear ball bearings: 4x KB-1 14mm
+    - Precision stainless steel rods: 2x 14h6 x 1000mm
+    - Linear bearing covers (3D printed)
+  </Card>
+  <Card title="Frame Structure">
+    - Item aluminum profiles (Size 8)
+    - Segments: 120cm, 70cm, 50cm, 30cm
+    - 4x angle brackets 40mm
+    - 5x end caps
+  </Card>
+</CardGroup>
+
+**3D Printed Components:**
+
+| Component | Printing Method | Notes |
+|-----------|----------------|-------|
+| Carriage | FDM or SLS | Main moving platform |
+| Master Board Support | FDM or SLS | Electronics mounting |
+| Spacer Micro Driver Stack | SLA/Polyjet/Multijet | 8 pieces |
+| Linear Bearing Cover | FDM or SLS | 4 pieces |
+| Adjustment Sleeve | SLA/Polyjet/Multijet | 4 pieces |
+| Linear Motion Rod Attachment | FDM or SLS | 2 pieces |
+| String Pot & Pullup Motor Mount | FDM or SLS | Sensor mounting |
+| ATI Sensor Top Plate | FDM or SLS | FT sensor mount |
+| ATI Sensor Bottom Plate | FDM or SLS | FT sensor mount |
+| Stopper Attachment | FDM or SLS | 2 pieces |
+| Stopper Wing | FDM or SLS | 1 piece |
+
+**Optional Pull-Up Motor:**
+
+The test stand can be equipped with a pull-up motor module for automated resetting:
+- Enables machine learning experiments
+- Automated return to initial position
+- Custom motor driver electronics
+- Pulley system with custom 3D printed pulley
+
+**Additional Components:**
+- Steel pins: 2x 5mm x 28mm
+- Carbon-fiber tube: O.D. 6mm, I.D. 4mm, Length 30cm (wire management)
+- T-slot nuts M5: 7 pieces
+
+## Applications and Use Cases
+
+### Development and Testing
+
+<AccordionGroup>
+  <Accordion title="Individual Leg Characterization">
+    The test stand allows precise measurement of individual leg performance:
+    - Force-torque profiles during motion
+    - Vertical height tracking
+    - Hopping and landing dynamics
+    - Controller validation
+  </Accordion>
+  
+  <Accordion title="Machine Learning Experiments">
+    The automated reset capability enables:
+    - Reinforcement learning trials
+    - Hopping height optimization
+    - Energy efficiency studies
+    - Repeated experiment automation
+  </Accordion>
+  
+  <Accordion title="Component Validation">
+    Test stands verify:
+    - Actuator module performance
+    - Electronics integration
+    - Mechanical assembly quality
+    - Software control loops
+  </Accordion>
+</AccordionGroup>
+
+### Modular Design Benefits
+
+The leg modules share core components across platforms:
+
+**Shared Components:**
+- All actuator modules use identical internal components
+- Same core components in [Actuator Module v1](/mechanics/actuator-module-v1) and [v1.1](/mechanics/actuator-module-v1-1)
+- Reduces spare parts inventory
+- Simplifies maintenance procedures
+- Enables easy upgrades
+
+**Platform Compatibility:**
+
+| Leg Type | Used In | DOF | Weight |
+|----------|---------|-----|--------|
+| 2DOF Leg v2 | Solo8 v2, Test Stand v2 | 2 | ~200g |
+| 3DOF Leg v1 | Solo12, FingerEdu, NYU Finger | 3 | 485g |
+| Biped Leg 3DOF | Biped Bolt | 3 | 540g |
+
+## Assembly Resources
+
+<CardGroup cols={2}>
+  <Card title="2DOF Leg Assembly" icon="gear" href="/mechanics/leg-2dof-v2">
+    Complete build guide for 2DOF leg
+  </Card>
+  <Card title="3DOF Leg Assembly" icon="cog" href="/mechanics/leg-3dof-v1">
+    Complete build guide for 3DOF leg
+  </Card>
+  <Card title="Test Stand Setup" icon="flask" href="/mechanics/leg-test-stand-v2">
+    Leg test stand v2 assembly guide
+  </Card>
+  <Card title="Actuator Modules" icon="circle-dot" href="/mechanics/actuator-module">
+    Core actuator module documentation
+  </Card>
+</CardGroup>
+
+## Lower Leg Options
+
+Two lower leg versions are available for both 2DOF and 3DOF legs:
+
+**Lower Leg v2:**
+- Weight: 20g
+- Printing method: FDM with "sparse double dense" setting
+- Optimized for strength-to-weight ratio
+- Requires specific slicer settings
+
+**Lower Leg v3:**
+- Weight: 20g  
+- Printing method: Solid part (FDM or SLS)
+- Simpler to manufacture
+- Alternative to v2 with same performance
+
+See the [Lower Leg Documentation](/mechanics/lower-legs) for detailed information.
+
+## Bill of Materials - Test Stand v2
+
+| Component | Quantity | Notes |
+|-----------|----------|-------|
+| 2DOF Leg v2 | 1 | Custom assembly |
+| Master Board | 1 | Custom electronics |
+| Micro Driver Board | 1 | Custom electronics |
+| String Potentiometer Waycon LX-PA-40 | 1 | 1000mm range |
+| ATI Mini-40-E FT Sensor | 1 | With SI-40-2 calibration |
+| Linear Ball Bearings KB-1 14mm | 4 | Stainless steel |
+| Linear Motion Rods 14h6 x 1000mm | 2 | Precision ground |
+| Aluminum Profiles Size 8 | 4 segments | Lengths: 120/70/50/30cm |
+| Angle Brackets | 4 | Item 0.0.411.15 |
+| End Caps | 5 | Item 0.0.026.01 |
+| 3D Printed Parts | Various | See list above |
+| Fasteners | Various | M2, M2.5, M3 stainless steel |
+| Steel Pins 5mm x 28mm | 2 | For bearing alignment |
+| Carbon Fiber Tube 6mm | 1 | 30cm length |
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Actuator Module Core" icon="circle-dot" href="/mechanics/actuator-module-v1">
+    Core components used in all legs
+  </Card>
+  <Card title="Electronics Wiring" icon="plug" href="/electronics/wiring-details">
+    Wiring guides and schematics
+  </Card>
+  <Card title="3D Printing Guide" icon="print" href="/mechanics/3d-printing">
+    Settings and materials for parts
+  </Card>
+  <Card title="Test Stand CAD" icon="cube" href="https://open-dynamic-robot-initiative.github.io/cad_files/leg_test_stand_v2">
+    Interactive 3D CAD viewer
+  </Card>
+</CardGroup>
